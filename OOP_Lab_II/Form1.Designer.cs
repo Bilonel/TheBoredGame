@@ -28,78 +28,123 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.LoginButton = new System.Windows.Forms.Button();
+            this.ShowPassword = new System.Windows.Forms.CheckBox();
+            this.UserImage = new System.Windows.Forms.PictureBox();
+            this.PasswordImage = new System.Windows.Forms.PictureBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.UserImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtPassword
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(196, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 32);
-            this.textBox1.TabIndex = 0;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtPassword.Location = new System.Drawing.Point(248, 225);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(265, 38);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox2
+            // LoginButton
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(196, 133);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 32);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.LoginButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.LoginButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.LoginButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LoginButton.FlatAppearance.BorderSize = 5;
+            this.LoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
+            this.LoginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
+            this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.LoginButton.Font = new System.Drawing.Font("Bauhaus 93", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LoginButton.Location = new System.Drawing.Point(248, 304);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(265, 37);
+            this.LoginButton.TabIndex = 2;
+            this.LoginButton.Text = "Log In";
+            this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // ShowPassword
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatAppearance.BorderSize = 5;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Tomato;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(196, 179);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Log In";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ShowPassword.AutoSize = true;
+            this.ShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowPassword.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ShowPassword.Location = new System.Drawing.Point(392, 271);
+            this.ShowPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Size = new System.Drawing.Size(121, 20);
+            this.ShowPassword.TabIndex = 3;
+            this.ShowPassword.Text = "Show Password";
+            this.ShowPassword.UseVisualStyleBackColor = true;
+            this.ShowPassword.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // checkBox1
+            // UserImage
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(375, 142);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.UserImage.Image = ((System.Drawing.Image)(resources.GetObject("UserImage.Image")));
+            this.UserImage.Location = new System.Drawing.Point(203, 160);
+            this.UserImage.Name = "UserImage";
+            this.UserImage.Size = new System.Drawing.Size(38, 38);
+            this.UserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.UserImage.TabIndex = 4;
+            this.UserImage.TabStop = false;
+            this.UserImage.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // PasswordImage
+            // 
+            this.PasswordImage.Image = ((System.Drawing.Image)(resources.GetObject("PasswordImage.Image")));
+            this.PasswordImage.Location = new System.Drawing.Point(203, 225);
+            this.PasswordImage.Name = "PasswordImage";
+            this.PasswordImage.Size = new System.Drawing.Size(38, 38);
+            this.PasswordImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PasswordImage.TabIndex = 5;
+            this.PasswordImage.TabStop = false;
+            this.PasswordImage.Click += new System.EventHandler(this.PasswordImage_Click);
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtUserName.Location = new System.Drawing.Point(248, 160);
+            this.txtUserName.Multiline = true;
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(265, 38);
+            this.txtUserName.TabIndex = 6;
+            this.txtUserName.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(782, 453);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.PasswordImage);
+            this.Controls.Add(this.UserImage);
+            this.Controls.Add(this.ShowPassword);
+            this.Controls.Add(this.LoginButton);
+            this.Controls.Add(this.txtPassword);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.UserImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.CheckBox ShowPassword;
+        private System.Windows.Forms.PictureBox UserImage;
+        private System.Windows.Forms.PictureBox PasswordImage;
+        private System.Windows.Forms.TextBox txtUserName;
     }
 }
 

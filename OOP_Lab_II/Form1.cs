@@ -15,11 +15,24 @@ namespace OOP_Lab_II
         public Form1()
         {
             InitializeComponent();
+            txtUserName.Focus();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if ((txtUserName.Text == "admin" && txtPassword.Text == "admin") || txtUserName.Text == "user" && txtPassword.Text == "user")
+            {
+                new Form2().Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect Username or password");
+                txtUserName.Clear();
+                txtPassword.Clear();
+                txtUserName.Focus();
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -29,10 +42,40 @@ namespace OOP_Lab_II
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox1.Checked)
-                textBox2.PasswordChar = '*';
+            if (ShowPassword.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+
             else
-                textBox2.PasswordChar = '\0';
+                txtPassword.PasswordChar = '*';
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+
+            
+        }
+
+        private void PasswordImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
