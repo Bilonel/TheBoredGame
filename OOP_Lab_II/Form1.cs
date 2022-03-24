@@ -16,7 +16,7 @@ namespace OOP_Lab_II
         {
             InitializeComponent();
             txtUserName.Focus();
-
+            this.AcceptButton = LoginButton;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace OOP_Lab_II
             }
             else
             {
-                MessageBox.Show("Incorrect Username or password");
+                WarnBox.Text=" Incorrect Username or Password";
                 txtUserName.Clear();
                 txtPassword.Clear();
                 txtUserName.Focus();
@@ -37,45 +37,69 @@ namespace OOP_Lab_II
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
+            checkBox1_CheckedChanged(sender, e);
+        }
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (ShowPassword.Checked)
-            {
-                txtPassword.PasswordChar = '\0';
-            }
 
+            if (ShowPassword.Checked)
+                txtPassword.PasswordChar = '\0';
             else
                 txtPassword.PasswordChar = '*';
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void EXIT_LOGIN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void WarnBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtUserName_Enter(object sender, EventArgs e)
         {
-
-
-            
-        }
-
-        private void PasswordImage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
+            if (txtUserName.Text == " username")
+            {
+                txtUserName.Text = "";
+                txtPassword.ForeColor = Color.Black;
+            }
 
         }
 
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        private void txtUserName_Leave(object sender, EventArgs e)
         {
+            if (txtUserName.Text == "")
+            {
+                txtUserName.Text = " username";
+                txtPassword.ForeColor = Color.Black;
+            }
 
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == " password")
+            {
+                txtUserName.Text = "";
+                txtPassword.ForeColor = Color.Black;
+            }
+
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == "")
+            {
+                txtUserName.Text = " password";
+                txtPassword.ForeColor = Color.Silver;
+            }
         }
     }
 }
