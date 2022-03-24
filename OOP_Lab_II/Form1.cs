@@ -51,5 +51,10 @@ namespace OOP_Lab_II
             else
                 txtPassword.PasswordChar = '*';
         }
+
+        private void EXIT_LOGIN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

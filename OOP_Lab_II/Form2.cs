@@ -14,13 +14,26 @@ namespace OOP_Lab_II
     {
         public Form2()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void settings_button_click(object sender, EventArgs e)
         {
-            this.Hide();
-            
+        }
+
+        private void exit_button_click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+            if (toolStripComboBox1.SelectedIndex==0)
+                this.Size = new System.Drawing.Size(1280,720);
+            else if (toolStripComboBox1.SelectedIndex == 2)
+                this.Size = new System.Drawing.Size(600, 400);
+            else
+                this.Size = new System.Drawing.Size(800, 600);
         }
     }
 }
