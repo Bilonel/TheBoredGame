@@ -105,7 +105,6 @@
             this.txtUserName.Size = new System.Drawing.Size(249, 27);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.Text = " username";
-            this.txtUserName.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
             // 
@@ -114,18 +113,15 @@
             this.WarnBox.BackColor = System.Drawing.Color.IndianRed;
             this.WarnBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.WarnBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.WarnBox.Enabled = false;
-            this.WarnBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WarnBox.ForeColor = System.Drawing.Color.Maroon;
+            this.WarnBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 11F, System.Drawing.FontStyle.Bold);
+            this.WarnBox.ForeColor = System.Drawing.Color.Gold;
             this.WarnBox.Location = new System.Drawing.Point(141, 342);
             this.WarnBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.WarnBox.Multiline = true;
             this.WarnBox.Name = "WarnBox";
             this.WarnBox.ReadOnly = true;
-            this.WarnBox.Size = new System.Drawing.Size(320, 30);
+            this.WarnBox.Size = new System.Drawing.Size(320, 24);
             this.WarnBox.TabIndex = 5;
             this.WarnBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WarnBox.TextChanged += new System.EventHandler(this.WarnBox_TextChanged);
             // 
             // EXIT_LOGIN
             // 

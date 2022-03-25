@@ -39,10 +39,6 @@ namespace OOP_Lab_II
         {
             checkBox1_CheckedChanged(sender, e);
         }
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -58,17 +54,11 @@ namespace OOP_Lab_II
             Application.Exit();
         }
 
-        private void WarnBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtUserName_Enter(object sender, EventArgs e)
         {
             if (txtUserName.Text == " username")
             {
                 txtUserName.Text = "";
-                txtPassword.ForeColor = Color.Black;
             }
 
         }
@@ -78,27 +68,24 @@ namespace OOP_Lab_II
             if (txtUserName.Text == "")
             {
                 txtUserName.Text = " username";
-                txtPassword.ForeColor = Color.Black;
             }
 
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
-            if (txtUserName.Text == " password")
+            if (txtPassword.Text == " password")
             {
-                txtUserName.Text = "";
-                txtPassword.ForeColor = Color.Black;
+                txtPassword.Text = "";
             }
 
         }
 
         private void txtPassword_Leave(object sender, EventArgs e)
         {
-            if (txtUserName.Text == "")
+            if (txtPassword.Text == "")
             {
-                txtUserName.Text = " password";
-                txtPassword.ForeColor = Color.Silver;
+                txtPassword.Text = " password";
             }
         }
     }
