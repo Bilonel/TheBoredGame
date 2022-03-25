@@ -16,7 +16,7 @@ namespace OOP_Lab_II
         {
             InitializeComponent();
             txtUserName.Focus();
-
+            this.AcceptButton = LoginButton;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,13 +39,10 @@ namespace OOP_Lab_II
         {
             checkBox1_CheckedChanged(sender, e);
         }
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-            
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+
             if (ShowPassword.Checked)
                 txtPassword.PasswordChar = '\0';
             else
@@ -55,6 +52,41 @@ namespace OOP_Lab_II
         private void EXIT_LOGIN_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtUserName_Enter(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == " username")
+            {
+                txtUserName.Text = "";
+            }
+
+        }
+
+        private void txtUserName_Leave(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == "")
+            {
+                txtUserName.Text = " username";
+            }
+
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == " password")
+            {
+                txtPassword.Text = "";
+            }
+
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "")
+            {
+                txtPassword.Text = " password";
+            }
         }
     }
 }
