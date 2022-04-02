@@ -84,6 +84,12 @@
     <Compile Include="Menus_Forms\Form_Options.Designer.cs">
       <DependentUpon>Form_Options.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menus_Forms\User_Panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus_Forms\User_Panel.Designer.cs">
+      <DependentUpon>User_Panel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Entrance_Forms\Register_Form.resx">
@@ -101,6 +107,9 @@
     <EmbeddedResource Include="Menus_Forms\Form_Options.resx">
       <DependentUpon>Form_Options.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menus_Forms\User_Panel.resx">
+      <DependentUpon>User_Panel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -111,16 +120,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Data\linkedDataSet.xsc">
-      <DependentUpon>linkedDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Data\linkedDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>linkedDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Data\linkedDataSet.xss">
-      <DependentUpon>linkedDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -152,9 +155,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\db_user.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Data\db_user.mdb" />
+    <None Include="Resources\edit.png" />
     <None Include="Resources\default_avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

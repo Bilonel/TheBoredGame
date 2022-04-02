@@ -16,10 +16,17 @@ namespace OOP_Lab_II
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Login_Form loginForm = new Login_Form();
-            Application.Run(loginForm);
-            if(loginForm.UserSuccessfullyAuthenticated)
-                Application.Run(new Menu_Form());
+                Login_Form loginForm = new Login_Form();
+                Application.Run(loginForm);
+                if(loginForm.UserSuccessfullyAuthenticated)
+                    Application.Run(new Menu_Form());
+            try
+            {
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
             //Application.Run(new Forms.Register_Form());
             //Application.Run(new Forms.Form_Options());
 

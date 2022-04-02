@@ -19,7 +19,7 @@ namespace OOP_Lab_II
         {
             InitializeComponent();
             this.image = global::OOP_Lab_II.Properties.Resources.frame;
-            usernameLabel.Text = Account.getAccount().getUserName();
+            usernameLabel.Text = dataTransfer.Instance.get_account().username;
         }
         //
         //Methods
@@ -69,6 +69,10 @@ namespace OOP_Lab_II
         private void multiplayer_click(object sender, EventArgs e)
         {
             activateForm(new Forms.Form_Multiplayer());
+        }
+        private void profileButton_Click(object sender, EventArgs e)
+        {
+            activateForm(dataTransfer.Instance.get_account().panel);
         }
     }
 }

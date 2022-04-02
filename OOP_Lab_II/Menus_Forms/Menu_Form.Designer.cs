@@ -34,18 +34,17 @@
             this.windowPanel = new System.Windows.Forms.Panel();
             this.mainMenuPanel = new System.Windows.Forms.Panel();
             this.profilPanel_back = new System.Windows.Forms.Panel();
-            this.profilePanel = new System.Windows.Forms.Panel();
-            this.avatar = new System.Windows.Forms.PictureBox();
             this.playButton = new System.Windows.Forms.Button();
             this.gameTitlePanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.avatar = new System.Windows.Forms.PictureBox();
             this.usernameLabel = new System.Windows.Forms.Label();
+            this.profileButton = new System.Windows.Forms.Button();
             this.mainMenuPanel.SuspendLayout();
             this.profilPanel_back.SuspendLayout();
-            this.profilePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.gameTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // multiplayerButton
@@ -139,35 +138,13 @@
             // profilPanel_back
             // 
             this.profilPanel_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.profilPanel_back.Controls.Add(this.profilePanel);
+            this.profilPanel_back.Controls.Add(this.usernameLabel);
+            this.profilPanel_back.Controls.Add(this.avatar);
+            this.profilPanel_back.Controls.Add(this.profileButton);
             this.profilPanel_back.Location = new System.Drawing.Point(9, 501);
             this.profilPanel_back.Name = "profilPanel_back";
             this.profilPanel_back.Size = new System.Drawing.Size(252, 88);
             this.profilPanel_back.TabIndex = 7;
-            // 
-            // profilePanel
-            // 
-            this.profilePanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.profilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.profilePanel.Controls.Add(this.usernameLabel);
-            this.profilePanel.Controls.Add(this.avatar);
-            this.profilePanel.Location = new System.Drawing.Point(5, 5);
-            this.profilePanel.Name = "profilePanel";
-            this.profilePanel.Size = new System.Drawing.Size(242, 78);
-            this.profilePanel.TabIndex = 6;
-            // 
-            // avatar
-            // 
-            this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.Location = new System.Drawing.Point(7, 10);
-            this.avatar.Name = "avatar";
-            this.avatar.Size = new System.Drawing.Size(68, 60);
-            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.avatar.TabIndex = 0;
-            this.avatar.TabStop = false;
             // 
             // playButton
             // 
@@ -210,15 +187,39 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // avatar
+            // 
+            this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.avatar.Location = new System.Drawing.Point(14, 14);
+            this.avatar.Name = "avatar";
+            this.avatar.Size = new System.Drawing.Size(68, 60);
+            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.avatar.TabIndex = 0;
+            this.avatar.TabStop = false;
+            // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.usernameLabel.Location = new System.Drawing.Point(96, 26);
+            this.usernameLabel.Location = new System.Drawing.Point(101, 19);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(0, 26);
             this.usernameLabel.TabIndex = 1;
+            // 
+            // profileButton
+            // 
+            this.profileButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.profileButton.Location = new System.Drawing.Point(5, 5);
+            this.profileButton.Name = "profileButton";
+            this.profileButton.Size = new System.Drawing.Size(242, 78);
+            this.profileButton.TabIndex = 0;
+            this.profileButton.UseVisualStyleBackColor = false;
+            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
             // 
             // Menu_Form
             // 
@@ -237,11 +238,10 @@
             this.Text = "Main Menu";
             this.mainMenuPanel.ResumeLayout(false);
             this.profilPanel_back.ResumeLayout(false);
-            this.profilePanel.ResumeLayout(false);
-            this.profilePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
+            this.profilPanel_back.PerformLayout();
             this.gameTitlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,9 +257,9 @@
         private System.Windows.Forms.Panel mainMenuPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel gameTitlePanel;
-        private System.Windows.Forms.Panel profilePanel;
-        private System.Windows.Forms.PictureBox avatar;
         private System.Windows.Forms.Panel profilPanel_back;
         private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.PictureBox avatar;
+        private System.Windows.Forms.Button profileButton;
     }
 }

@@ -28,7 +28,7 @@ namespace OOP_Lab_II.Forms
         {
             try
             {
-                dataTransfer.Instance.save_to_db(usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text);
+                dataTransfer.Instance.save(usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text);
                 MessageBox.Show("Succesfully Registered..");
             }
             catch (System.Data.OleDb.OleDbException excep)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,30 +7,43 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_II
 {
-    public sealed class Account
+    public class Account
     {
         //  Field
-        private static dataTransfer dataControl;
-        private Data.linkedDataSet.tbl_usersRow row;
-        private static Account account=null;
-        //  Constructor
-        private Account(string username)
+        protected static dataTransfer dataControl;
+        public string username, password;
+        protected System.Windows.Forms.Form form;
+        //  Consturctor
+        protected Account()
         {
             dataControl = dataTransfer.Instance;
-            row = dataControl.get_user_row(username);
         }
         //  Methods
-        public static Account getAccount(string username=null)
+        public virtual System.Windows.Forms.Form panel { get => null; }
+    }
+    public class User : Account
+    {
+        private Data.linkedDataSet.tbl_usersRow row;
+        public User(string username)
         {
-            if (username == null && account == null)
-                return null;
-            if (username != null && account == null)
-                account = new Account(username);
-            return account;
-        }
-        public string getUserName()
+            row = dataControl.get_user_row(username);
+            this.username = username;
+            this.form = new Menus_Forms.User_Panel();
+        }   
+        public override System.Windows.Forms.Form panel { get => form; }
+    }
+    public class Admin : Account
+    {
+        private Data.linkedDataSet.tbl_usersDataTable dataTable;
+        public Admin(string username)
         {
-            return row.username;
+            dataTable = dataControl.get_data_table;
+            this.username = username;
+            this.password = dataControl.get_user_row(username).password;
+           // this.form = new Admin_Panel();
         }
+        
+        public override System.Windows.Forms.Form panel { get => form; }
+
     }
 }

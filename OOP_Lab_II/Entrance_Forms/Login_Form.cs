@@ -25,12 +25,10 @@ namespace OOP_Lab_II
 
         private void login_click(object sender, EventArgs e)
         {
-            Data.linkedDataSet.tbl_usersRow userRow = dataTransfer.Instance.get_user_row(txtUserName.Text);
-            if (userRow!=null)
+            if (dataTransfer.Instance.get_account().username==txtUserName.Text)
             {
-                if (userRow.password == txtPassword.Text)
+                if (dataTransfer.Instance.get_account().password == txtPassword.Text)
                 {
-                    Account.getAccount(userRow.username);
                     UserSuccessfullyAuthenticated = true;
                     this.Close();
                 }
