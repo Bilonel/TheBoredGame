@@ -190,6 +190,7 @@
             this.nameSurnameTextbox.Name = "nameSurnameTextbox";
             this.nameSurnameTextbox.Size = new System.Drawing.Size(85, 26);
             this.nameSurnameTextbox.TabIndex = 2;
+            this.nameSurnameTextbox.Text = "";
             // 
             // phoneNumberTextbox
             // 
@@ -199,6 +200,7 @@
             this.phoneNumberTextbox.Name = "phoneNumberTextbox";
             this.phoneNumberTextbox.Size = new System.Drawing.Size(85, 26);
             this.phoneNumberTextbox.TabIndex = 4;
+            this.phoneNumberTextbox.Text = "";
             // 
             // addressTextbox
             // 
@@ -208,6 +210,7 @@
             this.addressTextbox.Name = "addressTextbox";
             this.addressTextbox.Size = new System.Drawing.Size(85, 26);
             this.addressTextbox.TabIndex = 7;
+            this.addressTextbox.Text = "";
             // 
             // cityTextbox
             // 
@@ -217,6 +220,7 @@
             this.cityTextbox.Name = "cityTextbox";
             this.cityTextbox.Size = new System.Drawing.Size(85, 26);
             this.cityTextbox.TabIndex = 6;
+            this.cityTextbox.Text = "";
             // 
             // countryTextbox
             // 
@@ -226,6 +230,7 @@
             this.countryTextbox.Name = "countryTextbox";
             this.countryTextbox.Size = new System.Drawing.Size(85, 26);
             this.countryTextbox.TabIndex = 5;
+            this.countryTextbox.Text = "";
             // 
             // emailTextbox
             // 
@@ -235,6 +240,7 @@
             this.emailTextbox.Name = "emailTextbox";
             this.emailTextbox.Size = new System.Drawing.Size(85, 26);
             this.emailTextbox.TabIndex = 3;
+            this.emailTextbox.Text = "";
             // 
             // Register_Form
             // 

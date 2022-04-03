@@ -18,6 +18,7 @@ namespace OOP_Lab_II
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
                     Login_Form loginForm = new Login_Form();
                     Application.Run(loginForm);
                     if(loginForm.UserSuccessfullyAuthenticated)

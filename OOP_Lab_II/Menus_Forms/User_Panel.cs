@@ -46,8 +46,8 @@ namespace OOP_Lab_II.Menus_Forms
             this.user_row.Address = address.Text;
             try
             {
-                dataTransfer.Instance.get_account().info = user_row;
                 dataTransfer.Instance.update(user_row);
+                dataTransfer.Instance.get_account().info = dataTransfer.Instance.get_user_row(username_label.Text);
                 MessageBox.Show("Informations Saved.");
             }
             catch (System.Data.OleDb.OleDbException exception)

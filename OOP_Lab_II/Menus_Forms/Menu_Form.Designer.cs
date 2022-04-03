@@ -34,17 +34,17 @@
             this.windowPanel = new System.Windows.Forms.Panel();
             this.mainMenuPanel = new System.Windows.Forms.Panel();
             this.profilPanel_back = new System.Windows.Forms.Panel();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.avatar = new System.Windows.Forms.PictureBox();
+            this.profileButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.gameTitlePanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.avatar = new System.Windows.Forms.PictureBox();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.profileButton = new System.Windows.Forms.Button();
             this.mainMenuPanel.SuspendLayout();
             this.profilPanel_back.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.gameTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // multiplayerButton
@@ -146,6 +146,42 @@
             this.profilPanel_back.Size = new System.Drawing.Size(252, 88);
             this.profilPanel_back.TabIndex = 7;
             // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.usernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.usernameLabel.Location = new System.Drawing.Point(101, 19);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(0, 26);
+            this.usernameLabel.TabIndex = 1;
+            // 
+            // avatar
+            // 
+            this.avatar.BackColor = System.Drawing.Color.Transparent;
+            this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.avatar.Location = new System.Drawing.Point(14, 14);
+            this.avatar.Name = "avatar";
+            this.avatar.Size = new System.Drawing.Size(68, 60);
+            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.avatar.TabIndex = 0;
+            this.avatar.TabStop = false;
+            // 
+            // profileButton
+            // 
+            this.profileButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.profileButton.Location = new System.Drawing.Point(5, 5);
+            this.profileButton.Name = "profileButton";
+            this.profileButton.Size = new System.Drawing.Size(242, 78);
+            this.profileButton.TabIndex = 0;
+            this.profileButton.UseVisualStyleBackColor = false;
+            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            // 
             // playButton
             // 
             this.playButton.BackColor = System.Drawing.Color.Gainsboro;
@@ -187,40 +223,6 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // avatar
-            // 
-            this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.Location = new System.Drawing.Point(14, 14);
-            this.avatar.Name = "avatar";
-            this.avatar.Size = new System.Drawing.Size(68, 60);
-            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.avatar.TabIndex = 0;
-            this.avatar.TabStop = false;
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.usernameLabel.Location = new System.Drawing.Point(101, 19);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(0, 26);
-            this.usernameLabel.TabIndex = 1;
-            // 
-            // profileButton
-            // 
-            this.profileButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.profileButton.Location = new System.Drawing.Point(5, 5);
-            this.profileButton.Name = "profileButton";
-            this.profileButton.Size = new System.Drawing.Size(242, 78);
-            this.profileButton.TabIndex = 0;
-            this.profileButton.UseVisualStyleBackColor = false;
-            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
-            // 
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,9 +241,9 @@
             this.mainMenuPanel.ResumeLayout(false);
             this.profilPanel_back.ResumeLayout(false);
             this.profilPanel_back.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.gameTitlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.ResumeLayout(false);
 
         }

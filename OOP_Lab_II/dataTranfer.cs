@@ -38,17 +38,22 @@ namespace OOP_Lab_II
         public void save(string username,string password, string name, string email, string phone, string country, string city, string address)    // save data to data base
         {
             string type = "user";
-            adapter.Insert(type, username, password, name, email, phone, country, city, address);
+            adapter.Insert(type, username, System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", ""), name, email, phone, country, city, address);
+            if(account!=null)
+                if (username == account.info.username)
+                    update_account();
         }
       
         public void update(Data.linkedDataSet.tbl_usersRow row)
         {
+            if(row.password!=get_user_row(row.username).password)   // If new password and old password are diffrent then encode it.
+                row.password = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row.password))).Replace("-", "");
             adapter.Update(row);
+            if (account != null)
+                if (row.username == account.info.username)
+                update_account();
         }
-        public void update(Data.linkedDataSet.tbl_usersDataTable table)
-        {
-            adapter.Update(table);
-        }
+        
         public Data.linkedDataSet.tbl_usersRow get_user_row(string username)
         {
             return adapter.GetData().FindByusername(username);     
@@ -56,7 +61,10 @@ namespace OOP_Lab_II
         public Data.linkedDataSet.tbl_usersDataTable dataTable
         {
             get => adapter.GetData();
-            set => adapter.Update(value);
+            set
+            {
+               adapter.Update(value);
+            }
         }
         private void initAccount(string username)
         {
@@ -82,6 +90,10 @@ namespace OOP_Lab_II
             else if (this.account == null)
                 throw new InvalidOperationException();
             return account;
+        }
+        private void update_account()
+        {
+            account.info = get_user_row(account.info.username);
         }
     }
 }

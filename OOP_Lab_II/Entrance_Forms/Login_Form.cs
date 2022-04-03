@@ -27,7 +27,7 @@ namespace OOP_Lab_II
         {
             if (dataTransfer.Instance.get_account(txtUserName.Text)!=null)
             {
-                if (dataTransfer.Instance.get_account().info.password == txtPassword.Text)
+                if (dataTransfer.Instance.get_account().info.password == System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(txtPassword.Text))).Replace("-", ""))
                 {
                     UserSuccessfullyAuthenticated = true;
                     this.Close();

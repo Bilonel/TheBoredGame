@@ -1314,39 +1314,41 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(password));
             }
             if ((_Name_Surname == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[3].Value = "";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(_Name_Surname));
             }
             if ((_E_mail == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = "";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(_E_mail));
             }
             if ((Phone_Number == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[5].Value = "";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Phone_Number));
             }
             if ((country == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[6].Value = "";
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(country));
+                this.Adapter.InsertCommand.Parameters[6].Value = "";
             }
             if ((city == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[7].Value = "";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(city));
             }
-            if ((Address == null)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((Address == null))
+            {
+                this.Adapter.InsertCommand.Parameters[8].Value = "";
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Address));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -1406,37 +1408,37 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(password));
             }
             if ((_Name_Surname == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[3].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(_Name_Surname));
             }
             if ((_E_mail == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(_E_mail));
             }
             if ((Phone_Number == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Phone_Number));
             }
             if ((country == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(country));
             }
             if ((city == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(city));
             }
             if ((Address == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Address));
@@ -1463,7 +1465,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
             }
             if ((_Original_Name_Surname == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
@@ -1471,7 +1473,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
             }
             if ((_Original_E_mail == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
@@ -1479,7 +1481,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
             }
             if ((Original_Phone_Number == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
@@ -1487,7 +1489,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
             }
             if ((Original_country == null)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
@@ -1495,7 +1497,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
             }
             if ((Original_city == null)) {
                 this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = "";
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
