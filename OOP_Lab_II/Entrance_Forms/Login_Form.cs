@@ -25,9 +25,9 @@ namespace OOP_Lab_II
 
         private void login_click(object sender, EventArgs e)
         {
-            if (dataTransfer.Instance.get_account().username==txtUserName.Text)
+            if (dataTransfer.Instance.get_account(txtUserName.Text)!=null)
             {
-                if (dataTransfer.Instance.get_account().password == txtPassword.Text)
+                if (dataTransfer.Instance.get_account().info.password == txtPassword.Text)
                 {
                     UserSuccessfullyAuthenticated = true;
                     this.Close();

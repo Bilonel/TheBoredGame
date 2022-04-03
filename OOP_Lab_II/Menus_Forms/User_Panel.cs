@@ -16,17 +16,16 @@ namespace OOP_Lab_II.Menus_Forms
         public User_Panel()
         {
             InitializeComponent();
-            this.panel9.Size = new System.Drawing.Size(581, ((int)this.Size.Height) / 2 + 50);
-
-            //user_row = dataTransfer.Instance.get_account().info;
-            //username_label.Text = user_row.username;
-            //name.Text = user_row._Name_Surname;
-            //password.Text = user_row.password;
-            //mail.Text = user_row._E_mail;
-            //phone.Text = user_row.Phone_Number;
-            //country.Text = user_row.country;
-            //city.Text = user_row.city;
-            //address.Text = user_row.Address;
+            panel9.Size= new System.Drawing.Size(581, (this.Size.Height-500)/2 + 80);
+            user_row = dataTransfer.Instance.get_account().info;
+            username_label.Text = user_row.username;
+            name.Text = user_row._Name_Surname;
+            password.Text = user_row.password;
+            mail.Text = user_row._E_mail;
+            phone.Text = user_row.Phone_Number;
+            country.Text = user_row.country;
+            city.Text = user_row.city;
+            address.Text = user_row.Address;
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -47,7 +46,8 @@ namespace OOP_Lab_II.Menus_Forms
             this.user_row.Address = address.Text;
             try
             {
-                //Account.getAccount().info = user_row;
+                dataTransfer.Instance.get_account().info = user_row;
+                dataTransfer.Instance.update(user_row);
                 MessageBox.Show("Informations Saved.");
             }
             catch (System.Data.OleDb.OleDbException exception)

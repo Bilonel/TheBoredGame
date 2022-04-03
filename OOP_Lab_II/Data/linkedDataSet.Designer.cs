@@ -720,7 +720,7 @@ namespace OOP_Lab_II.Data {
                         return ((string)(this[this.tabletbl_users._E_mailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'E-mail\' in table \'tbl_users\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'tbl_users\' is DBNull.", e);
                     }
                 }
                 set {

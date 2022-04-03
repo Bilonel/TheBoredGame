@@ -66,6 +66,12 @@
     <Compile Include="Entrance_Forms\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menus_Forms\Admin_Panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus_Forms\Admin_Panel.Designer.cs">
+      <DependentUpon>Admin_Panel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menus_Forms\Menu_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entrance_Forms\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus_Forms\Admin_Panel.resx">
+      <DependentUpon>Admin_Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menus_Forms\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>

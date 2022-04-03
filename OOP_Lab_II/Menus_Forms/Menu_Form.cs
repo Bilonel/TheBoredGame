@@ -19,7 +19,7 @@ namespace OOP_Lab_II
         {
             InitializeComponent();
             this.image = global::OOP_Lab_II.Properties.Resources.frame;
-            usernameLabel.Text = dataTransfer.Instance.get_account().username;
+            usernameLabel.Text = dataTransfer.Instance.get_account().info.username;
         }
         //
         //Methods

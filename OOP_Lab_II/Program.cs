@@ -14,14 +14,14 @@ namespace OOP_Lab_II
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-                Login_Form loginForm = new Login_Form();
-                Application.Run(loginForm);
-                if(loginForm.UserSuccessfullyAuthenticated)
-                    Application.Run(new Menu_Form());
             try
             {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                    Login_Form loginForm = new Login_Form();
+                    Application.Run(loginForm);
+                    if(loginForm.UserSuccessfullyAuthenticated)
+                        Application.Run(new Menu_Form());
             }
             catch (Exception e)
             {

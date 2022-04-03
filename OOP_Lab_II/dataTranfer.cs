@@ -13,7 +13,6 @@ namespace OOP_Lab_II
         //Private Field
         private OleDbConnection connection;     // connecting to DataBase
         private Data.linkedDataSetTableAdapters.tbl_usersTableAdapter adapter;  // Bridge between dataBase and DataSet
-        private Data.linkedDataSet.tbl_usersDataTable dataTable;     // Local Data Store
         private Account account;
         private static dataTransfer instance;    // Instance
         //Private Constructor
@@ -22,14 +21,9 @@ namespace OOP_Lab_II
             // Initial Declaration
             this.connection = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" 
                 + System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @"..\..\")) + "/Data/db_user.mdb");
-            this.dataTable = new Data.linkedDataSet.tbl_usersDataTable();
             this.adapter = new Data.linkedDataSetTableAdapters.tbl_usersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             // Initial Definations
             adapter.Connection = connection;
-            this.dataTable.TableName = "Data Table";
-            this.adapter.ClearBeforeFill = true;
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
         }
         //Public Methods
         public static dataTransfer Instance
@@ -46,34 +40,46 @@ namespace OOP_Lab_II
             string type = "user";
             adapter.Insert(type, username, password, name, email, phone, country, city, address);
         }
+      
         public void update(Data.linkedDataSet.tbl_usersRow row)
         {
             adapter.Update(row);
+        }
+        public void update(Data.linkedDataSet.tbl_usersDataTable table)
+        {
+            adapter.Update(table);
         }
         public Data.linkedDataSet.tbl_usersRow get_user_row(string username)
         {
             return adapter.GetData().FindByusername(username);     
         }
-        public Data.linkedDataSet.tbl_usersDataTable get_data_table
+        public Data.linkedDataSet.tbl_usersDataTable dataTable
         {
             get => adapter.GetData();
+            set => adapter.Update(value);
         }
-        private Account initAccount(string username)
+        private void initAccount(string username)
         {
-            string access = get_user_row(username).AccountType;
-            if (access == "admin")
-                account = new Admin(username);
-            else if (access == "user")
-                account = new User(username);
-            else
-                throw new AccessViolationException();
-            return account;
+            Data.linkedDataSet.tbl_usersRow row = get_user_row(username);
+            if (row != null)
+                if (row.AccountType == "admin")
+                {
+                    account = new Admin();
+                    account.info = row;
+                }
+                else if (row.AccountType == "user")
+                {
+                    account = new User();
+                    account.info = row;
+                }
+                else
+                    throw new AccessViolationException();
         }
         public Account get_account(string id=null)
         {
             if (this.account == null && id != null)
                 initAccount(id);
-            else if (this.account == null && id == null)
+            else if (this.account == null)
                 throw new InvalidOperationException();
             return account;
         }
