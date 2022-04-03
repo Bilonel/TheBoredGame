@@ -12,7 +12,7 @@ namespace OOP_Lab_II.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,10 +25,10 @@ namespace OOP_Lab_II.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2x2")]
-        public string Difficulty {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Difficulty {
             get {
-                return ((string)(this["Difficulty"]));
+                return ((int)(this["Difficulty"]));
             }
             set {
                 this["Difficulty"] = value;
@@ -37,13 +37,60 @@ namespace OOP_Lab_II.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("000")]
-        public string Shape {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Difficulty_x {
             get {
-                return ((string)(this["Shape"]));
+                return ((int)(this["Difficulty_x"]));
             }
             set {
-                this["Shape"] = value;
+                this["Difficulty_x"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Difficulty_y {
+            get {
+                return ((int)(this["Difficulty_y"]));
+            }
+            set {
+                this["Difficulty_y"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Shapes {
+            get {
+                return ((int)(this["Shapes"]));
+            }
+            set {
+                this["Shapes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Color {
+            get {
+                return ((int)(this["Color"]));
+            }
+            set {
+                this["Color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\db_user.mdb;Persist " +
+            "Security Info=True")]
+        public string db_userConnectionString {
+            get {
+                return ((string)(this["db_userConnectionString"]));
             }
         }
     }
