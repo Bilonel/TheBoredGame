@@ -95,5 +95,11 @@ namespace OOP_Lab_II
         {
             account.info = get_user_row(account.info.username);
         }
+        public bool check_password(string password)
+        {
+            return System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed())
+                .ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "")
+                == account.info.password;
+        }
     }
 }

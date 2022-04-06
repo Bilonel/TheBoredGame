@@ -15,29 +15,39 @@ namespace OOP_Lab_II.Menus_Forms
         public Admin_Panel()
         {
             InitializeComponent();
-            this.dataGridView1.DataSource = dataTransfer.Instance.dataTable;
-            dataGridView1.Columns[0].ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            confirm_panel.Visible = true;
+        }
+        private void confırm_button_click(object sender, EventArgs e)
+        {
+           if(dataTransfer.Instance.check_password(confirm_text.Text))
             {
-                dataTransfer.Instance.dataTable = (Data.linkedDataSet.tbl_usersDataTable)dataGridView1.DataSource;
+                try
+                {
+                    dataTransfer.Instance.dataTable = (Data.linkedDataSet.tbl_usersDataTable)dataGridView1.DataSource;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                confirm_panel.Visible = false;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
-            }
+                MessageBox.Show("Password is Wrong !");
+                confirm_text.Text = "";
+            }    
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void add_new_account_click(object sender, EventArgs e)
         {
             popup_Panel_username.Visible = true;
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void add_new_account_button_click(object sender, EventArgs e)
         {
-            popup_Panel_username.Visible = false;
             DataTable dt = dataTransfer.Instance.dataTable;
             DataRow dr = dt.NewRow();
             dr[0] = newUsername.Text;
@@ -45,6 +55,7 @@ namespace OOP_Lab_II.Menus_Forms
             try
             {
                 dt.Rows.Add(dr);
+                popup_Panel_username.Visible = false;
             }
             catch (Exception ex)
             {
@@ -62,7 +73,18 @@ namespace OOP_Lab_II.Menus_Forms
         {
             if(e.ColumnIndex==1)
                 dataGridView1.Rows[e.RowIndex].Cells[1].Value = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()))).Replace("-", "");
+        }
 
+        private void confirm_panel_Leave(object sender, EventArgs e)
+        {
+            confirm_panel.Visible = false;
+        }
+
+        private void Admin_Panel_Load(object sender, EventArgs e)
+        {
+            this.dataGridView1.DataSource = dataTransfer.Instance.dataTable;
+            dataGridView1.Columns[0].ReadOnly = true;
+            username_label.Text = dataTransfer.Instance.get_account().info.username;
         }
     }
 }
