@@ -63,6 +63,12 @@ namespace OOP_Lab_II.Menus_Forms
             this.name = new System.Windows.Forms.TextBox();
             this.btnName = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.confirm_panel = new System.Windows.Forms.Panel();
+            this.confirm_subpanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.confirm_button = new System.Windows.Forms.Button();
+            this.confirm_text = new System.Windows.Forms.TextBox();
+            this.confirm_label = new System.Windows.Forms.Label();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel9.SuspendLayout();
@@ -74,6 +80,8 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.confirm_panel.SuspendLayout();
+            this.confirm_subpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
@@ -118,9 +126,9 @@ namespace OOP_Lab_II.Menus_Forms
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(128, 17);
+            this.btnSave.Location = new System.Drawing.Point(128, 16);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(324, 33);
@@ -523,6 +531,7 @@ namespace OOP_Lab_II.Menus_Forms
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.Transparent;
+            this.panel8.Controls.Add(this.confirm_panel);
             this.panel8.Controls.Add(this.panel1);
             this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel4);
@@ -536,6 +545,78 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel8.Size = new System.Drawing.Size(584, 340);
             this.panel8.TabIndex = 10;
             // 
+            // confirm_panel
+            // 
+            this.confirm_panel.BackColor = System.Drawing.Color.Blue;
+            this.confirm_panel.Controls.Add(this.confirm_subpanel);
+            this.confirm_panel.Location = new System.Drawing.Point(105, 153);
+            this.confirm_panel.Name = "confirm_panel";
+            this.confirm_panel.Size = new System.Drawing.Size(383, 100);
+            this.confirm_panel.TabIndex = 19;
+            this.confirm_panel.Visible = false;
+            // 
+            // confirm_subpanel
+            // 
+            this.confirm_subpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.confirm_subpanel.Controls.Add(this.label3);
+            this.confirm_subpanel.Controls.Add(this.confirm_button);
+            this.confirm_subpanel.Controls.Add(this.confirm_text);
+            this.confirm_subpanel.Controls.Add(this.confirm_label);
+            this.confirm_subpanel.Location = new System.Drawing.Point(5, 5);
+            this.confirm_subpanel.Name = "confirm_subpanel";
+            this.confirm_subpanel.Size = new System.Drawing.Size(373, 90);
+            this.confirm_subpanel.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Blue;
+            this.label3.Font = new System.Drawing.Font("Courier New", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, -3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(311, 40);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Confirm Access";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // confirm_button
+            // 
+            this.confirm_button.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.confirm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.confirm_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.confirm_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.confirm_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.confirm_button.Location = new System.Drawing.Point(324, 51);
+            this.confirm_button.Name = "confirm_button";
+            this.confirm_button.Size = new System.Drawing.Size(25, 27);
+            this.confirm_button.TabIndex = 2;
+            this.confirm_button.Text = "✓";
+            this.confirm_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.confirm_button.UseVisualStyleBackColor = false;
+            this.confirm_button.Click += new System.EventHandler(this.confirm_button_Click);
+            // 
+            // confirm_text
+            // 
+            this.confirm_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.confirm_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.confirm_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.confirm_text.Location = new System.Drawing.Point(156, 46);
+            this.confirm_text.Name = "confirm_text";
+            this.confirm_text.Size = new System.Drawing.Size(198, 38);
+            this.confirm_text.TabIndex = 1;
+            // 
+            // confirm_label
+            // 
+            this.confirm_label.AutoSize = true;
+            this.confirm_label.Font = new System.Drawing.Font("Segoe MDL2 Assets", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirm_label.ForeColor = System.Drawing.Color.Black;
+            this.confirm_label.Location = new System.Drawing.Point(17, 41);
+            this.confirm_label.Name = "confirm_label";
+            this.confirm_label.Size = new System.Drawing.Size(133, 34);
+            this.confirm_label.TabIndex = 0;
+            this.confirm_label.Text = "Password:";
+            this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // User_Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +629,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "User_Panel";
             this.Text = "User_Panel";
+            this.Load += new System.EventHandler(this.User_Panel_Load);
             this.panel_top.ResumeLayout(false);
             this.panel_top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -567,6 +649,9 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.confirm_panel.ResumeLayout(false);
+            this.confirm_subpanel.ResumeLayout(false);
+            this.confirm_subpanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,5 +693,11 @@ namespace OOP_Lab_II.Menus_Forms
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Button btnName;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel confirm_panel;
+        private System.Windows.Forms.Panel confirm_subpanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button confirm_button;
+        private System.Windows.Forms.TextBox confirm_text;
+        private System.Windows.Forms.Label confirm_label;
     }
 }

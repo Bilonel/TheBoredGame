@@ -74,5 +74,15 @@ namespace OOP_Lab_II
         {
             activateForm(dataTransfer.Instance.get_account().panel);
         }
+
+        private void avatar_Click(object sender, EventArgs e)
+        {
+            activateForm(dataTransfer.Instance.get_account().panel);
+        }
+
+        private void usernameLabel_Click(object sender, EventArgs e)
+        {
+            activateForm(dataTransfer.Instance.get_account().panel);
+        }
     }
 }

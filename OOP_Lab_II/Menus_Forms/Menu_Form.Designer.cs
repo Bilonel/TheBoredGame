@@ -150,18 +150,21 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.usernameLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.usernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.usernameLabel.Location = new System.Drawing.Point(101, 19);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(0, 26);
             this.usernameLabel.TabIndex = 1;
+            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
             // 
             // avatar
             // 
             this.avatar.BackColor = System.Drawing.Color.Transparent;
             this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.avatar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
             this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
             this.avatar.Location = new System.Drawing.Point(14, 14);
@@ -170,10 +173,12 @@
             this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.avatar.TabIndex = 0;
             this.avatar.TabStop = false;
+            this.avatar.Click += new System.EventHandler(this.avatar_Click);
             // 
             // profileButton
             // 
             this.profileButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.profileButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.profileButton.Location = new System.Drawing.Point(5, 5);
             this.profileButton.Name = "profileButton";
