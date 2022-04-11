@@ -70,6 +70,10 @@ namespace OOP_Lab_II
         {
             activateForm(new Forms.Form_Multiplayer());
         }
+        private void about_button_Click(object sender, EventArgs e)
+        {
+            activateForm(new Menus_Forms.Form_About());
+        }
         private void profileButton_Click(object sender, EventArgs e)
         {
             activateForm(dataTransfer.Instance.get_account().panel);
@@ -124,5 +128,6 @@ namespace OOP_Lab_II
             xmlDoc.Save("Data/localSave.xml");
             save_password_panel.Visible = false;
         }
+
     }
 }
