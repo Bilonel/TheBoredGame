@@ -944,7 +944,7 @@ namespace OOP_Lab_II.Data.linkedDataSetTableAdapters {
     
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and register data.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
