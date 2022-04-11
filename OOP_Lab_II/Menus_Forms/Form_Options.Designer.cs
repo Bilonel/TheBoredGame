@@ -45,6 +45,7 @@ namespace OOP_Lab_II.Forms
             this.diff_list = new System.Windows.Forms.CheckedListBox();
             this.difficulty_main_panel = new System.Windows.Forms.Panel();
             this.shape_main_panel = new System.Windows.Forms.Panel();
+            this.warnBox = new System.Windows.Forms.TextBox();
             this.color_panel = new System.Windows.Forms.Panel();
             this.color_text = new System.Windows.Forms.TextBox();
             this.colorList = new System.Windows.Forms.CheckedListBox();
@@ -78,6 +79,7 @@ namespace OOP_Lab_II.Forms
             // 
             this.extra_button.AutoSize = true;
             this.extra_button.BackColor = System.Drawing.Color.Gray;
+            this.extra_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.extra_button.Dock = System.Windows.Forms.DockStyle.Left;
             this.extra_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.extra_button.Location = new System.Drawing.Point(268, 0);
@@ -92,6 +94,7 @@ namespace OOP_Lab_II.Forms
             // 
             this.shape_button.AutoSize = true;
             this.shape_button.BackColor = System.Drawing.Color.Gray;
+            this.shape_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.shape_button.Dock = System.Windows.Forms.DockStyle.Left;
             this.shape_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shape_button.Location = new System.Drawing.Point(134, 0);
@@ -106,6 +109,7 @@ namespace OOP_Lab_II.Forms
             // 
             this.diff_button.AutoSize = true;
             this.diff_button.BackColor = System.Drawing.Color.Gray;
+            this.diff_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.diff_button.Dock = System.Windows.Forms.DockStyle.Left;
             this.diff_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.diff_button.ForeColor = System.Drawing.Color.Black;
@@ -123,6 +127,7 @@ namespace OOP_Lab_II.Forms
             this.save_button.AutoSize = true;
             this.save_button.BackColor = System.Drawing.Color.DarkGray;
             this.save_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.save_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.save_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.save_button.FlatAppearance.BorderSize = 0;
             this.save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -143,6 +148,7 @@ namespace OOP_Lab_II.Forms
             this.cancel_button.AutoSize = true;
             this.cancel_button.BackColor = System.Drawing.Color.DarkGray;
             this.cancel_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cancel_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancel_button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.cancel_button.FlatAppearance.BorderSize = 0;
@@ -191,7 +197,7 @@ namespace OOP_Lab_II.Forms
             this.difficulty_text.ForeColor = System.Drawing.Color.DarkGray;
             this.difficulty_text.Location = new System.Drawing.Point(0, 0);
             this.difficulty_text.MaxLength = 3;
-            this.difficulty_text.Name = "textBox1";
+            this.difficulty_text.Name = "difficulty_text";
             this.difficulty_text.ReadOnly = true;
             this.difficulty_text.Size = new System.Drawing.Size(208, 19);
             this.difficulty_text.TabIndex = 14;
@@ -292,6 +298,7 @@ namespace OOP_Lab_II.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shape_main_panel.BackColor = System.Drawing.Color.DarkGray;
+            this.shape_main_panel.Controls.Add(this.warnBox);
             this.shape_main_panel.Controls.Add(this.color_panel);
             this.shape_main_panel.Controls.Add(this.shape_panel);
             this.shape_main_panel.Location = new System.Drawing.Point(0, 47);
@@ -299,6 +306,21 @@ namespace OOP_Lab_II.Forms
             this.shape_main_panel.Size = new System.Drawing.Size(400, 299);
             this.shape_main_panel.TabIndex = 15;
             this.shape_main_panel.Visible = false;
+            // 
+            // warnBox
+            // 
+            this.warnBox.BackColor = System.Drawing.Color.DarkGray;
+            this.warnBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.warnBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.warnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.warnBox.ForeColor = System.Drawing.Color.Green;
+            this.warnBox.Location = new System.Drawing.Point(0, 264);
+            this.warnBox.Multiline = true;
+            this.warnBox.Name = "warnBox";
+            this.warnBox.ReadOnly = true;
+            this.warnBox.Size = new System.Drawing.Size(400, 35);
+            this.warnBox.TabIndex = 16;
+            this.warnBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // color_panel
             // 
@@ -419,6 +441,7 @@ namespace OOP_Lab_II.Forms
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Form_Options";
+            this.Load += new System.EventHandler(this.Form_Options_Load);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             this.bottom_panel.ResumeLayout(false);
@@ -429,6 +452,7 @@ namespace OOP_Lab_II.Forms
             this.custom_panel.PerformLayout();
             this.difficulty_main_panel.ResumeLayout(false);
             this.shape_main_panel.ResumeLayout(false);
+            this.shape_main_panel.PerformLayout();
             this.color_panel.ResumeLayout(false);
             this.color_panel.PerformLayout();
             this.shape_panel.ResumeLayout(false);
@@ -460,5 +484,6 @@ namespace OOP_Lab_II.Forms
         private System.Windows.Forms.Panel color_panel;
         private System.Windows.Forms.TextBox color_text;
         private System.Windows.Forms.CheckedListBox colorList;
+        private System.Windows.Forms.TextBox warnBox;
     }
 }

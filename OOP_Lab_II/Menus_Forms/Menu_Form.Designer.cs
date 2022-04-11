@@ -40,11 +40,19 @@
             this.playButton = new System.Windows.Forms.Button();
             this.gameTitlePanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.save_password_panel = new System.Windows.Forms.Panel();
+            this.save_password_panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.windowPanel.SuspendLayout();
             this.mainMenuPanel.SuspendLayout();
             this.profilPanel_back.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.gameTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.save_password_panel.SuspendLayout();
+            this.save_password_panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // multiplayerButton
@@ -113,6 +121,7 @@
             this.windowPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.windowPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.windowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.windowPanel.Controls.Add(this.save_password_panel);
             this.windowPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.windowPanel.Location = new System.Drawing.Point(270, 0);
             this.windowPanel.Name = "windowPanel";
@@ -228,6 +237,67 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // save_password_panel
+            // 
+            this.save_password_panel.BackColor = System.Drawing.Color.DarkOrange;
+            this.save_password_panel.Controls.Add(this.save_password_panel2);
+            this.save_password_panel.Location = new System.Drawing.Point(182, 500);
+            this.save_password_panel.Name = "save_password_panel";
+            this.save_password_panel.Size = new System.Drawing.Size(363, 105);
+            this.save_password_panel.TabIndex = 0;
+            // 
+            // save_password_panel2
+            // 
+            this.save_password_panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.save_password_panel2.Controls.Add(this.button2);
+            this.save_password_panel2.Controls.Add(this.button1);
+            this.save_password_panel2.Controls.Add(this.textBox1);
+            this.save_password_panel2.Location = new System.Drawing.Point(6, 6);
+            this.save_password_panel2.Name = "save_password_panel2";
+            this.save_password_panel2.Size = new System.Drawing.Size(352, 100);
+            this.save_password_panel2.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(17, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(321, 23);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Do you want to save your password?\r\n";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(52, 61);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "YES";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.save_password);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkOrange;
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(195, 61);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(103, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "NO";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.save_password_panel_close);
+            // 
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,12 +313,17 @@
             this.Name = "Menu_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
+            this.Load += new System.EventHandler(this.Menu_Form_Load);
+            this.windowPanel.ResumeLayout(false);
             this.mainMenuPanel.ResumeLayout(false);
             this.profilPanel_back.ResumeLayout(false);
             this.profilPanel_back.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.gameTitlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.save_password_panel.ResumeLayout(false);
+            this.save_password_panel2.ResumeLayout(false);
+            this.save_password_panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -268,5 +343,10 @@
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.PictureBox avatar;
         private System.Windows.Forms.Button profileButton;
+        private System.Windows.Forms.Panel save_password_panel;
+        private System.Windows.Forms.Panel save_password_panel2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Xml;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,7 @@ namespace OOP_Lab_II
     {
         //Field
         public bool UserSuccessfullyAuthenticated = false; // saying to 'program class' "go on main menu"
-
+        private XmlDocument xmlDoc;
         //Methods
         public Login_Form()
         {
@@ -30,6 +30,13 @@ namespace OOP_Lab_II
                 if (dataTransfer.Instance.check_password(txtPassword.Text))
                 {
                     UserSuccessfullyAuthenticated = true;
+                    xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText = txtUserName.Text;
+                    if(xmlDoc.SelectSingleNode("Settings/Password/value").InnerText != txtPassword.Text)
+                    {
+                        xmlDoc.SelectSingleNode("Settings/Password/value").InnerText = txtPassword.Text;
+                        xmlDoc.SelectSingleNode("Settings/Password/apply").InnerText = "0";
+                    }
+                    xmlDoc.Save("Data/localSave.xml");
                     this.Close();
                 }
                 else
@@ -67,18 +74,39 @@ namespace OOP_Lab_II
                 ((TextBox)sender).Text = "";
             }
         }
-
-        private void txt_Leave(object sender, EventArgs e)
+        private void password_Leave(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text == "")
             {
                 ((TextBox)sender).Text = ((TextBox)sender).Name;
             }
         }
+        private void username_leave(object sender, EventArgs e)
+        {
+            password_Leave(sender, e);
+            if (xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText == txtUserName.Text
+                && xmlDoc.SelectSingleNode("Settings/Password/value").InnerText != "")
+            {
+                txtUserName.Text = xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText;
+                txtPassword.Text = xmlDoc.SelectSingleNode("Settings/Password/value").InnerText;
+            }
+        }
 
         private void register_button(object sender, EventArgs e)
         {
             new Forms.Register_Form().Show();
+        }
+
+        private void Login_Form_Load(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.LoginButton, "Press to Login");
+            toolTip1.SetToolTip(this.exitButton, "Press to Exit from App");
+            xmlDoc = new XmlDocument();
+            xmlDoc.Load("Data/localSave.xml");
+            if (xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText !="0")
+                txtUserName.AutoCompleteCustomSource.Add(xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText);
         }
     }
 }

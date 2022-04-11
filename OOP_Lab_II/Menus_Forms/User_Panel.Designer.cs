@@ -34,6 +34,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.username_label = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.WarnBox = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.address_label = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.TextBox();
@@ -86,7 +87,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             // panel_top
             // 
-            this.panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.panel_top.BackColor = System.Drawing.Color.SteelBlue;
             this.panel_top.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_top.Controls.Add(this.pictureBox1);
             this.panel_top.Controls.Add(this.username_label);
@@ -99,7 +100,7 @@ namespace OOP_Lab_II.Menus_Forms
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
             this.pictureBox1.Location = new System.Drawing.Point(141, 8);
@@ -126,9 +127,11 @@ namespace OOP_Lab_II.Menus_Forms
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
+            this.btnSave.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(128, 16);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSave.Location = new System.Drawing.Point(128, 14);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(324, 33);
@@ -141,14 +144,32 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.panel9.AutoSize = true;
             this.panel9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel9.BackColor = System.Drawing.Color.Silver;
+            this.panel9.BackColor = System.Drawing.Color.SteelBlue;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.WarnBox);
             this.panel9.Controls.Add(this.btnSave);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 421);
+            this.panel9.Location = new System.Drawing.Point(0, 401);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(584, 80);
+            this.panel9.Size = new System.Drawing.Size(584, 100);
             this.panel9.TabIndex = 11;
+            // 
+            // WarnBox
+            // 
+            this.WarnBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(140)))), ((int)(((byte)(170)))));
+            this.WarnBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WarnBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.WarnBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.WarnBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 11F, System.Drawing.FontStyle.Bold);
+            this.WarnBox.ForeColor = System.Drawing.Color.OrangeRed;
+            this.WarnBox.Location = new System.Drawing.Point(0, 53);
+            this.WarnBox.Margin = new System.Windows.Forms.Padding(2);
+            this.WarnBox.Multiline = true;
+            this.WarnBox.Name = "WarnBox";
+            this.WarnBox.ReadOnly = true;
+            this.WarnBox.Size = new System.Drawing.Size(582, 45);
+            this.WarnBox.TabIndex = 13;
+            this.WarnBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel7
             // 
@@ -157,7 +178,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel7.Controls.Add(this.address_label);
             this.panel7.Controls.Add(this.address);
             this.panel7.Controls.Add(this.btnAddress);
-            this.panel7.Location = new System.Drawing.Point(2, 262);
+            this.panel7.Location = new System.Drawing.Point(2, 256);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(581, 40);
             this.panel7.TabIndex = 8;
@@ -166,7 +187,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.address_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.address_label.AutoSize = true;
-            this.address_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.address_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.address_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.address_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.address_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -180,7 +201,7 @@ namespace OOP_Lab_II.Menus_Forms
             // address
             // 
             this.address.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.address.BackColor = System.Drawing.Color.Silver;
+            this.address.BackColor = System.Drawing.Color.LightSteelBlue;
             this.address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.address.Enabled = false;
             this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -196,6 +217,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnAddress.BackColor = System.Drawing.Color.White;
             this.btnAddress.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddress.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddress.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddress.Location = new System.Drawing.Point(422, 0);
             this.btnAddress.Name = "btnAddress";
@@ -211,7 +233,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel5.Controls.Add(this.city_label);
             this.panel5.Controls.Add(this.city);
             this.panel5.Controls.Add(this.btnCity);
-            this.panel5.Location = new System.Drawing.Point(2, 222);
+            this.panel5.Location = new System.Drawing.Point(2, 216);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(581, 40);
             this.panel5.TabIndex = 7;
@@ -220,7 +242,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.city_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.city_label.AutoSize = true;
-            this.city_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.city_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.city_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.city_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.city_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -234,7 +256,7 @@ namespace OOP_Lab_II.Menus_Forms
             // city
             // 
             this.city.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.city.BackColor = System.Drawing.Color.Silver;
+            this.city.BackColor = System.Drawing.Color.LightSteelBlue;
             this.city.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.city.Enabled = false;
             this.city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -250,6 +272,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnCity.BackColor = System.Drawing.Color.White;
             this.btnCity.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCity.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCity.Location = new System.Drawing.Point(422, 0);
             this.btnCity.Name = "btnCity";
@@ -265,7 +288,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel6.Controls.Add(this.country__label);
             this.panel6.Controls.Add(this.country);
             this.panel6.Controls.Add(this.btnCountry);
-            this.panel6.Location = new System.Drawing.Point(2, 182);
+            this.panel6.Location = new System.Drawing.Point(2, 176);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(581, 40);
             this.panel6.TabIndex = 6;
@@ -274,7 +297,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.country__label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.country__label.AutoSize = true;
-            this.country__label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.country__label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.country__label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.country__label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.country__label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -288,7 +311,7 @@ namespace OOP_Lab_II.Menus_Forms
             // country
             // 
             this.country.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.country.BackColor = System.Drawing.Color.Silver;
+            this.country.BackColor = System.Drawing.Color.LightSteelBlue;
             this.country.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.country.Enabled = false;
             this.country.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -304,6 +327,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnCountry.BackColor = System.Drawing.Color.White;
             this.btnCountry.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCountry.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCountry.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCountry.Location = new System.Drawing.Point(422, 0);
             this.btnCountry.Name = "btnCountry";
@@ -319,7 +343,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel3.Controls.Add(this.phone_label);
             this.panel3.Controls.Add(this.phone);
             this.panel3.Controls.Add(this.btnPhone);
-            this.panel3.Location = new System.Drawing.Point(2, 142);
+            this.panel3.Location = new System.Drawing.Point(2, 136);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(581, 40);
             this.panel3.TabIndex = 5;
@@ -328,7 +352,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.phone_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.phone_label.AutoSize = true;
-            this.phone_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.phone_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.phone_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.phone_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.phone_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -342,7 +366,7 @@ namespace OOP_Lab_II.Menus_Forms
             // phone
             // 
             this.phone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.phone.BackColor = System.Drawing.Color.Silver;
+            this.phone.BackColor = System.Drawing.Color.LightSteelBlue;
             this.phone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.phone.Enabled = false;
             this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -358,6 +382,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnPhone.BackColor = System.Drawing.Color.White;
             this.btnPhone.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPhone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPhone.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPhone.Location = new System.Drawing.Point(422, 0);
             this.btnPhone.Name = "btnPhone";
@@ -373,7 +398,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel4.Controls.Add(this.mail__label);
             this.panel4.Controls.Add(this.mail);
             this.panel4.Controls.Add(this.btnMail);
-            this.panel4.Location = new System.Drawing.Point(2, 102);
+            this.panel4.Location = new System.Drawing.Point(2, 96);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(581, 40);
             this.panel4.TabIndex = 4;
@@ -382,7 +407,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.mail__label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.mail__label.AutoSize = true;
-            this.mail__label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.mail__label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.mail__label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mail__label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mail__label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -396,7 +421,7 @@ namespace OOP_Lab_II.Menus_Forms
             // mail
             // 
             this.mail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.mail.BackColor = System.Drawing.Color.Silver;
+            this.mail.BackColor = System.Drawing.Color.LightSteelBlue;
             this.mail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mail.Enabled = false;
             this.mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -412,6 +437,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnMail.BackColor = System.Drawing.Color.White;
             this.btnMail.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMail.Location = new System.Drawing.Point(422, 0);
             this.btnMail.Name = "btnMail";
@@ -427,7 +453,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel2.Controls.Add(this.password_label);
             this.panel2.Controls.Add(this.password);
             this.panel2.Controls.Add(this.btnPassword);
-            this.panel2.Location = new System.Drawing.Point(2, 62);
+            this.panel2.Location = new System.Drawing.Point(2, 56);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(581, 40);
             this.panel2.TabIndex = 3;
@@ -436,7 +462,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.password_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.password_label.AutoSize = true;
-            this.password_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.password_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.password_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.password_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -450,7 +476,7 @@ namespace OOP_Lab_II.Menus_Forms
             // password
             // 
             this.password.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.password.BackColor = System.Drawing.Color.Silver;
+            this.password.BackColor = System.Drawing.Color.LightSteelBlue;
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.Enabled = false;
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -466,6 +492,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnPassword.BackColor = System.Drawing.Color.White;
             this.btnPassword.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPassword.Location = new System.Drawing.Point(422, 0);
             this.btnPassword.Name = "btnPassword";
@@ -481,7 +508,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel1.Controls.Add(this.name_label);
             this.panel1.Controls.Add(this.name);
             this.panel1.Controls.Add(this.btnName);
-            this.panel1.Location = new System.Drawing.Point(2, 22);
+            this.panel1.Location = new System.Drawing.Point(2, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(581, 40);
             this.panel1.TabIndex = 2;
@@ -490,7 +517,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.name_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.name_label.AutoSize = true;
-            this.name_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
+            this.name_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.name_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.name_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -504,7 +531,7 @@ namespace OOP_Lab_II.Menus_Forms
             // name
             // 
             this.name.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.name.BackColor = System.Drawing.Color.Silver;
+            this.name.BackColor = System.Drawing.Color.LightSteelBlue;
             this.name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.name.Enabled = false;
             this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -520,6 +547,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.btnName.BackColor = System.Drawing.Color.White;
             this.btnName.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
             this.btnName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnName.Location = new System.Drawing.Point(422, 0);
             this.btnName.Name = "btnName";
@@ -530,8 +558,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.Transparent;
-            this.panel8.Controls.Add(this.confirm_panel);
+            this.panel8.BackColor = System.Drawing.Color.AliceBlue;
             this.panel8.Controls.Add(this.panel1);
             this.panel8.Controls.Add(this.panel2);
             this.panel8.Controls.Add(this.panel4);
@@ -542,22 +569,24 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 81);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(584, 340);
+            this.panel8.Size = new System.Drawing.Size(584, 320);
             this.panel8.TabIndex = 10;
             // 
             // confirm_panel
             // 
-            this.confirm_panel.BackColor = System.Drawing.Color.Blue;
+            this.confirm_panel.BackColor = System.Drawing.Color.Indigo;
+            this.confirm_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.confirm_panel.Controls.Add(this.confirm_subpanel);
-            this.confirm_panel.Location = new System.Drawing.Point(105, 153);
+            this.confirm_panel.Location = new System.Drawing.Point(105, 204);
             this.confirm_panel.Name = "confirm_panel";
             this.confirm_panel.Size = new System.Drawing.Size(383, 100);
             this.confirm_panel.TabIndex = 19;
             this.confirm_panel.Visible = false;
+            this.confirm_panel.Leave += new System.EventHandler(this.confirm_panel_Leave);
             // 
             // confirm_subpanel
             // 
-            this.confirm_subpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.confirm_subpanel.BackColor = System.Drawing.Color.MediumPurple;
             this.confirm_subpanel.Controls.Add(this.label3);
             this.confirm_subpanel.Controls.Add(this.confirm_button);
             this.confirm_subpanel.Controls.Add(this.confirm_text);
@@ -570,11 +599,12 @@ namespace OOP_Lab_II.Menus_Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Blue;
-            this.label3.Font = new System.Drawing.Font("Courier New", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, -3);
+            this.label3.BackColor = System.Drawing.Color.Indigo;
+            this.label3.Font = new System.Drawing.Font("Courier New", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(49, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(311, 40);
+            this.label3.Size = new System.Drawing.Size(281, 33);
             this.label3.TabIndex = 3;
             this.label3.Text = "Confirm Access";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -583,6 +613,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.confirm_button.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.confirm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.confirm_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.confirm_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.confirm_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.confirm_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -597,11 +628,12 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             // confirm_text
             // 
-            this.confirm_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.confirm_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
             this.confirm_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirm_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.confirm_text.Location = new System.Drawing.Point(156, 46);
             this.confirm_text.Name = "confirm_text";
+            this.confirm_text.PasswordChar = '*';
             this.confirm_text.Size = new System.Drawing.Size(198, 38);
             this.confirm_text.TabIndex = 1;
             // 
@@ -621,8 +653,9 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(220)))), ((int)(((byte)(200)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
             this.ClientSize = new System.Drawing.Size(584, 501);
+            this.Controls.Add(this.confirm_panel);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel_top);
             this.Controls.Add(this.panel9);
@@ -634,6 +667,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel_top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -699,5 +733,6 @@ namespace OOP_Lab_II.Menus_Forms
         private System.Windows.Forms.Button confirm_button;
         private System.Windows.Forms.TextBox confirm_text;
         private System.Windows.Forms.Label confirm_label;
+        private System.Windows.Forms.TextBox WarnBox;
     }
 }

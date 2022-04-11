@@ -28,13 +28,30 @@ namespace OOP_Lab_II.Forms
         {
             try
             {
-                dataTransfer.Instance.save(usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text);
-                MessageBox.Show("Succesfully Registered..");
+                dataTransfer.Instance.register(usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text);
+                WarnBox.ForeColor = Color.DarkOliveGreen;
+                WarnBox.Text = "Succesfully Registered..";
+                clear_all_text();
+
             }
             catch (System.Data.OleDb.OleDbException excep)
             {
-                MessageBox.Show(excep.Message.ToString());
+                WarnBox.ForeColor = Color.OrangeRed;
+                WarnBox.Text = excep.Message.ToString();
             }
+        }
+        private void clear_all_text()
+        {
+            for (int i = 0; i < 8; i++)
+                this.Controls[i].Text = "";
+        }
+
+        private void Register_Form_Load(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(this.registerButton, "Press to Register");
+            toolTip1.SetToolTip(this.cancel_button, "Press to exit");
         }
     }
 }

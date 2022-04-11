@@ -33,8 +33,10 @@ namespace OOP_Lab_II.Menus_Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.username_label = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.WarnBox = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.help = new System.Windows.Forms.Label();
             this.confirm_panel = new System.Windows.Forms.Panel();
             this.confirm_subpanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,7 +48,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.button2 = new System.Windows.Forms.Button();
             this.newUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.add_new_button = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,20 +106,39 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel9.BackColor = System.Drawing.Color.Silver;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.WarnBox);
             this.panel9.Controls.Add(this.btnSave);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 411);
+            this.panel9.Location = new System.Drawing.Point(0, 381);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(584, 90);
+            this.panel9.Size = new System.Drawing.Size(584, 120);
             this.panel9.TabIndex = 13;
+            // 
+            // WarnBox
+            // 
+            this.WarnBox.BackColor = System.Drawing.Color.Silver;
+            this.WarnBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WarnBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.WarnBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.WarnBox.Font = new System.Drawing.Font("Microsoft PhagsPa", 10F, System.Drawing.FontStyle.Bold);
+            this.WarnBox.ForeColor = System.Drawing.Color.OrangeRed;
+            this.WarnBox.Location = new System.Drawing.Point(0, 69);
+            this.WarnBox.Margin = new System.Windows.Forms.Padding(2);
+            this.WarnBox.Multiline = true;
+            this.WarnBox.Name = "WarnBox";
+            this.WarnBox.ReadOnly = true;
+            this.WarnBox.Size = new System.Drawing.Size(582, 49);
+            this.WarnBox.TabIndex = 12;
+            this.WarnBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSave.Location = new System.Drawing.Point(128, 27);
+            this.btnSave.Location = new System.Drawing.Point(128, 24);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(324, 33);
@@ -128,26 +149,43 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.help);
             this.panel1.Controls.Add(this.confirm_panel);
             this.panel1.Controls.Add(this.popup_Panel_username);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.add_new_button);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 330);
+            this.panel1.Size = new System.Drawing.Size(584, 300);
             this.panel1.TabIndex = 15;
+            // 
+            // help
+            // 
+            this.help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.help.AutoSize = true;
+            this.help.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.help.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.help.Cursor = System.Windows.Forms.Cursors.Help;
+            this.help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.help.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.help.Location = new System.Drawing.Point(534, 200);
+            this.help.Name = "help";
+            this.help.Size = new System.Drawing.Size(27, 28);
+            this.help.TabIndex = 19;
+            this.help.Text = "?";
+            this.help.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // confirm_panel
             // 
             this.confirm_panel.BackColor = System.Drawing.Color.Blue;
             this.confirm_panel.Controls.Add(this.confirm_subpanel);
-            this.confirm_panel.Location = new System.Drawing.Point(101, 135);
+            this.confirm_panel.Location = new System.Drawing.Point(101, 136);
             this.confirm_panel.Name = "confirm_panel";
             this.confirm_panel.Size = new System.Drawing.Size(383, 100);
             this.confirm_panel.TabIndex = 18;
             this.confirm_panel.Visible = false;
-            this.confirm_panel.Leave += new System.EventHandler(this.confirm_panel_Leave);
+            this.confirm_panel.Leave += new System.EventHandler(this.Panel_Leave);
             // 
             // confirm_subpanel
             // 
@@ -177,6 +215,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.confirm_button.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.confirm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.confirm_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.confirm_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.confirm_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.confirm_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -196,6 +235,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.confirm_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.confirm_text.Location = new System.Drawing.Point(156, 46);
             this.confirm_text.Name = "confirm_text";
+            this.confirm_text.PasswordChar = '*';
             this.confirm_text.Size = new System.Drawing.Size(198, 38);
             this.confirm_text.TabIndex = 1;
             // 
@@ -220,7 +260,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.popup_Panel_username.Size = new System.Drawing.Size(383, 100);
             this.popup_Panel_username.TabIndex = 17;
             this.popup_Panel_username.Visible = false;
-            this.popup_Panel_username.Leave += new System.EventHandler(this.popup_Panel_username_Leave);
+            this.popup_Panel_username.Leave += new System.EventHandler(this.Panel_Leave);
             // 
             // panel2
             // 
@@ -237,6 +277,7 @@ namespace OOP_Lab_II.Menus_Forms
             // 
             this.button2.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -247,7 +288,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.button2.Text = "✓";
             this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.add_new_account_button_click);
+            this.button2.Click += new System.EventHandler(this.apply_new_user_click);
             // 
             // newUsername
             // 
@@ -271,21 +312,22 @@ namespace OOP_Lab_II.Menus_Forms
             this.label1.Text = "New Username:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // add_new_button
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.add_new_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(20, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(544, 28);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "+ New Account";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.add_new_account_click);
+            this.add_new_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.add_new_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_new_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.add_new_button.Location = new System.Drawing.Point(20, 260);
+            this.add_new_button.Name = "add_new_button";
+            this.add_new_button.Size = new System.Drawing.Size(544, 28);
+            this.add_new_button.TabIndex = 15;
+            this.add_new_button.Text = "+ New Account";
+            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.add_new_button.UseVisualStyleBackColor = false;
+            this.add_new_button.Click += new System.EventHandler(this.add_new_account_click);
             // 
             // dataGridView1
             // 
@@ -300,7 +342,7 @@ namespace OOP_Lab_II.Menus_Forms
             this.dataGridView1.Location = new System.Drawing.Point(20, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.Size = new System.Drawing.Size(544, 263);
+            this.dataGridView1.Size = new System.Drawing.Size(544, 233);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -321,7 +363,9 @@ namespace OOP_Lab_II.Menus_Forms
             this.panel_top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.confirm_panel.ResumeLayout(false);
             this.confirm_subpanel.ResumeLayout(false);
             this.confirm_subpanel.PerformLayout();
@@ -342,7 +386,7 @@ namespace OOP_Lab_II.Menus_Forms
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox newUsername;
@@ -355,5 +399,7 @@ namespace OOP_Lab_II.Menus_Forms
         private System.Windows.Forms.Button confirm_button;
         private System.Windows.Forms.TextBox confirm_text;
         private System.Windows.Forms.Label confirm_label;
+        private System.Windows.Forms.TextBox WarnBox;
+        private System.Windows.Forms.Label help;
     }
 }

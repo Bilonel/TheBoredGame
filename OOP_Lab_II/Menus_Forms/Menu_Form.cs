@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-
+using System.Xml;
 namespace OOP_Lab_II
 {
     public partial class Menu_Form : Form
     {
         //Fields
         //
-
+        private XmlDocument xmlDoc;
         private Button currentActiveButton;
         private Form currentForm;
         private Image image;
@@ -83,6 +83,46 @@ namespace OOP_Lab_II
         private void usernameLabel_Click(object sender, EventArgs e)
         {
             activateForm(dataTransfer.Instance.get_account().panel);
+        }
+
+        private void Menu_Form_Load(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.ShowAlways = true;
+            tt.SetToolTip(this.profileButton, "Click to Profile");
+            tt.SetToolTip(this.avatar, "is You ?");
+            xmlDoc = new XmlDocument();
+            xmlDoc.Load("Data/localSave.xml");
+            save_password_panel_timer();
+        }
+        private void save_password_panel_timer()
+        {
+            if (xmlDoc.SelectSingleNode("Settings/Password/apply").InnerText == "0")
+            {
+                Action worker = delegate () { System.Threading.Thread.Sleep(5000); };
+                Action dg = delegate () { save_password_panel_close(null, null); };
+                AsyncCallback cb = delegate (IAsyncResult ar) { save_password_panel.Invoke(dg); worker.EndInvoke(ar); };
+                worker.BeginInvoke(cb, null);
+            }
+            else
+                save_password_panel.Visible = false;
+        }
+        private void save_password_panel_close(object sender, EventArgs e)
+        {
+            if(save_password_panel.Visible)
+            {
+                xmlDoc.SelectSingleNode("Settings/Password/value").InnerText = "";
+                xmlDoc.SelectSingleNode("Settings/Password/apply").InnerText = "0";
+                xmlDoc.Save("Data/localSave.xml");
+                save_password_panel.Visible = false;
+            }
+        }
+
+        private void save_password(object sender, EventArgs e)
+        {
+            xmlDoc.SelectSingleNode("Settings/Password/apply").InnerText = "1";
+            xmlDoc.Save("Data/localSave.xml");
+            save_password_panel.Visible = false;
         }
     }
 }

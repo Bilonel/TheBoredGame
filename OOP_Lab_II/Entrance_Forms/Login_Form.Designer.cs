@@ -43,13 +43,13 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtPassword.Location = new System.Drawing.Point(147, 189);
-            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Name = "Password";
             this.txtPassword.Size = new System.Drawing.Size(221, 32);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "Password";
             this.txtPassword.TextChanged += new System.EventHandler(this.passwordChanged);
             this.txtPassword.Enter += new System.EventHandler(this.txt_Enter);
-            this.txtPassword.Leave += new System.EventHandler(this.txt_Leave);
+            this.txtPassword.Leave += new System.EventHandler(this.password_Leave);
             // 
             // LoginButton
             // 
@@ -65,7 +65,9 @@
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(221, 36);
             this.LoginButton.TabIndex = 4;
+            this.LoginButton.Tag = "login";
             this.LoginButton.Text = "Log In";
+            this.LoginButton.UseCompatibleTextRendering = true;
             this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.login_click);
             // 
@@ -86,17 +88,19 @@
             // 
             // txtUserName
             // 
+            this.txtUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtUserName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtUserName.Location = new System.Drawing.Point(147, 145);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Name = "Username";
             this.txtUserName.Size = new System.Drawing.Size(221, 32);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.Text = "Username";
             this.txtUserName.Enter += new System.EventHandler(this.txt_Enter);
-            this.txtUserName.Leave += new System.EventHandler(this.txt_Leave);
+            this.txtUserName.Leave += new System.EventHandler(this.username_leave);
             // 
             // WarnBox
             // 
@@ -174,6 +178,7 @@
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,11 +187,11 @@
         #endregion
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.CheckBox ShowPassword;
         private System.Windows.Forms.TextBox WarnBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button LoginButton;
     }
 }
 

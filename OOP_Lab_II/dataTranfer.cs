@@ -35,8 +35,11 @@ namespace OOP_Lab_II
                 return instance;
             }
         }
-        public void save(string username,string password, string name, string email, string phone, string country, string city, string address)    // save data to data base
+        public void register(string username,string password, string name, string email, string phone, string country, string city, string address)    // register data to data base
         {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(username, @"^[a-zA-Z]+$"))
+                throw new InvalidExpressionException("Username must have only letters.");
+            
             string type = "user";
             adapter.Insert(type, username, System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", ""), name, email, phone, country, city, address);
             if(account!=null)
@@ -46,7 +49,9 @@ namespace OOP_Lab_II
       
         public void update(Data.linkedDataSet.tbl_usersRow row)
         {
-            if(row.password!=get_user_row(row.username).password)   // If new password and old password are diffrent then encode it.
+            if (!System.Text.RegularExpressions.Regex.IsMatch(row.username, @"^[a-zA-Z]+$"))
+                throw new InvalidExpressionException("Username must have only letters.");
+            if (row.password!=get_user_row(row.username).password)   // If new password and old password are diffrent then encode it.
                 row.password = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row.password))).Replace("-", "");
             adapter.Update(row);
             if (account != null)
@@ -63,7 +68,10 @@ namespace OOP_Lab_II
             get => adapter.GetData();
             set
             {
-               adapter.Update(value);
+                foreach(Data.linkedDataSet.tbl_usersRow row in value.Rows)
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(row.username, @"^[a-zA-Z]+$"))
+                        throw new InvalidExpressionException("Username must have only letters.");
+                adapter.Update(value);
             }
         }
         private void initAccount(string username)
