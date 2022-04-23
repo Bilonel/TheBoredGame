@@ -65,7 +65,10 @@ namespace OOP_Lab_II
         {
             activateForm(new Forms.Form_Options());
         }
-
+        private void play_click(object sender, EventArgs e)
+        {
+            activateForm(new Menus_Forms.Form_Play());
+        }
         private void multiplayer_click(object sender, EventArgs e)
         {
             activateForm(new Forms.Form_Multiplayer());

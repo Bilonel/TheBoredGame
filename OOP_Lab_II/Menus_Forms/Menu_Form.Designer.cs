@@ -275,7 +275,7 @@
             this.playButton.TabIndex = 0;
             this.playButton.Text = "PLAY";
             this.playButton.UseVisualStyleBackColor = false;
-            this.playButton.Click += new System.EventHandler(this.multiplayer_click);
+            this.playButton.Click += new System.EventHandler(this.play_click);
             this.playButton.Enter += new System.EventHandler(this.button_Enter);
             this.playButton.MouseEnter += new System.EventHandler(this.button_Enter);
             // 
