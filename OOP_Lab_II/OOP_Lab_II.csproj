@@ -66,6 +66,12 @@
     <Compile Include="Entrance_Forms\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menus_Forms\Admin_Panel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Menus_Forms\Form_About.Designer.cs">
       <DependentUpon>Form_About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus_Forms\Form_Play.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus_Forms\Form_Play.Designer.cs">
+      <DependentUpon>Form_Play.cs</DependentUpon>
     </Compile>
     <Compile Include="Menus_Forms\Menu_Form.cs">
       <SubType>Form</SubType>
@@ -110,11 +122,17 @@
     <EmbeddedResource Include="Entrance_Forms\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Game\Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menus_Forms\Admin_Panel.resx">
       <DependentUpon>Admin_Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menus_Forms\Form_About.resx">
       <DependentUpon>Form_About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus_Forms\Form_Play.resx">
+      <DependentUpon>Form_Play.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menus_Forms\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>

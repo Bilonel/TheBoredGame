@@ -19,10 +19,14 @@ namespace OOP_Lab_II
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                    Login_Form loginForm = new Login_Form();
-                    Application.Run(loginForm);
-                    if(loginForm.UserSuccessfullyAuthenticated)
-                        Application.Run(new Menu_Form());
+                Login_Form loginForm = new Login_Form();
+                Application.Run(loginForm);
+                if(loginForm.UserSuccessfullyAuthenticated)
+                {
+                    Application.Run(new Menu_Form());
+                    if (Menus_Forms.Form_Play.inGame)
+                        Application.Run(new Game.Game());
+                }
             }
             catch (Exception e)
             {
