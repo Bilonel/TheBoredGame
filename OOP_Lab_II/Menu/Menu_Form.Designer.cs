@@ -1,4 +1,4 @@
-﻿namespace OOP_Lab_II
+﻿namespace OOP_Lab_II.Menu
 {
     partial class Menu_Form
     {

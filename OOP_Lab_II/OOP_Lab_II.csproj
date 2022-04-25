@@ -47,103 +47,108 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="dataTranfer.cs" />
+    <Compile Include="Data\Account.cs" />
+    <Compile Include="Data\dataTranfer.cs" />
     <Compile Include="Data\linkedDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>linkedDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Entrance_Forms\Register_Form.cs">
+    <Compile Include="Entrance\Register_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entrance_Forms\Register_Form.Designer.cs">
+    <Compile Include="Entrance\Register_Form.Designer.cs">
       <DependentUpon>Register_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entrance_Forms\Login_Form.cs">
+    <Compile Include="Entrance\Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entrance_Forms\Login_Form.Designer.cs">
+    <Compile Include="Entrance\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game\Game.cs">
+    <Compile Include="Game\Cell.cs" />
+    <Compile Include="Game\Events.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Game\Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
+    <Compile Include="Game\GameScreen.Designer.cs">
+      <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Admin_Panel.cs">
+    <Compile Include="Game\Grid.cs" />
+    <Compile Include="Game\Texture.cs" />
+    <Compile Include="Menu\Admin_Panel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Admin_Panel.Designer.cs">
+    <Compile Include="Menu\Admin_Panel.Designer.cs">
       <DependentUpon>Admin_Panel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Form_About.cs">
+    <Compile Include="Menu\Form_About.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Form_About.Designer.cs">
+    <Compile Include="Menu\Form_About.Designer.cs">
       <DependentUpon>Form_About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Play.cs">
+    <Compile Include="Menu\Form_Play.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Play.Designer.cs">
+    <Compile Include="Menu\Form_Play.Designer.cs">
       <DependentUpon>Form_Play.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Menu_Form.cs">
+    <Compile Include="Menu\Menu_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Menu_Form.Designer.cs">
+    <Compile Include="Menu\Menu_Form.Designer.cs">
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Multiplayer.cs">
+    <Compile Include="Menu\Form_Multiplayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Multiplayer.Designer.cs">
+    <Compile Include="Menu\Form_Multiplayer.Designer.cs">
       <DependentUpon>Form_Multiplayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Options.cs">
+    <Compile Include="Menu\Form_Options.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\Form_Options.Designer.cs">
+    <Compile Include="Menu\Form_Options.Designer.cs">
       <DependentUpon>Form_Options.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menus_Forms\User_Panel.cs">
+    <Compile Include="Menu\User_Panel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menus_Forms\User_Panel.Designer.cs">
+    <Compile Include="Menu\User_Panel.Designer.cs">
       <DependentUpon>User_Panel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Entrance_Forms\Register_Form.resx">
+    <EmbeddedResource Include="Entrance\Register_Form.resx">
       <DependentUpon>Register_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entrance_Forms\Login_Form.resx">
+    <EmbeddedResource Include="Entrance\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Game\Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
+    <EmbeddedResource Include="Game\GameScreen.resx">
+      <DependentUpon>GameScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Admin_Panel.resx">
+    <EmbeddedResource Include="Menu\Admin_Panel.resx">
       <DependentUpon>Admin_Panel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Form_About.resx">
+    <EmbeddedResource Include="Menu\Form_About.resx">
       <DependentUpon>Form_About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Form_Play.resx">
+    <EmbeddedResource Include="Menu\Form_Play.resx">
       <DependentUpon>Form_Play.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Menu_Form.resx">
+    <EmbeddedResource Include="Menu\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Form_Multiplayer.resx">
+    <EmbeddedResource Include="Menu\Form_Multiplayer.resx">
       <DependentUpon>Form_Multiplayer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\Form_Options.resx">
+    <EmbeddedResource Include="Menu\Form_Options.resx">
       <DependentUpon>Form_Options.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menus_Forms\User_Panel.resx">
+    <EmbeddedResource Include="Menu\User_Panel.resx">
       <DependentUpon>User_Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -195,6 +200,11 @@
     <Content Include="Data\localSave.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Game\res\frame.png" />
+    <EmbeddedResource Include="Game\res\Rectangle-Blue.png" />
+    <EmbeddedResource Include="Game\res\Rectangle-Green.png" />
+    <EmbeddedResource Include="Game\res\Rectangle-Orange.png" />
+    <EmbeddedResource Include="Game\res\selectable_frame.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\default_avatar.png" />
   </ItemGroup>

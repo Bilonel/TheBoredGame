@@ -1,4 +1,4 @@
-﻿namespace OOP_Lab_II.Forms
+﻿namespace OOP_Lab_II.Entrance
 {
     partial class Register_Form
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GAME_TEST
+namespace OOP_Lab_II.Game
 {
     class gameGrid
     {

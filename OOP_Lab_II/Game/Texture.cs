@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-namespace GAME_TEST
+namespace OOP_Lab_II.Game
 {
     class Texture
     {
@@ -15,12 +15,13 @@ namespace GAME_TEST
             // triangle orange,green,blue = 4 , 5 , 6
             // round orange,green,blue = 7 , 8 , 9
             textures = new List<Image>();
-            string[] names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(names[5])));
-            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(names[6])));
-            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(names[4])));
-            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(names[3])));
-            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(names[2])));
+            
+            string resPath = "OOP_Lab_II.Game.res.";
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "frame.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "selectable_frame.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Orange.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Green.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Blue.png")));
         }
         private static Texture instance;
         public static Texture texture

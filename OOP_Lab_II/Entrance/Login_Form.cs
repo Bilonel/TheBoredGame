@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Lab_II
+namespace OOP_Lab_II.Entrance
 {
     public partial class Login_Form : Form
     {
@@ -94,7 +94,7 @@ namespace OOP_Lab_II
 
         private void register_button(object sender, EventArgs e)
         {
-            new Forms.Register_Form().Show();
+            new Entrance.Register_Form().Show();
         }
 
         private void Login_Form_Load(object sender, EventArgs e)

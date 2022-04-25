@@ -19,13 +19,13 @@ namespace OOP_Lab_II
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                Login_Form loginForm = new Login_Form();
+                Entrance.Login_Form loginForm = new Entrance.Login_Form();
                 Application.Run(loginForm);
                 if(loginForm.UserSuccessfullyAuthenticated)
                 {
-                    Application.Run(new Menu_Form());
-                    if (Menus_Forms.Form_Play.inGame)
-                        Application.Run(new Game.Game());
+                    Application.Run(new Menu.Menu_Form());
+                    if (Menu.Form_Play.inGame)
+                        Application.Run(new Game.GameScreen());
                 }
             }
             catch (Exception e)

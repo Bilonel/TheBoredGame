@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-namespace GAME_TEST
+namespace OOP_Lab_II.Game
 {
     class Game
     {
@@ -90,7 +90,7 @@ namespace GAME_TEST
             if(Path!="...error...")
                 foreach(char direction in Path)
                 {
-                    await Task.Delay(200);
+                    await Task.Delay(350);
                     Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
                     switch (direction)
                     {
@@ -103,7 +103,7 @@ namespace GAME_TEST
                     setCellsId(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
                     oldCell.id = 0;
                     setCellsId(oldCell.box, 0); // Old Position is Empty
-                    await Task.Delay(800);
+                    await Task.Delay(550);
                 }
         }
         private string PathFindng(Point start, Point end, int step, string moves)
