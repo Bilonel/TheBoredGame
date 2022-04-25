@@ -1,5 +1,5 @@
 ﻿
-namespace OOP_Lab_II.Forms
+namespace OOP_Lab_II.Menu
 {
     partial class Form_Options
     {

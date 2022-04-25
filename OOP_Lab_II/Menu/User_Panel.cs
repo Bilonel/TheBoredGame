@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Lab_II.Menus_Forms
+namespace OOP_Lab_II.Menu
 {
     public partial class User_Panel : Form
     {

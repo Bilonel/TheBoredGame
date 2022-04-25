@@ -18,10 +18,10 @@ namespace OOP_Lab_II
     }
     public class User : Account
     {
-        public override System.Windows.Forms.Form panel { get => new Menus_Forms.User_Panel(); }
+        public override System.Windows.Forms.Form panel { get => new Menu.User_Panel(); }
     }
     public class Admin : Account
     {
-        public override System.Windows.Forms.Form panel { get => new Menus_Forms.Admin_Panel(); }
+        public override System.Windows.Forms.Form panel { get => new Menu.Admin_Panel(); }
     }
 }

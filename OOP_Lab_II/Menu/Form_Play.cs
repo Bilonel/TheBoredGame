@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Lab_II.Menus_Forms
+namespace OOP_Lab_II.Menu
 {
     public partial class Form_Play : Form
     {
-        Forms.Form_Options OptionsForm;
+        Form_Options OptionsForm;
         public static bool inGame=false;
         public Form_Play()
         {
@@ -34,7 +34,7 @@ namespace OOP_Lab_II.Menus_Forms
 
         private void Form_Play_Load(object sender, EventArgs e)
         {
-            OptionsForm = new Forms.Form_Options();
+            OptionsForm = new Form_Options();
             OptionsForm.TopLevel = false;
             OptionsForm.Dock = DockStyle.Fill;
             this.popup.Controls.Add(OptionsForm);

@@ -2,7 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
-namespace OOP_Lab_II.Forms
+
+namespace OOP_Lab_II.Menu
 {
     public partial class Form_Options : Form
     {

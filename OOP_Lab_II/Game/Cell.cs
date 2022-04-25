@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GAME_TEST
+namespace OOP_Lab_II.Game
 {
     class Cell
     {

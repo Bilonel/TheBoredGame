@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Lab_II.Forms
+namespace OOP_Lab_II.Entrance
 {
     public partial class Register_Form : Form
     {

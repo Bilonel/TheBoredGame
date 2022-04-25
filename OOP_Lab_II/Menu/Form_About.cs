@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_Lab_II.Forms
+namespace OOP_Lab_II.Menu
 {
-    public partial class Form_Multiplayer : Form
+    public partial class Form_About : Form
     {
-        public Form_Multiplayer()
+        public Form_About()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

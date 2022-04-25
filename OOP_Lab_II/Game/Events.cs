@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-namespace GAME_TEST
+namespace OOP_Lab_II.Game
 {
     class Events
     {

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
-namespace OOP_Lab_II
+namespace OOP_Lab_II.Menu
 {
     public partial class Menu_Form : Form
     {
@@ -63,19 +63,19 @@ namespace OOP_Lab_II
         }
         private void options_click(object sender, EventArgs e)
         {
-            activateForm(new Forms.Form_Options());
+            activateForm(new Form_Options());
         }
         private void play_click(object sender, EventArgs e)
         {
-            activateForm(new Menus_Forms.Form_Play());
+            activateForm(new Form_Play());
         }
         private void multiplayer_click(object sender, EventArgs e)
         {
-            activateForm(new Forms.Form_Multiplayer());
+            activateForm(new Form_Multiplayer());
         }
         private void about_button_Click(object sender, EventArgs e)
         {
-            activateForm(new Menus_Forms.Form_About());
+            activateForm(new Form_About());
         }
         private void profileButton_Click(object sender, EventArgs e)
         {
