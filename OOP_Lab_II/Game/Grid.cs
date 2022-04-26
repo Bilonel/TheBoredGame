@@ -15,7 +15,7 @@ namespace OOP_Lab_II.Game
         public int CellSize { get => cellSize; }
         public int Row { get; }
         public int Column { get; }
-        public int this[int row,int col] { get => matrix[row, col]; set => matrix[row, col] = value; }
+        public int this[int row,int col] { get { if (isInside(row, col)) return matrix[row, col]; else return -1; } set { matrix[row, col] = value; } }
 
         // Costructor
         public gameGrid(int x,int y) { 
@@ -45,6 +45,13 @@ namespace OOP_Lab_II.Game
                     matrix[i,j] = 0;
                 }
             }
+        }
+        public bool isFull()
+        {
+            foreach (var item in matrix)
+                if (item == 0)
+                    return false;
+            return true;
         }
        
     }
