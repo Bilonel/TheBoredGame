@@ -35,6 +35,7 @@ namespace OOP_Lab_II.Game
             label1.Visible = false;
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
+            this.Controls.Add(game.ScoreBoard);
         }
 
         private void Screen_Shown(object sender, EventArgs e)
