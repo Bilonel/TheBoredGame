@@ -88,6 +88,7 @@ namespace OOP_Lab_II.Menu
             this.dataGridView1.DataSource = dataTransfer.Instance.dataTable;
             dataGridView1.Columns[0].ReadOnly = true;
             username_label.Text = dataTransfer.Instance.get_account().info.username;
+            this.dataGridView1.ForeColor = Color.Black;
 
             ToolTip tt = new ToolTip();
             tt.ShowAlways = true;

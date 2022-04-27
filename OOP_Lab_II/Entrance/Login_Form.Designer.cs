@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BackgroundImage = global::OOP_Lab_II.Properties.Resources.BORED_GAME_BACKGROUND;
+            this.BackgroundImage = global::OOP_Lab_II.Properties.Resources.loginBack;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(805, 574);
