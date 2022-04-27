@@ -12,8 +12,8 @@ namespace OOP_Lab_II.Menu
 {
     public partial class Form_Play : Form
     {
-        Form_Options OptionsForm;
         public static bool inGame=false;
+        private Form_Options OptionsForm;
         public Form_Play()
         {
             InitializeComponent();
@@ -37,9 +37,8 @@ namespace OOP_Lab_II.Menu
             OptionsForm = new Form_Options();
             OptionsForm.TopLevel = false;
             OptionsForm.Dock = DockStyle.Fill;
-            this.popup.Controls.Add(OptionsForm);
+            this.popup.Controls.Add(this.OptionsForm);
             OptionsForm.Show();
         }
-        
     }
 }

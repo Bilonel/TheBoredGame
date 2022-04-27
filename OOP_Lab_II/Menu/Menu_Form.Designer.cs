@@ -28,348 +28,339 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.multiplayerButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
+            this.multiButton = new System.Windows.Forms.Button();
+            this.fullscreenButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
+            this.creditsButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.windowPanel = new System.Windows.Forms.Panel();
+            this.profile = new System.Windows.Forms.Panel();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.avatarBox = new System.Windows.Forms.PictureBox();
             this.save_password_panel = new System.Windows.Forms.Panel();
-            this.save_password_panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.mainMenuPanel = new System.Windows.Forms.Panel();
-            this.profilPanel_back = new System.Windows.Forms.Panel();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.avatar = new System.Windows.Forms.PictureBox();
-            this.profileButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
-            this.gameTitlePanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.about_button = new System.Windows.Forms.Button();
-            this.windowPanel.SuspendLayout();
+            this.popup = new System.Windows.Forms.Panel();
+            this.exitPopup = new System.Windows.Forms.Button();
+            this.windowPanel = new System.Windows.Forms.Panel();
+            this.profile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             this.save_password_panel.SuspendLayout();
-            this.save_password_panel2.SuspendLayout();
-            this.mainMenuPanel.SuspendLayout();
-            this.profilPanel_back.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
-            this.gameTitlePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.popup.SuspendLayout();
             this.SuspendLayout();
             // 
-            // multiplayerButton
+            // playButton
             // 
-            this.multiplayerButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.multiplayerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.multiplayerButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.multiplayerButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.multiplayerButton.FlatAppearance.BorderSize = 0;
-            this.multiplayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.multiplayerButton.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.multiplayerButton.ForeColor = System.Drawing.Color.Goldenrod;
-            this.multiplayerButton.Location = new System.Drawing.Point(9, 264);
-            this.multiplayerButton.Name = "multiplayerButton";
-            this.multiplayerButton.Size = new System.Drawing.Size(245, 45);
-            this.multiplayerButton.TabIndex = 1;
-            this.multiplayerButton.Text = "MULTIPLAYER";
-            this.multiplayerButton.UseVisualStyleBackColor = false;
-            this.multiplayerButton.Click += new System.EventHandler(this.multiplayer_click);
-            this.multiplayerButton.Enter += new System.EventHandler(this.button_Enter);
-            this.multiplayerButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.playButton.BackColor = System.Drawing.Color.Transparent;
+            this.playButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.playButton;
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.playButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.playButton.FlatAppearance.BorderSize = 0;
+            this.playButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playButton.Location = new System.Drawing.Point(181, 189);
+            this.playButton.Margin = new System.Windows.Forms.Padding(0);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(230, 125);
+            this.playButton.TabIndex = 0;
+            this.playButton.UseVisualStyleBackColor = false;
+            this.playButton.Click += new System.EventHandler(this.play_click);
+            this.playButton.Enter += new System.EventHandler(this.button_Enter);
+            this.playButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.playButton.MouseLeave += new System.EventHandler(this.button_Leave);
+            // 
+            // multiButton
+            // 
+            this.multiButton.BackColor = System.Drawing.Color.Transparent;
+            this.multiButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.multiButton;
+            this.multiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.multiButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.multiButton.FlatAppearance.BorderSize = 0;
+            this.multiButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.multiButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.multiButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.multiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.multiButton.Location = new System.Drawing.Point(422, 189);
+            this.multiButton.Name = "multiButton";
+            this.multiButton.Size = new System.Drawing.Size(230, 125);
+            this.multiButton.TabIndex = 2;
+            this.multiButton.UseVisualStyleBackColor = false;
+            this.multiButton.Click += new System.EventHandler(this.multiButton_Click);
+            this.multiButton.Enter += new System.EventHandler(this.button_Enter);
+            this.multiButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.multiButton.MouseLeave += new System.EventHandler(this.button_Leave);
+            // 
+            // fullscreenButton
+            // 
+            this.fullscreenButton.BackColor = System.Drawing.Color.Transparent;
+            this.fullscreenButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
+            this.fullscreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fullscreenButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fullscreenButton.FlatAppearance.BorderSize = 0;
+            this.fullscreenButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.fullscreenButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.fullscreenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.fullscreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fullscreenButton.Location = new System.Drawing.Point(319, 35);
+            this.fullscreenButton.Name = "fullscreenButton";
+            this.fullscreenButton.Size = new System.Drawing.Size(90, 75);
+            this.fullscreenButton.TabIndex = 5;
+            this.fullscreenButton.UseVisualStyleBackColor = false;
+            this.fullscreenButton.Click += new System.EventHandler(this.fullscreenButton_Click);
+            this.fullscreenButton.Enter += new System.EventHandler(this.button_Enter);
+            this.fullscreenButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.fullscreenButton.MouseLeave += new System.EventHandler(this.button_Leave);
             // 
             // optionsButton
             // 
-            this.optionsButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.optionsButton.BackColor = System.Drawing.Color.Transparent;
+            this.optionsButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.optionsButton;
             this.optionsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.optionsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.optionsButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
             this.optionsButton.FlatAppearance.BorderSize = 0;
-            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.optionsButton.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.optionsButton.ForeColor = System.Drawing.Color.Goldenrod;
-            this.optionsButton.Location = new System.Drawing.Point(9, 325);
+            this.optionsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.optionsButton.Location = new System.Drawing.Point(307, 332);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(245, 45);
-            this.optionsButton.TabIndex = 2;
-            this.optionsButton.Text = "OPTIONS";
+            this.optionsButton.Size = new System.Drawing.Size(230, 125);
+            this.optionsButton.TabIndex = 1;
             this.optionsButton.UseVisualStyleBackColor = false;
-            this.optionsButton.Click += new System.EventHandler(this.options_click);
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             this.optionsButton.Enter += new System.EventHandler(this.button_Enter);
             this.optionsButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.optionsButton.MouseLeave += new System.EventHandler(this.button_Leave);
+            // 
+            // creditsButton
+            // 
+            this.creditsButton.BackColor = System.Drawing.Color.Transparent;
+            this.creditsButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.credits;
+            this.creditsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.creditsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.creditsButton.FlatAppearance.BorderSize = 0;
+            this.creditsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.creditsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.creditsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.creditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.creditsButton.Location = new System.Drawing.Point(442, 35);
+            this.creditsButton.Name = "creditsButton";
+            this.creditsButton.Size = new System.Drawing.Size(90, 75);
+            this.creditsButton.TabIndex = 6;
+            this.creditsButton.UseVisualStyleBackColor = false;
+            this.creditsButton.Click += new System.EventHandler(this.creditsButton_Click);
+            this.creditsButton.Enter += new System.EventHandler(this.button_Enter);
+            this.creditsButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.creditsButton.MouseLeave += new System.EventHandler(this.button_Leave);
             // 
             // exitButton
             // 
-            this.exitButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.exitButton;
             this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
             this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.exitButton.ForeColor = System.Drawing.Color.Goldenrod;
-            this.exitButton.Location = new System.Drawing.Point(9, 438);
+            this.exitButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Location = new System.Drawing.Point(565, 35);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(245, 45);
-            this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "EXIT";
+            this.exitButton.Size = new System.Drawing.Size(90, 75);
+            this.exitButton.TabIndex = 7;
             this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exit_Click);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             this.exitButton.Enter += new System.EventHandler(this.button_Enter);
             this.exitButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.exitButton.MouseLeave += new System.EventHandler(this.button_Leave);
             // 
-            // windowPanel
+            // profile
             // 
-            this.windowPanel.BackColor = System.Drawing.Color.Gainsboro;
-            this.windowPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.windowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.windowPanel.Controls.Add(this.save_password_panel);
-            this.windowPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.windowPanel.Location = new System.Drawing.Point(270, 0);
-            this.windowPanel.Name = "windowPanel";
-            this.windowPanel.Size = new System.Drawing.Size(574, 601);
-            this.windowPanel.TabIndex = 4;
-            // 
-            // save_password_panel
-            // 
-            this.save_password_panel.BackColor = System.Drawing.Color.DarkOrange;
-            this.save_password_panel.Controls.Add(this.save_password_panel2);
-            this.save_password_panel.Location = new System.Drawing.Point(182, 500);
-            this.save_password_panel.Name = "save_password_panel";
-            this.save_password_panel.Size = new System.Drawing.Size(363, 105);
-            this.save_password_panel.TabIndex = 0;
-            // 
-            // save_password_panel2
-            // 
-            this.save_password_panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.save_password_panel2.Controls.Add(this.button2);
-            this.save_password_panel2.Controls.Add(this.button1);
-            this.save_password_panel2.Controls.Add(this.textBox1);
-            this.save_password_panel2.Location = new System.Drawing.Point(6, 6);
-            this.save_password_panel2.Name = "save_password_panel2";
-            this.save_password_panel2.Size = new System.Drawing.Size(352, 100);
-            this.save_password_panel2.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkOrange;
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(195, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "NO";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.save_password_panel_close);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(52, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "YES";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.save_password);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(17, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 23);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Do you want to save your password?\r\n";
-            // 
-            // mainMenuPanel
-            // 
-            this.mainMenuPanel.BackColor = System.Drawing.Color.Silver;
-            this.mainMenuPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.mainMenuPanel.Controls.Add(this.about_button);
-            this.mainMenuPanel.Controls.Add(this.profilPanel_back);
-            this.mainMenuPanel.Controls.Add(this.multiplayerButton);
-            this.mainMenuPanel.Controls.Add(this.exitButton);
-            this.mainMenuPanel.Controls.Add(this.playButton);
-            this.mainMenuPanel.Controls.Add(this.optionsButton);
-            this.mainMenuPanel.Controls.Add(this.gameTitlePanel);
-            this.mainMenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.mainMenuPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuPanel.Name = "mainMenuPanel";
-            this.mainMenuPanel.Size = new System.Drawing.Size(267, 601);
-            this.mainMenuPanel.TabIndex = 5;
-            // 
-            // profilPanel_back
-            // 
-            this.profilPanel_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.profilPanel_back.Controls.Add(this.usernameLabel);
-            this.profilPanel_back.Controls.Add(this.avatar);
-            this.profilPanel_back.Controls.Add(this.profileButton);
-            this.profilPanel_back.Location = new System.Drawing.Point(9, 501);
-            this.profilPanel_back.Name = "profilPanel_back";
-            this.profilPanel_back.Size = new System.Drawing.Size(252, 88);
-            this.profilPanel_back.TabIndex = 7;
+            this.profile.BackColor = System.Drawing.Color.Transparent;
+            this.profile.BackgroundImage = global::OOP_Lab_II.Properties.Resources.profilePanel;
+            this.profile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.profile.Controls.Add(this.usernameLabel);
+            this.profile.Controls.Add(this.avatarBox);
+            this.profile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profile.Location = new System.Drawing.Point(37, 17);
+            this.profile.Name = "profile";
+            this.profile.Size = new System.Drawing.Size(219, 112);
+            this.profile.TabIndex = 8;
+            this.profile.Click += new System.EventHandler(this.profile_Click);
+            this.profile.MouseEnter += new System.EventHandler(this.panel_enter);
+            this.profile.MouseLeave += new System.EventHandler(this.panel_leave);
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.usernameLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.usernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.usernameLabel.Location = new System.Drawing.Point(101, 19);
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.usernameLabel.ForeColor = System.Drawing.Color.Orange;
+            this.usernameLabel.Location = new System.Drawing.Point(95, 36);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(0, 26);
+            this.usernameLabel.Size = new System.Drawing.Size(65, 29);
             this.usernameLabel.TabIndex = 1;
-            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
+            this.usernameLabel.Text = "aaaa";
+            this.usernameLabel.Click += new System.EventHandler(this.profile_Click);
             // 
-            // avatar
+            // avatarBox
             // 
-            this.avatar.BackColor = System.Drawing.Color.Transparent;
-            this.avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.avatar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.avatar.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.InitialImage = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatar.Location = new System.Drawing.Point(14, 14);
-            this.avatar.Name = "avatar";
-            this.avatar.Size = new System.Drawing.Size(68, 60);
-            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.avatar.TabIndex = 0;
-            this.avatar.TabStop = false;
-            this.avatar.Click += new System.EventHandler(this.avatar_Click);
+            this.avatarBox.BackColor = System.Drawing.Color.Transparent;
+            this.avatarBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.avatarBox.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.avatarBox.Location = new System.Drawing.Point(19, 26);
+            this.avatarBox.Name = "avatarBox";
+            this.avatarBox.Size = new System.Drawing.Size(70, 58);
+            this.avatarBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.avatarBox.TabIndex = 0;
+            this.avatarBox.TabStop = false;
+            this.avatarBox.Click += new System.EventHandler(this.profile_Click);
             // 
-            // profileButton
+            // save_password_panel
             // 
-            this.profileButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.profileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.profileButton.Location = new System.Drawing.Point(5, 5);
-            this.profileButton.Name = "profileButton";
-            this.profileButton.Size = new System.Drawing.Size(242, 78);
-            this.profileButton.TabIndex = 0;
-            this.profileButton.UseVisualStyleBackColor = false;
-            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            this.save_password_panel.BackColor = System.Drawing.Color.Orange;
+            this.save_password_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.save_password_panel.Controls.Add(this.button2);
+            this.save_password_panel.Controls.Add(this.button1);
+            this.save_password_panel.Controls.Add(this.textBox1);
+            this.save_password_panel.Location = new System.Drawing.Point(29, 385);
+            this.save_password_panel.Name = "save_password_panel";
+            this.save_password_panel.Size = new System.Drawing.Size(258, 103);
+            this.save_password_panel.TabIndex = 9;
             // 
-            // playButton
+            // button2
             // 
-            this.playButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.playButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.playButton.FlatAppearance.BorderSize = 0;
-            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.playButton.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.playButton.ForeColor = System.Drawing.Color.Goldenrod;
-            this.playButton.Location = new System.Drawing.Point(9, 203);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(245, 45);
-            this.playButton.TabIndex = 0;
-            this.playButton.Text = "PLAY";
-            this.playButton.UseVisualStyleBackColor = false;
-            this.playButton.Click += new System.EventHandler(this.play_click);
-            this.playButton.Enter += new System.EventHandler(this.button_Enter);
-            this.playButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(20)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(132, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "No";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.save_password_panel_close);
             // 
-            // gameTitlePanel
+            // button1
             // 
-            this.gameTitlePanel.BackColor = System.Drawing.Color.DarkGray;
-            this.gameTitlePanel.Controls.Add(this.pictureBox1);
-            this.gameTitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gameTitlePanel.Location = new System.Drawing.Point(0, 0);
-            this.gameTitlePanel.Name = "gameTitlePanel";
-            this.gameTitlePanel.Size = new System.Drawing.Size(267, 156);
-            this.gameTitlePanel.TabIndex = 5;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(20)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(38, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Yes";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.save_password);
             // 
-            // pictureBox1
+            // textBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.cooltext407421524803244;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(267, 156);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.textBox1.BackColor = System.Drawing.Color.Orange;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(4, 13);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(239, 56);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Do you wanna save your password ?";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // about_button
+            // popup
             // 
-            this.about_button.BackColor = System.Drawing.Color.Gainsboro;
-            this.about_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.about_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.about_button.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.about_button.FlatAppearance.BorderSize = 0;
-            this.about_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.about_button.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.about_button.ForeColor = System.Drawing.Color.Goldenrod;
-            this.about_button.Location = new System.Drawing.Point(9, 382);
-            this.about_button.Name = "about_button";
-            this.about_button.Size = new System.Drawing.Size(245, 45);
-            this.about_button.TabIndex = 8;
-            this.about_button.Text = "ABOUT";
-            this.about_button.UseVisualStyleBackColor = false;
-            this.about_button.Click += new System.EventHandler(this.about_button_Click);
-            this.about_button.Enter += new System.EventHandler(this.button_Enter);
-            this.about_button.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.popup.BackColor = System.Drawing.Color.Transparent;
+            this.popup.BackgroundImage = global::OOP_Lab_II.Properties.Resources.popup;
+            this.popup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.popup.Controls.Add(this.exitPopup);
+            this.popup.Controls.Add(this.windowPanel);
+            this.popup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.popup.Location = new System.Drawing.Point(0, 0);
+            this.popup.Name = "popup";
+            this.popup.Size = new System.Drawing.Size(800, 500);
+            this.popup.TabIndex = 11;
+            this.popup.Visible = false;
+            // 
+            // exitPopup
+            // 
+            this.exitPopup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitPopup.FlatAppearance.BorderSize = 0;
+            this.exitPopup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.exitPopup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.exitPopup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitPopup.Location = new System.Drawing.Point(605, 98);
+            this.exitPopup.Name = "exitPopup";
+            this.exitPopup.Size = new System.Drawing.Size(36, 31);
+            this.exitPopup.TabIndex = 1;
+            this.exitPopup.UseVisualStyleBackColor = true;
+            this.exitPopup.Click += new System.EventHandler(this.exitPopup_Click);
+            // 
+            // windowPanel
+            // 
+            this.windowPanel.Location = new System.Drawing.Point(223, 129);
+            this.windowPanel.Name = "windowPanel";
+            this.windowPanel.Size = new System.Drawing.Size(389, 256);
+            this.windowPanel.TabIndex = 0;
             // 
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
-            this.CancelButton = this.exitButton;
-            this.ClientSize = new System.Drawing.Size(844, 601);
-            this.ControlBox = false;
-            this.Controls.Add(this.windowPanel);
-            this.Controls.Add(this.mainMenuPanel);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::OOP_Lab_II.Properties.Resources.Menu;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.popup);
+            this.Controls.Add(this.save_password_panel);
+            this.Controls.Add(this.profile);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.creditsButton);
+            this.Controls.Add(this.fullscreenButton);
+            this.Controls.Add(this.multiButton);
+            this.Controls.Add(this.optionsButton);
+            this.Controls.Add(this.playButton);
+            this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Menu_Form";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Menu";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Menu_Form_Load);
-            this.windowPanel.ResumeLayout(false);
+            this.profile.ResumeLayout(false);
+            this.profile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).EndInit();
             this.save_password_panel.ResumeLayout(false);
-            this.save_password_panel2.ResumeLayout(false);
-            this.save_password_panel2.PerformLayout();
-            this.mainMenuPanel.ResumeLayout(false);
-            this.profilPanel_back.ResumeLayout(false);
-            this.profilPanel_back.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
-            this.gameTitlePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.save_password_panel.PerformLayout();
+            this.popup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-        
+
 
         #endregion
 
         private System.Windows.Forms.Button playButton;
-        private System.Windows.Forms.Button multiplayerButton;
+        private System.Windows.Forms.Button multiButton;
+        private System.Windows.Forms.Button fullscreenButton;
         private System.Windows.Forms.Button optionsButton;
+        private System.Windows.Forms.Button creditsButton;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Panel windowPanel;
-        private System.Windows.Forms.Panel mainMenuPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel gameTitlePanel;
-        private System.Windows.Forms.Panel profilPanel_back;
+        private System.Windows.Forms.Panel profile;
+        private System.Windows.Forms.PictureBox avatarBox;
         private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.PictureBox avatar;
-        private System.Windows.Forms.Button profileButton;
         private System.Windows.Forms.Panel save_password_panel;
-        private System.Windows.Forms.Panel save_password_panel2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button about_button;
+        private System.Windows.Forms.Panel popup;
+        private System.Windows.Forms.Button exitPopup;
+        private System.Windows.Forms.Panel windowPanel;
     }
 }

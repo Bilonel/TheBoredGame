@@ -11,36 +11,33 @@ namespace OOP_Lab_II.Menu
         private XmlDocument xmlDoc;
         private Button currentActiveButton;
         private Form currentForm;
-        private Image image;
         //
         //Constructor
         //
         public Menu_Form()
         {
             InitializeComponent();
-            this.image = global::OOP_Lab_II.Properties.Resources.frame;
             usernameLabel.Text = dataTransfer.Instance.get_account().info.username;
         }
+
         //
-        //Methods
-        //
-        private void activateButton(object new_button)
+        // Methods
+
+        private void activateButton(object button)
         {
-                if(currentActiveButton!= new_button) // If Changes Need
-                {
-                    if (currentActiveButton != null) // Deactivate old one
-                        currentActiveButton.BackgroundImage = null;
-                    if(new_button!=null)    // Activate new one
-                    {
-                        currentActiveButton = (Button)new_button;
-                        currentActiveButton.BackgroundImage = image;
-                    }
-                }
+            if (currentActiveButton != null) // Deactivate old one
+                currentActiveButton.BackgroundImageLayout = ImageLayout.Stretch;
+            if (button != null)    // Activate new one
+            {
+                currentActiveButton = (Button)button;
+                currentActiveButton.BackgroundImageLayout = ImageLayout.Zoom;
+            }
         }
         private void activateForm(Form newForm)
         {
+            this.popup.Visible = true;
             // Close Old One
-            this.windowPanel.Controls.Clear();   
+            this.windowPanel.Controls.Clear();
             if (currentForm != null)
                 currentForm.Close();
             // Open New One
@@ -51,17 +48,29 @@ namespace OOP_Lab_II.Menu
             currentForm.BringToFront();
             currentForm.Show();
         }
-        private void button_Enter(object sender, EventArgs e)  
+        private void panel_enter(object sender, EventArgs e)
+        {
+            profile.BackgroundImageLayout = ImageLayout.Zoom;
+        }
+        private void panel_leave(object sender, EventArgs e)
+        {
+            profile.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        private void button_Enter(object sender, EventArgs e)
         {
             activateButton(sender);
         }
 
+        private void button_Leave(object sender, EventArgs e)
+        {
+            activateButton(null);
+        }
         // CLICK METHODS
-        private void exit_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private void options_click(object sender, EventArgs e)
+        private void optionsButton_Click(object sender, EventArgs e)
         {
             activateForm(new Form_Options());
         }
@@ -69,11 +78,11 @@ namespace OOP_Lab_II.Menu
         {
             activateForm(new Form_Play());
         }
-        private void multiplayer_click(object sender, EventArgs e)
+        private void multiButton_Click(object sender, EventArgs e)
         {
             activateForm(new Form_Multiplayer());
         }
-        private void about_button_Click(object sender, EventArgs e)
+        private void creditsButton_Click(object sender, EventArgs e)
         {
             activateForm(new Form_About());
         }
@@ -82,12 +91,7 @@ namespace OOP_Lab_II.Menu
             activateForm(dataTransfer.Instance.get_account().panel);
         }
 
-        private void avatar_Click(object sender, EventArgs e)
-        {
-            activateForm(dataTransfer.Instance.get_account().panel);
-        }
-
-        private void usernameLabel_Click(object sender, EventArgs e)
+        private void profile_Click(object sender, EventArgs e)
         {
             activateForm(dataTransfer.Instance.get_account().panel);
         }
@@ -96,8 +100,8 @@ namespace OOP_Lab_II.Menu
         {
             ToolTip tt = new ToolTip();
             tt.ShowAlways = true;
-            tt.SetToolTip(this.profileButton, "Click to Profile");
-            tt.SetToolTip(this.avatar, "is You ?");
+            tt.SetToolTip(this.profile, "Click to Profile");
+            tt.SetToolTip(this.avatarBox, "is You ?");
             xmlDoc = new XmlDocument();
             xmlDoc.Load("Data/localSave.xml");
             save_password_panel_timer();
@@ -116,7 +120,7 @@ namespace OOP_Lab_II.Menu
         }
         private void save_password_panel_close(object sender, EventArgs e)
         {
-            if(save_password_panel.Visible)
+            if (save_password_panel.Visible)
             {
                 xmlDoc.SelectSingleNode("Settings/Password/value").InnerText = "";
                 xmlDoc.SelectSingleNode("Settings/Password/apply").InnerText = "0";
@@ -132,5 +136,27 @@ namespace OOP_Lab_II.Menu
             save_password_panel.Visible = false;
         }
 
+        private void fullscreenButton_Click(object sender, EventArgs e)
+        {
+            if(this.Size != Screen.PrimaryScreen.Bounds.Size)   // Its small ; Make FullScreen
+            {
+                this.Size = Screen.PrimaryScreen.Bounds.Size;
+                ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.smallscreen;
+            }
+            else
+            {
+                this.Size = new System.Drawing.Size(800, 500);
+                ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
+            }
+            this.CenterToScreen();
+            windowPanel.Size = new Size((int)(this.Size.Width * 0.48625), (int)(this.Size.Height * 0.512));
+            windowPanel.Location = new Point((int)(this.Size.Width * 0.27875), (int)(this.Size.Height * 0.258));
+            exitPopup.Location= new Point((int)(this.Size.Width * 0.75625), (int)(this.Size.Height * 0.196));
+            exitPopup.Size = new Size((int)(this.Size.Width * 0.045), (int)(this.Size.Height * 0.06));
+        }
+        private void exitPopup_Click(object sender, EventArgs e)
+        {
+            popup.Visible = false;
+        }
     }
 }

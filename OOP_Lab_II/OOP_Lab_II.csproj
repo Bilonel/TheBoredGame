@@ -154,13 +154,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Data\linkedDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -170,6 +164,11 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -181,9 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cooltext407421524803244.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sorry-re-closed-sign-red-color-isolated-transparent-background-realistic-design-template-illustration-hanging-179587576.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\output-onlinepngtools.png" />
@@ -200,6 +196,21 @@
     <Content Include="Data\localSave.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Menu\res\BORED_GAME_BACKGROUND.jpg" />
+    <None Include="Menu\res\profilePanel.png" />
+    <None Include="Menu\res\credits.png" />
+    <Content Include="Menu\res\default_avatar.png" />
+    <Content Include="Menu\res\edit.png" />
+    <None Include="Menu\res\smallscreen.png" />
+    <None Include="Menu\res\frame.png" />
+    <None Include="Menu\res\emptyButton.png" />
+    <None Include="Menu\res\exitButton.png" />
+    <None Include="Menu\res\fullscreen.png" />
+    <None Include="Menu\res\Menu.png" />
+    <None Include="Menu\res\multiButton.png" />
+    <None Include="Menu\res\optionsButton.png" />
+    <None Include="Menu\res\playButton.png" />
+    <None Include="Menu\res\popup.png" />
     <EmbeddedResource Include="Game\res\frame.png" />
     <EmbeddedResource Include="Game\res\Rectangle-Blue.png" />
     <EmbeddedResource Include="Game\res\Rectangle-Green.png" />

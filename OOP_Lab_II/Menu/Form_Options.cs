@@ -90,7 +90,6 @@ namespace OOP_Lab_II.Menu
             toolTip1.SetToolTip(this.width_box, "Enter the Width of Table");
             toolTip1.SetToolTip(this.height_box, "Enter the Height of Table");
             toolTip1.SetToolTip(this.save_button, "Press to Save");
-            toolTip1.SetToolTip(this.cancel_button, "Press to Exit");
             //toolTip1.SetToolTip(this.new_button, "Some Options");
         }
 
