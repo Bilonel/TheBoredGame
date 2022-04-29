@@ -12,7 +12,7 @@ namespace OOP_Lab_II.Menu
 {
     public partial class User_Panel : Form
     {
-        Data.linkedDataSet.tbl_usersRow user_row;
+        string[] row;
         public User_Panel()
         {
             InitializeComponent();
@@ -37,15 +37,15 @@ namespace OOP_Lab_II.Menu
             {
                 if (dataTransfer.Instance.check_password(confirm_text.Text))
                 {
-                    this.user_row._Name_Surname = name.Text;
-                    this.user_row.password = password.Text;
-                    this.user_row._E_mail = mail.Text;
-                    this.user_row.Phone_Number = phone.Text;
-                    this.user_row.country = country.Text;
-                    this.user_row.city = city.Text;
-                    this.user_row.Address = address.Text;
-                    dataTransfer.Instance.update(user_row);
-                    dataTransfer.Instance.get_account().info = dataTransfer.Instance.get_user_row(username_label.Text);
+                    this.row[2] = password.Text;
+                    this.row[3] = name.Text;
+                    this.row[4] = mail.Text;
+                    this.row[5] = phone.Text;
+                    this.row[6] = country.Text;
+                    this.row[7] = city.Text;
+                    this.row[8] = address.Text;
+                    dataTransfer.Instance.updateUser(row);
+                    dataTransfer.Instance.get_account().info = dataTransfer.Instance.readUser(username_label.Text);
                     WarnBox.ForeColor = Color.DarkGreen;
                     WarnBox.Text = "Saved";
                     confirm_panel.Visible = false;
@@ -66,15 +66,15 @@ namespace OOP_Lab_II.Menu
         private void User_Panel_Load(object sender, EventArgs e)
         {
             panel9.Size = new System.Drawing.Size(581, (this.Size.Height - 500) / 2 + 100);
-            user_row = dataTransfer.Instance.get_account().info;
-            username_label.Text = user_row.username;
-            name.Text = user_row._Name_Surname;
-            password.Text = user_row.password;
-            mail.Text = user_row._E_mail;
-            phone.Text = user_row.Phone_Number;
-            country.Text = user_row.country;
-            city.Text = user_row.city;
-            address.Text = user_row.Address;
+            row = dataTransfer.Instance.get_account().info;
+            username_label.Text = row[1];
+            password.Text = row[2];
+            name.Text = row[3];
+            mail.Text = row[4];
+            phone.Text = row[5];
+            country.Text = row[6];
+            city.Text = row[7];
+            address.Text = row[8];
             //ToolTips
             ToolTip tt = new ToolTip();
             tt.ShowAlways = true;

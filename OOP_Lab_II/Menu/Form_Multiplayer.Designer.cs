@@ -80,7 +80,7 @@ namespace OOP_Lab_II.Menu
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::OOP_Lab_II.Properties.Resources.output_onlinepngtools;
+            this.pictureBox1.BackgroundImage = global::OOP_Lab_II.Properties.Resources.comingSoon;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(35, 36);

@@ -17,9 +17,8 @@ namespace OOP_Lab_II.Menu
         public Menu_Form()
         {
             InitializeComponent();
-            usernameLabel.Text = dataTransfer.Instance.get_account().info.username;
+            usernameLabel.Text = dataTransfer.Instance.get_account().info[1];
         }
-
         //
         // Methods
 
@@ -88,12 +87,12 @@ namespace OOP_Lab_II.Menu
         }
         private void profileButton_Click(object sender, EventArgs e)
         {
-            activateForm(dataTransfer.Instance.get_account().panel);
+            activateForm(dataTransfer.Instance.get_account().Form);
         }
 
         private void profile_Click(object sender, EventArgs e)
         {
-            activateForm(dataTransfer.Instance.get_account().panel);
+            activateForm(dataTransfer.Instance.get_account().Form);
         }
 
         private void Menu_Form_Load(object sender, EventArgs e)
@@ -149,10 +148,10 @@ namespace OOP_Lab_II.Menu
                 ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
             }
             this.CenterToScreen();
-            windowPanel.Size = new Size((int)(this.Size.Width * 0.48625), (int)(this.Size.Height * 0.512));
-            windowPanel.Location = new Point((int)(this.Size.Width * 0.27875), (int)(this.Size.Height * 0.258));
-            exitPopup.Location= new Point((int)(this.Size.Width * 0.75625), (int)(this.Size.Height * 0.196));
-            exitPopup.Size = new Size((int)(this.Size.Width * 0.045), (int)(this.Size.Height * 0.06));
+            windowPanel.Size = new Size((int)(this.Size.Width * 500/800), (int)(this.Size.Height * 350/500));
+            windowPanel.Location = new Point((int)(this.Size.Width * 150/800), (int)(this.Size.Height * 90/500));
+            exitPopup.Location= new Point((int)(this.Size.Width * 650/ 800), (int)(this.Size.Height * 50/ 500));
+            exitPopup.Size = new Size((int)(this.Size.Width * 40/ 800), (int)(this.Size.Height * 40/ 500));
         }
         private void exitPopup_Click(object sender, EventArgs e)
         {

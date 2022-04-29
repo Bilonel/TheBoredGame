@@ -27,7 +27,7 @@ namespace OOP_Lab_II.Game
         public Game(int row = 9, int col = 9) {
             this.Rows = row; this.Columns = col;
             grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new TextBox();
-            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-70, 30);
+            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-80, 30);
             ScoreBoard.Size = new Size(160,ScoreBoard.Size.Height);
             ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 25,FontStyle.Bold);
             ScoreBoard.ReadOnly = true;ScoreBoard.TextAlign = HorizontalAlignment.Center;
