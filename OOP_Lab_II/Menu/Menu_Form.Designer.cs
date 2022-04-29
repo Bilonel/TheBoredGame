@@ -52,6 +52,8 @@
             // 
             // playButton
             // 
+            this.playButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.playButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.playButton.BackColor = System.Drawing.Color.Transparent;
             this.playButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.playButton;
             this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -61,10 +63,10 @@
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Location = new System.Drawing.Point(181, 189);
+            this.playButton.Location = new System.Drawing.Point(115, 175);
             this.playButton.Margin = new System.Windows.Forms.Padding(0);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(230, 125);
+            this.playButton.Size = new System.Drawing.Size(285, 125);
             this.playButton.TabIndex = 0;
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.play_click);
@@ -74,6 +76,8 @@
             // 
             // multiButton
             // 
+            this.multiButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.multiButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.multiButton.BackColor = System.Drawing.Color.Transparent;
             this.multiButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.multiButton;
             this.multiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -83,9 +87,9 @@
             this.multiButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.multiButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.multiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.multiButton.Location = new System.Drawing.Point(422, 189);
+            this.multiButton.Location = new System.Drawing.Point(403, 175);
             this.multiButton.Name = "multiButton";
-            this.multiButton.Size = new System.Drawing.Size(230, 125);
+            this.multiButton.Size = new System.Drawing.Size(285, 125);
             this.multiButton.TabIndex = 2;
             this.multiButton.UseVisualStyleBackColor = false;
             this.multiButton.Click += new System.EventHandler(this.multiButton_Click);
@@ -95,6 +99,7 @@
             // 
             // fullscreenButton
             // 
+            this.fullscreenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fullscreenButton.BackColor = System.Drawing.Color.Transparent;
             this.fullscreenButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
             this.fullscreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -116,6 +121,8 @@
             // 
             // optionsButton
             // 
+            this.optionsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.optionsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.optionsButton.BackColor = System.Drawing.Color.Transparent;
             this.optionsButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.optionsButton;
             this.optionsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -125,9 +132,9 @@
             this.optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.optionsButton.Location = new System.Drawing.Point(307, 332);
+            this.optionsButton.Location = new System.Drawing.Point(257, 304);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(230, 125);
+            this.optionsButton.Size = new System.Drawing.Size(285, 125);
             this.optionsButton.TabIndex = 1;
             this.optionsButton.UseVisualStyleBackColor = false;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
@@ -137,6 +144,7 @@
             // 
             // creditsButton
             // 
+            this.creditsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.creditsButton.BackColor = System.Drawing.Color.Transparent;
             this.creditsButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.credits;
             this.creditsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -158,6 +166,7 @@
             // 
             // exitButton
             // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exitButton.BackColor = System.Drawing.Color.Transparent;
             this.exitButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.exitButton;
             this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -185,7 +194,7 @@
             this.profile.Controls.Add(this.usernameLabel);
             this.profile.Controls.Add(this.avatarBox);
             this.profile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profile.Location = new System.Drawing.Point(37, 17);
+            this.profile.Location = new System.Drawing.Point(51, 17);
             this.profile.Name = "profile";
             this.profile.Size = new System.Drawing.Size(219, 112);
             this.profile.TabIndex = 8;
@@ -221,6 +230,7 @@
             // 
             // save_password_panel
             // 
+            this.save_password_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.save_password_panel.BackColor = System.Drawing.Color.Orange;
             this.save_password_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.save_password_panel.Controls.Add(this.button2);
@@ -277,8 +287,8 @@
             this.popup.BackColor = System.Drawing.Color.Transparent;
             this.popup.BackgroundImage = global::OOP_Lab_II.Properties.Resources.popup;
             this.popup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.popup.Controls.Add(this.exitPopup);
             this.popup.Controls.Add(this.windowPanel);
+            this.popup.Controls.Add(this.exitPopup);
             this.popup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.popup.Location = new System.Drawing.Point(0, 0);
             this.popup.Name = "popup";
@@ -293,25 +303,25 @@
             this.exitPopup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitPopup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitPopup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitPopup.Location = new System.Drawing.Point(605, 98);
+            this.exitPopup.Location = new System.Drawing.Point(650, 50);
             this.exitPopup.Name = "exitPopup";
-            this.exitPopup.Size = new System.Drawing.Size(36, 31);
+            this.exitPopup.Size = new System.Drawing.Size(40, 40);
             this.exitPopup.TabIndex = 1;
             this.exitPopup.UseVisualStyleBackColor = true;
             this.exitPopup.Click += new System.EventHandler(this.exitPopup_Click);
             // 
             // windowPanel
             // 
-            this.windowPanel.Location = new System.Drawing.Point(223, 129);
+            this.windowPanel.Location = new System.Drawing.Point(152, 90);
             this.windowPanel.Name = "windowPanel";
-            this.windowPanel.Size = new System.Drawing.Size(389, 256);
+            this.windowPanel.Size = new System.Drawing.Size(500, 350);
             this.windowPanel.TabIndex = 0;
             // 
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.BackgroundImage = global::OOP_Lab_II.Properties.Resources.Menu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 500);

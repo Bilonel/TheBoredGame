@@ -28,7 +28,7 @@ namespace OOP_Lab_II.Entrance
         {
             try
             {
-                dataTransfer.Instance.register(usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text);
+                dataTransfer.Instance.register(new string[] { "user", usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text },"register");
                 WarnBox.ForeColor = Color.DarkOliveGreen;
                 WarnBox.Text = "Succesfully Registered..";
                 clear_all_text();

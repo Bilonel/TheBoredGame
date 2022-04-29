@@ -10,18 +10,18 @@ namespace OOP_Lab_II
     public class Account
     {
         //  Field
-        protected Data.linkedDataSet.tbl_usersRow row;
+        protected string[] row;
         protected System.Windows.Forms.Form form;
         //  Methods
-        public virtual System.Windows.Forms.Form panel { get => form; }
-        public Data.linkedDataSet.tbl_usersRow info { get => row; set => row = value; }
+        public virtual System.Windows.Forms.Form Form { get => form; }
+        public string[] info { get => row; set => row = value; }
     }
     public class User : Account
     {
-        public override System.Windows.Forms.Form panel { get => new Menu.User_Panel(); }
+        public override System.Windows.Forms.Form Form { get => new Menu.User_Panel(); }
     }
     public class Admin : Account
     {
-        public override System.Windows.Forms.Form panel { get => new Menu.Admin_Panel(); }
+        public override System.Windows.Forms.Form Form { get => new Menu.Admin_Panel(); }
     }
 }

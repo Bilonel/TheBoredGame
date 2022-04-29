@@ -27,9 +27,8 @@ namespace OOP_Lab_II.Menu
         private void button3_Click(object sender, EventArgs e)
         {
             if(OptionsForm != null)  OptionsForm.save_Click(sender, e);
-            inGame = true;
-            this.ParentForm.Close();
-            this.Close();
+            ((Panel)(this.ParentForm.Controls.Find("popup", true).GetValue(0))).Visible=false;
+            (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
         }
 
         private void Form_Play_Load(object sender, EventArgs e)

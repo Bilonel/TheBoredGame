@@ -49,11 +49,6 @@
   <ItemGroup>
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\dataTranfer.cs" />
-    <Compile Include="Data\linkedDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>linkedDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Entrance\Register_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,11 +150,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Data\linkedDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>linkedDataSet.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,13 +182,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\db_user.mdb" />
     <Content Include="Data\localSave.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\globalSave.xml" />
     <Content Include="Menu\res\BORED_GAME_BACKGROUND.jpg" />
     <None Include="Menu\res\profilePanel.png" />
     <None Include="Menu\res\credits.png" />
+    <Content Include="Menu\res\comingSoon.png" />
     <Content Include="Menu\res\default_avatar.png" />
     <Content Include="Menu\res\edit.png" />
     <None Include="Menu\res\smallscreen.png" />

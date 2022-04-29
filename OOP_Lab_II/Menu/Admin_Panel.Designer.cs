@@ -30,35 +30,36 @@ namespace OOP_Lab_II.Menu
         private void InitializeComponent()
         {
             this.panel_top = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.username_label = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.WarnBox = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.help = new System.Windows.Forms.Label();
             this.confirm_panel = new System.Windows.Forms.Panel();
             this.confirm_subpanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.confirm_button = new System.Windows.Forms.Button();
             this.confirm_text = new System.Windows.Forms.TextBox();
             this.confirm_label = new System.Windows.Forms.Label();
-            this.popup_Panel_username = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.newUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.add_new_button = new System.Windows.Forms.Button();
+            this.help = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AccountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_top.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel1.SuspendLayout();
             this.confirm_panel.SuspendLayout();
             this.confirm_subpanel.SuspendLayout();
-            this.popup_Panel_username.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_top
@@ -72,6 +73,19 @@ namespace OOP_Lab_II.Menu
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(377, 55);
             this.panel_top.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.pictureBox1.Location = new System.Drawing.Point(87, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // username_label
             // 
@@ -138,8 +152,6 @@ namespace OOP_Lab_II.Menu
             // 
             this.panel1.Controls.Add(this.confirm_panel);
             this.panel1.Controls.Add(this.help);
-            this.panel1.Controls.Add(this.add_new_button);
-            this.panel1.Controls.Add(this.popup_Panel_username);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 55);
@@ -147,29 +159,12 @@ namespace OOP_Lab_II.Menu
             this.panel1.Size = new System.Drawing.Size(377, 213);
             this.panel1.TabIndex = 15;
             // 
-            // help
-            // 
-            this.help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.help.AutoSize = true;
-            this.help.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.help.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.help.Cursor = System.Windows.Forms.Cursors.Help;
-            this.help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.help.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.help.ForeColor = System.Drawing.Color.Black;
-            this.help.Location = new System.Drawing.Point(337, 143);
-            this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(27, 28);
-            this.help.TabIndex = 19;
-            this.help.Text = "?";
-            this.help.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // confirm_panel
             // 
             this.confirm_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirm_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(60)))), ((int)(((byte)(80)))));
             this.confirm_panel.Controls.Add(this.confirm_subpanel);
-            this.confirm_panel.Location = new System.Drawing.Point(27, 25);
+            this.confirm_panel.Location = new System.Drawing.Point(27, 41);
             this.confirm_panel.Name = "confirm_panel";
             this.confirm_panel.Size = new System.Drawing.Size(323, 113);
             this.confirm_panel.TabIndex = 18;
@@ -213,6 +208,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.confirm_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.confirm_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.confirm_button.ForeColor = System.Drawing.Color.Black;
             this.confirm_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.confirm_button.Location = new System.Drawing.Point(280, 51);
             this.confirm_button.Name = "confirm_button";
@@ -253,124 +249,104 @@ namespace OOP_Lab_II.Menu
             this.confirm_label.Text = "Password:";
             this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // popup_Panel_username
+            // help
             // 
-            this.popup_Panel_username.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.popup_Panel_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(75)))), ((int)(((byte)(90)))));
-            this.popup_Panel_username.Controls.Add(this.panel2);
-            this.popup_Panel_username.Location = new System.Drawing.Point(21, 51);
-            this.popup_Panel_username.Name = "popup_Panel_username";
-            this.popup_Panel_username.Size = new System.Drawing.Size(333, 71);
-            this.popup_Panel_username.TabIndex = 17;
-            this.popup_Panel_username.Visible = false;
-            this.popup_Panel_username.Leave += new System.EventHandler(this.Panel_Leave);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(100)))), ((int)(((byte)(130)))));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.newUsername);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(5, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(323, 61);
-            this.panel2.TabIndex = 16;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(285, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 27);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "✓";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.apply_new_user_click);
-            // 
-            // newUsername
-            // 
-            this.newUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.newUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(192)))), ((int)(((byte)(205)))));
-            this.newUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.newUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.newUsername.Location = new System.Drawing.Point(208, 14);
-            this.newUsername.Name = "newUsername";
-            this.newUsername.Size = new System.Drawing.Size(107, 31);
-            this.newUsername.TabIndex = 1;
-            this.newUsername.Text = "bilonel";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(3, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "New Username:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // add_new_button
-            // 
-            this.add_new_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.add_new_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(192)))), ((int)(((byte)(205)))));
-            this.add_new_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.add_new_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.add_new_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.add_new_button.ForeColor = System.Drawing.Color.Black;
-            this.add_new_button.Location = new System.Drawing.Point(3, 187);
-            this.add_new_button.Name = "add_new_button";
-            this.add_new_button.Size = new System.Drawing.Size(371, 22);
-            this.add_new_button.TabIndex = 15;
-            this.add_new_button.Text = "+ New Account";
-            this.add_new_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.add_new_button.UseVisualStyleBackColor = false;
-            this.add_new_button.Click += new System.EventHandler(this.add_new_account_click);
+            this.help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.help.AutoSize = true;
+            this.help.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.help.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.help.Cursor = System.Windows.Forms.Cursors.Help;
+            this.help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.help.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.help.ForeColor = System.Drawing.Color.Black;
+            this.help.Location = new System.Drawing.Point(337, 143);
+            this.help.Name = "help";
+            this.help.Size = new System.Drawing.Size(27, 28);
+            this.help.TabIndex = 19;
+            this.help.Text = "?";
+            this.help.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AccountType,
+            this.Username,
+            this.Password,
+            this.NameSurname,
+            this.Email,
+            this.Phone,
+            this.Country,
+            this.City,
+            this.Address});
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.Size = new System.Drawing.Size(371, 178);
+            this.dataGridView1.Size = new System.Drawing.Size(371, 207);
             this.dataGridView1.TabIndex = 14;
-            this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserAddedRow);
             // 
-            // pictureBox1
+            // AccountType
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.pictureBox1.Location = new System.Drawing.Point(87, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.AccountType.HeaderText = "AccountType";
+            this.AccountType.Name = "AccountType";
+            this.AccountType.Width = 96;
+            // 
+            // Username
+            // 
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.Width = 80;
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.Width = 78;
+            // 
+            // NameSurname
+            // 
+            this.NameSurname.HeaderText = "Name";
+            this.NameSurname.Name = "NameSurname";
+            this.NameSurname.Width = 60;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Width = 57;
+            // 
+            // Phone
+            // 
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
+            this.Phone.Width = 63;
+            // 
+            // Country
+            // 
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            this.Country.Width = 68;
+            // 
+            // City
+            // 
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.Width = 49;
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.Width = 70;
             // 
             // Admin_Panel
             // 
@@ -387,6 +363,7 @@ namespace OOP_Lab_II.Menu
             this.Load += new System.EventHandler(this.Admin_Panel_Load);
             this.panel_top.ResumeLayout(false);
             this.panel_top.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -394,11 +371,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_panel.ResumeLayout(false);
             this.confirm_subpanel.ResumeLayout(false);
             this.confirm_subpanel.PerformLayout();
-            this.popup_Panel_username.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,13 +385,7 @@ namespace OOP_Lab_II.Menu
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button add_new_button;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox newUsername;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel popup_Panel_username;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel confirm_panel;
         private System.Windows.Forms.Panel confirm_subpanel;
         private System.Windows.Forms.Label label3;
@@ -427,5 +394,14 @@ namespace OOP_Lab_II.Menu
         private System.Windows.Forms.Label confirm_label;
         private System.Windows.Forms.TextBox WarnBox;
         private System.Windows.Forms.Label help;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AccountType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn City;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
     }
 }

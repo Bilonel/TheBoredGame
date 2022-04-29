@@ -13,15 +13,17 @@ namespace OOP_Lab_II.Game
     public partial class GameScreen : Form
     {
         Game game;
-        public GameScreen()
+        int row, col, shapes, colors;
+        public GameScreen(int[] diffficulty)
         {
             InitializeComponent();
+            this.row = diffficulty[0]; this.col = diffficulty[1]; this.shapes = diffficulty[2]; this.colors = diffficulty[3];
         }
 
         private void Screen_Load(object sender, EventArgs e)
         {
             this.Bounds = Screen.PrimaryScreen.Bounds;
-            game = new Game(6, 6);
+            game = new Game(row, col);
         }
 
         private async void StartCounting()
@@ -30,7 +32,7 @@ namespace OOP_Lab_II.Game
             for (int i = 3; i >= 0; i--)
             {
                 label1.Text = i.ToString();
-                await Task.Delay(200 * i + 400);
+                await Task.Delay(100 * i + 300);
             }
             label1.Visible = false;
             for (int i = 0; i < game.Objects.Count; i++)

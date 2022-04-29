@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -12,6 +11,9 @@ namespace OOP_Lab_II.Menu
         private int difficulty_index;
         private int shapes_index;
         private int color_index;
+        //
+        // Get Methods
+        public int[] Difficulty { get => new int[] { int.Parse(width_box.Text), int.Parse(height_box.Text), shapes_index,color_index }; }
         // Consturctors
         public Form_Options()
         {
@@ -44,9 +46,9 @@ namespace OOP_Lab_II.Menu
         {
             switch (difficulty_index)   // Filling width box and height box.
             {
-                case 0: width_box.Text = height_box.Text = "5"; break;
-                case 1: width_box.Text = height_box.Text = "10"; break;
-                case 2: width_box.Text = height_box.Text = "20"; break;
+                case 0: width_box.Text = height_box.Text = "15"; break;
+                case 1: width_box.Text = height_box.Text = "9"; break;
+                case 2: width_box.Text = height_box.Text = "6"; break;
             }
             XMLdoc.SelectSingleNode("/Settings/Difficulty/value").InnerText = difficulty_index.ToString();
             XMLdoc.SelectSingleNode("/Settings/Shapes/value").InnerText =shapes_index.ToString();
@@ -68,12 +70,12 @@ namespace OOP_Lab_II.Menu
             try
             {
                 Save_Settings();
-                warnBox.ForeColor = Color.DarkGreen;
+                warnBox.ForeColor = System.Drawing.Color.DarkGreen;
                 warnBox.Text = "Saved";
             }
             catch (Exception ex)
             {
-                warnBox.ForeColor = Color.OrangeRed;
+                warnBox.ForeColor = System.Drawing.Color.OrangeRed;
                 warnBox.Text = ex.Message.ToString();
             }
         }

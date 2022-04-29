@@ -30,6 +30,7 @@ namespace OOP_Lab_II.Menu
         private void InitializeComponent()
         {
             this.panel_top = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.username_label = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -37,33 +38,32 @@ namespace OOP_Lab_II.Menu
             this.panel7 = new System.Windows.Forms.Panel();
             this.address_label = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.TextBox();
+            this.btnAddress = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.city_label = new System.Windows.Forms.Label();
             this.city = new System.Windows.Forms.TextBox();
+            this.btnCity = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.country__label = new System.Windows.Forms.Label();
             this.country = new System.Windows.Forms.TextBox();
+            this.btnCountry = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.phone_label = new System.Windows.Forms.Label();
             this.phone = new System.Windows.Forms.TextBox();
+            this.btnPhone = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.mail__label = new System.Windows.Forms.Label();
             this.mail = new System.Windows.Forms.TextBox();
+            this.btnMail = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.password_label = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
+            this.btnPassword = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.name_label = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.TextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.btnName = new System.Windows.Forms.Button();
-            this.btnPassword = new System.Windows.Forms.Button();
-            this.btnMail = new System.Windows.Forms.Button();
-            this.btnPhone = new System.Windows.Forms.Button();
-            this.btnCountry = new System.Windows.Forms.Button();
-            this.btnCity = new System.Windows.Forms.Button();
-            this.btnAddress = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.confirm_panel = new System.Windows.Forms.Panel();
             this.confirm_subpanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_text = new System.Windows.Forms.TextBox();
             this.confirm_label = new System.Windows.Forms.Label();
             this.panel_top.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -80,7 +81,6 @@ namespace OOP_Lab_II.Menu
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.confirm_panel.SuspendLayout();
             this.confirm_subpanel.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +96,19 @@ namespace OOP_Lab_II.Menu
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(705, 47);
             this.panel_top.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
+            this.pictureBox1.Location = new System.Drawing.Point(275, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(44, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // username_label
             // 
@@ -200,6 +213,21 @@ namespace OOP_Lab_II.Menu
             this.address.Size = new System.Drawing.Size(201, 26);
             this.address.TabIndex = 1;
             // 
+            // btnAddress
+            // 
+            this.btnAddress.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAddress.BackColor = System.Drawing.Color.White;
+            this.btnAddress.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddress.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddress.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddress.Location = new System.Drawing.Point(484, 0);
+            this.btnAddress.Name = "btnAddress";
+            this.btnAddress.Size = new System.Drawing.Size(29, 26);
+            this.btnAddress.TabIndex = 8;
+            this.btnAddress.UseVisualStyleBackColor = false;
+            this.btnAddress.Click += new System.EventHandler(this.btn_Click);
+            // 
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -240,6 +268,21 @@ namespace OOP_Lab_II.Menu
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(201, 26);
             this.city.TabIndex = 1;
+            // 
+            // btnCity
+            // 
+            this.btnCity.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCity.BackColor = System.Drawing.Color.White;
+            this.btnCity.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCity.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCity.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCity.Location = new System.Drawing.Point(484, 0);
+            this.btnCity.Name = "btnCity";
+            this.btnCity.Size = new System.Drawing.Size(29, 26);
+            this.btnCity.TabIndex = 7;
+            this.btnCity.UseVisualStyleBackColor = false;
+            this.btnCity.Click += new System.EventHandler(this.btn_Click);
             // 
             // panel6
             // 
@@ -282,6 +325,21 @@ namespace OOP_Lab_II.Menu
             this.country.Size = new System.Drawing.Size(201, 26);
             this.country.TabIndex = 1;
             // 
+            // btnCountry
+            // 
+            this.btnCountry.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCountry.BackColor = System.Drawing.Color.White;
+            this.btnCountry.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCountry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCountry.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCountry.Location = new System.Drawing.Point(484, 0);
+            this.btnCountry.Name = "btnCountry";
+            this.btnCountry.Size = new System.Drawing.Size(29, 26);
+            this.btnCountry.TabIndex = 6;
+            this.btnCountry.UseVisualStyleBackColor = false;
+            this.btnCountry.Click += new System.EventHandler(this.btn_Click);
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -322,6 +380,21 @@ namespace OOP_Lab_II.Menu
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(201, 26);
             this.phone.TabIndex = 1;
+            // 
+            // btnPhone
+            // 
+            this.btnPhone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPhone.BackColor = System.Drawing.Color.White;
+            this.btnPhone.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPhone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhone.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPhone.Location = new System.Drawing.Point(484, 0);
+            this.btnPhone.Name = "btnPhone";
+            this.btnPhone.Size = new System.Drawing.Size(29, 26);
+            this.btnPhone.TabIndex = 5;
+            this.btnPhone.UseVisualStyleBackColor = false;
+            this.btnPhone.Click += new System.EventHandler(this.btn_Click);
             // 
             // panel4
             // 
@@ -364,6 +437,21 @@ namespace OOP_Lab_II.Menu
             this.mail.Size = new System.Drawing.Size(201, 26);
             this.mail.TabIndex = 1;
             // 
+            // btnMail
+            // 
+            this.btnMail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMail.BackColor = System.Drawing.Color.White;
+            this.btnMail.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMail.Location = new System.Drawing.Point(484, 0);
+            this.btnMail.Name = "btnMail";
+            this.btnMail.Size = new System.Drawing.Size(29, 26);
+            this.btnMail.TabIndex = 4;
+            this.btnMail.UseVisualStyleBackColor = false;
+            this.btnMail.Click += new System.EventHandler(this.btn_Click);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -404,6 +492,21 @@ namespace OOP_Lab_II.Menu
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(201, 26);
             this.password.TabIndex = 2;
+            // 
+            // btnPassword
+            // 
+            this.btnPassword.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPassword.BackColor = System.Drawing.Color.White;
+            this.btnPassword.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPassword.Location = new System.Drawing.Point(484, 0);
+            this.btnPassword.Name = "btnPassword";
+            this.btnPassword.Size = new System.Drawing.Size(29, 26);
+            this.btnPassword.TabIndex = 1;
+            this.btnPassword.UseVisualStyleBackColor = false;
+            this.btnPassword.Click += new System.EventHandler(this.btn_Click);
             // 
             // panel1
             // 
@@ -446,6 +549,21 @@ namespace OOP_Lab_II.Menu
             this.name.Size = new System.Drawing.Size(201, 26);
             this.name.TabIndex = 1;
             // 
+            // btnName
+            // 
+            this.btnName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnName.BackColor = System.Drawing.Color.White;
+            this.btnName.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
+            this.btnName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnName.Location = new System.Drawing.Point(484, 0);
+            this.btnName.Name = "btnName";
+            this.btnName.Size = new System.Drawing.Size(29, 26);
+            this.btnName.TabIndex = 3;
+            this.btnName.UseVisualStyleBackColor = false;
+            this.btnName.Click += new System.EventHandler(this.btn_Click);
+            // 
             // panel8
             // 
             this.panel8.AutoScroll = true;
@@ -464,124 +582,6 @@ namespace OOP_Lab_II.Menu
             this.panel8.Size = new System.Drawing.Size(705, 485);
             this.panel8.TabIndex = 10;
             // 
-            // btnName
-            // 
-            this.btnName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnName.BackColor = System.Drawing.Color.White;
-            this.btnName.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnName.Location = new System.Drawing.Point(484, 0);
-            this.btnName.Name = "btnName";
-            this.btnName.Size = new System.Drawing.Size(29, 26);
-            this.btnName.TabIndex = 3;
-            this.btnName.UseVisualStyleBackColor = false;
-            this.btnName.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnPassword
-            // 
-            this.btnPassword.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPassword.BackColor = System.Drawing.Color.White;
-            this.btnPassword.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPassword.Location = new System.Drawing.Point(484, 0);
-            this.btnPassword.Name = "btnPassword";
-            this.btnPassword.Size = new System.Drawing.Size(29, 26);
-            this.btnPassword.TabIndex = 1;
-            this.btnPassword.UseVisualStyleBackColor = false;
-            this.btnPassword.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnMail
-            // 
-            this.btnMail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnMail.BackColor = System.Drawing.Color.White;
-            this.btnMail.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnMail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMail.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMail.Location = new System.Drawing.Point(484, 0);
-            this.btnMail.Name = "btnMail";
-            this.btnMail.Size = new System.Drawing.Size(29, 26);
-            this.btnMail.TabIndex = 4;
-            this.btnMail.UseVisualStyleBackColor = false;
-            this.btnMail.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnPhone
-            // 
-            this.btnPhone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPhone.BackColor = System.Drawing.Color.White;
-            this.btnPhone.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPhone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPhone.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPhone.Location = new System.Drawing.Point(484, 0);
-            this.btnPhone.Name = "btnPhone";
-            this.btnPhone.Size = new System.Drawing.Size(29, 26);
-            this.btnPhone.TabIndex = 5;
-            this.btnPhone.UseVisualStyleBackColor = false;
-            this.btnPhone.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnCountry
-            // 
-            this.btnCountry.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCountry.BackColor = System.Drawing.Color.White;
-            this.btnCountry.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCountry.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCountry.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCountry.Location = new System.Drawing.Point(484, 0);
-            this.btnCountry.Name = "btnCountry";
-            this.btnCountry.Size = new System.Drawing.Size(29, 26);
-            this.btnCountry.TabIndex = 6;
-            this.btnCountry.UseVisualStyleBackColor = false;
-            this.btnCountry.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnCity
-            // 
-            this.btnCity.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCity.BackColor = System.Drawing.Color.White;
-            this.btnCity.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnCity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCity.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCity.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCity.Location = new System.Drawing.Point(484, 0);
-            this.btnCity.Name = "btnCity";
-            this.btnCity.Size = new System.Drawing.Size(29, 26);
-            this.btnCity.TabIndex = 7;
-            this.btnCity.UseVisualStyleBackColor = false;
-            this.btnCity.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // btnAddress
-            // 
-            this.btnAddress.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAddress.BackColor = System.Drawing.Color.White;
-            this.btnAddress.BackgroundImage = global::OOP_Lab_II.Properties.Resources.edit;
-            this.btnAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddress.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddress.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddress.Location = new System.Drawing.Point(484, 0);
-            this.btnAddress.Name = "btnAddress";
-            this.btnAddress.Size = new System.Drawing.Size(29, 26);
-            this.btnAddress.TabIndex = 8;
-            this.btnAddress.UseVisualStyleBackColor = false;
-            this.btnAddress.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.pictureBox1.Location = new System.Drawing.Point(275, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(44, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // confirm_panel
             // 
             this.confirm_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -593,6 +593,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_panel.Size = new System.Drawing.Size(319, 90);
             this.confirm_panel.TabIndex = 20;
             this.confirm_panel.Visible = false;
+            this.confirm_panel.Leave += new System.EventHandler(this.confirm_panel_Leave);
             // 
             // confirm_subpanel
             // 
@@ -641,6 +642,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_button.Text = "✓";
             this.confirm_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.confirm_button.UseVisualStyleBackColor = false;
+            this.confirm_button.Click += new System.EventHandler(this.confirm_button_Click);
             // 
             // confirm_text
             // 
@@ -684,6 +686,7 @@ namespace OOP_Lab_II.Menu
             this.Load += new System.EventHandler(this.User_Panel_Load);
             this.panel_top.ResumeLayout(false);
             this.panel_top.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -701,7 +704,6 @@ namespace OOP_Lab_II.Menu
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.confirm_panel.ResumeLayout(false);
             this.confirm_subpanel.ResumeLayout(false);
             this.confirm_subpanel.PerformLayout();

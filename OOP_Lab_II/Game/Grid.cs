@@ -21,7 +21,7 @@ namespace OOP_Lab_II.Game
         public gameGrid(int x,int y) { 
             matrix = new int[x, y]; 
             Row = x; Column = y;
-            cellSize = Screen.PrimaryScreen.Bounds.Height * 4 / 5 / Column;
+            cellSize = Screen.PrimaryScreen.Bounds.Height * 4 / 5 / Row;
             startPoint = new Point((Screen.PrimaryScreen.Bounds.Width - Column * cellSize) / 2, (Screen.PrimaryScreen.Bounds.Height - Row * cellSize) * 3 / 4);
             createEmptyGrid();
         }

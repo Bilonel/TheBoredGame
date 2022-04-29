@@ -24,8 +24,6 @@ namespace OOP_Lab_II
                 if(loginForm.UserSuccessfullyAuthenticated)
                 {
                     Application.Run(new Menu.Menu_Form());
-                    if (Menu.Form_Play.inGame)
-                        Application.Run(new Game.GameScreen());
                 }
             }
             catch (Exception e)
