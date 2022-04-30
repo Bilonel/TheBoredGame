@@ -13,17 +13,35 @@ namespace OOP_Lab_II.Game
     public partial class GameScreen : Form
     {
         Game game;
-        int row, col, shapes, colors;
+        int row, col;
+        List<int> GameInitialIds;
+        public static bool refreshed;
         public GameScreen(int[] diffficulty)
         {
             InitializeComponent();
-            this.row = diffficulty[0]; this.col = diffficulty[1]; this.shapes = diffficulty[2]; this.colors = diffficulty[3];
+            refreshed = false;
+            GameInitialIds = new List<int>();
+            this.row = diffficulty[0]; this.col = diffficulty[1];
+            for (int i = 0; i < 3; i++)
+            {
+                int colors = diffficulty[3];
+                if (diffficulty[2] % 10 == 1)
+                    for (int k = 2; k < 5; k++)
+                    {
+                        if (colors % 10 == 1)
+                            GameInitialIds.Add(i * 3 + k);
+                        colors /= 10;
+                    }
+                diffficulty[2] /= 10;
+            }
         }
 
         private void Screen_Load(object sender, EventArgs e)
         {
             this.Bounds = Screen.PrimaryScreen.Bounds;
-            game = new Game(row, col);
+            gameOverPanel.Size = new Size(this.Bounds.Width/3, this.Bounds.Height);
+            gameOverPanel.Location = new Point(this.Bounds.Width / 3);
+            game = new Game(row, col, GameInitialIds,this.gameOverPanel);
         }
 
         private async void StartCounting()
@@ -44,6 +62,13 @@ namespace OOP_Lab_II.Game
         {
             StartCounting();
         }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            refreshed = true;
+            this.Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

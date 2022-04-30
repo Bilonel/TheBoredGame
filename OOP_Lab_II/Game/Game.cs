@@ -17,69 +17,78 @@ namespace OOP_Lab_II.Game
         private gameGrid grid;
         private List<Cell> objects;
         private PictureBox activeBox;
-        public TextBox ScoreBoard { get; }
-        int score;
+        public Label ScoreBoard { get; }
+        private int score;
+        private List<int> difficulty_shapes_color =null;
+        private Panel GameOverPanel;
         // Get Set
         public int Rows { get; set; }
         public int Columns { get; set; }
+        
         public List<Cell> Objects { get => objects; }
         // Constructors
-        public Game(int row = 9, int col = 9) {
-            this.Rows = row; this.Columns = col;
-            grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new TextBox();
-            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-80, 30);
+        public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,Panel gameOVer=null) {
+            this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel = gameOVer;
+            grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new Label();
+            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-80,40);
             ScoreBoard.Size = new Size(160,ScoreBoard.Size.Height);
             ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 25,FontStyle.Bold);
-            ScoreBoard.ReadOnly = true;ScoreBoard.TextAlign = HorizontalAlignment.Center;
+            ScoreBoard.TextAlign = ContentAlignment.MiddleCenter;
             updateScore(0);
             createObjects();
         }
 
         //Methods
-        private void createRandomCells(int count, int[] idList)
+        private void createRandomCells(int count)
         {
             Random random = new Random();
-            while ((count--) > 0)
+            while (!gameOver()&&(count--)>0)
             {
-                if (grid.isFull())
-                    break;
-                int r= random.Next(Rows), c = random.Next(Columns);
-                if(grid[r, c]!=0)
+                int r= random.Next(Rows), c = random.Next(Columns); // SELECT A RANDOM BOX
+                if(grid[r, c]!=0)                                    // IF BOX IS NOT EMPTY
                 {
-                    count++;
+                    count++;                                         // TRY AGAIN
                     continue;
                 }
-                int id = idList[random.Next(idList.Length)];
-                Change_Cells_ID(objects[r * Columns + c].box,id);
-                checkBingo(NumberOfSameCellsToWin, r, c, id);
+                int id = difficulty_shapes_color[random.Next(difficulty_shapes_color.Count)];   // SELECT AN ID
+                Change_Cells_ID(objects[r * Columns + c].box,id);                             // SET ID
+                checkBingo(NumberOfSameCellsToWin, r, c, id);                            // CHECK IS THERE ANY BINGO (side by side, 5 same box)
             }
         }
         private void createObjects()
         {
-            for (int i = 0; i < Rows; i++)
+            // CREATE INITIAL CELLS AS AN OBJECT
+            // 
+            for (int i = 0; i < Rows; i++)  
             {
-                for (int j = 0; j < Columns; j++)
+                for (int j = 0; j < Columns; j++)   
                 {
-                    Cell cell = new Cell(grid[i,j],grid.indexTolocation(i, j), grid.CellSize);
-                    objects.Add(cell);
-                    Change_Cells_ID(cell.box, grid[i, j]);
+                    Cell cell = new Cell(grid[i,j],grid.indexTolocation(i, j), grid.CellSize);  
+                    objects.Add(cell);  // Add Created Objects to list<object> objects
+                    Change_Cells_ID(cell.box, grid[i, j]);  // Set all of them ids
                 }
             }
-            createRandomCells(NumberOfRandomCell, CellsPossibleIds);
+            createRandomCells(NumberOfRandomCell);
         }
         private void Change_Cells_ID(PictureBox box, int value)
         {
-
-            grid[grid.locationToIndex(box.Location)[0], grid.locationToIndex(box.Location)[1]] = value;
-            objects[grid.locationToIndex(box.Location)[0] * Columns + grid.locationToIndex(box.Location)[1]].id = value;
-            box.Image = Texture.texture[value];
-            box.Click -= ClickCell;
-            box.Click -= ClickMove;
-            if (value > 1)
+            //
+            // Set Cell IDs
+            grid[grid.locationToIndex(box.Location)[0], grid.locationToIndex(box.Location)[1]] = value; // Firstly set in grid
+            objects[grid.locationToIndex(box.Location)[0] * Columns + grid.locationToIndex(box.Location)[1]].id = value;    // Then set in Cell (class)
+            box.Image = Texture.texture[value]; // Set picture box's image
+            box.Click -= ClickCell;         
+            box.Click -= ClickMove;         // Clean Cell's click events
+            //
+            // Set Cell's Click Events
+            //
+            if (value > 1)  
                 box.Click += new EventHandler(ClickCell);
             else if(value==1)
                 box.Click += new EventHandler(ClickMove);
-
+            //
+            // Set Cursor
+            //
             if (value > 0)
                 box.Cursor = System.Windows.Forms.Cursors.Hand;
             else
@@ -87,7 +96,7 @@ namespace OOP_Lab_II.Game
         }
         private void deactivateBox()
         {
-            //Deactivate Old Targets
+            //Deactivate Old SELECTABLE Cells
             for (int i = 0; i < Rows; i++)
                 for (int j = 0; j < Columns; j++)
                     if (grid[i, j] == 1)
@@ -95,45 +104,44 @@ namespace OOP_Lab_II.Game
             //Deactivate Old Active Box
             if (activeBox != null) { activeBox.BackColor = Color.White; activeBox.Padding = new Padding(0); activeBox = null; }
         }
-        private string PathFindng(Point start, Point end, int step, string moves)
+        private string PathFindng(Point start, Point end, int step, string moves,bool showPossibleTargets=false)
         {
             string firstChild="...error...",secondChild= "...error...", thirdChild= "...error...", fourthChild= "...error...";
+            //
+            // Set Current Box as a SELECTABLE Cell.
+            // In first click to a cell, Selectable Cells will be shown,
+            // In second click it will be just for marking to which is passed boxes and it wont be shown.
+            if (grid.isEmpty(start.X, start.Y)) Change_Cells_ID(objects[start.X * Columns + start.Y].box, 1);
+
             if (start == end)   // IF START POSITION AND END POSITION IS EQUAL, WELL DONE YOU ARRIVED
                 return moves;   // Return Parents Movement Hıstory
-            else if (step < Rows + 1)   // IF STEP COUNT LESS THAN ROW DONT GO ON
+            
+            else if (step < 11)   // IF STEP COUNT LESS THAN ROW DONT GO ON
             {
-                start.Offset(-1, 0);
+                start.Offset(-1, 0);    // Move UP by 1 Step
                 if (grid.isEmpty(start.X, start.Y))
                 {
-                    grid[start.X, start.Y] = 11;    //  Dont Look This Cell, Again
-                    firstChild = PathFindng(start, end, step + 1, moves+"u"); // CHECK FIRST CHILD
-                    grid[start.X, start.Y] = 0;     // Now You Can Look
+                    firstChild = PathFindng(start, end, step + 1, moves+"u", showPossibleTargets); // CHECK FIRST CHILD
                 }
-                start.Offset(+1, +1);
+                start.Offset(+1, +1);   // Move RIGHT by 1 Step
                 if (grid.isEmpty(start.X, start.Y))
                 {
-                    grid[start.X, start.Y] = 11;
-                    secondChild = PathFindng(start, end, step + 1, moves+"r"); // CHECK SECOND CHILD
-                    grid[start.X, start.Y] = 0;
+                    secondChild = PathFindng(start, end, step + 1, moves+"r", showPossibleTargets); // CHECK SECOND CHILD
                 }
-                start.Offset(0, -2);
+                start.Offset(0, -2);    // Move LEFT by 1 Step
                 if (grid.isEmpty(start.X, start.Y))
                 {
-                    grid[start.X, start.Y] = 11;
-                    thirdChild = PathFindng(start, end, step + 1, moves+"l"); //CHECK THIRD CHILD
-                    grid[start.X, start.Y] = 0;
+                    thirdChild = PathFindng(start, end, step + 1, moves+"l", showPossibleTargets); //CHECK THIRD CHILD
                 }
-                start.Offset(+1, +1);
+                start.Offset(+1, +1);   // Move DOWN by 1 Step
                 if (grid.isEmpty(start.X, start.Y))
                 {
-                    grid[start.X, start.Y] = 11;
-                    fourthChild = PathFindng(start, end, step + 1, moves+"d"); //CHECK FOURTH CHILD
-                    grid[start.X, start.Y] = 0;
+                    fourthChild = PathFindng(start, end, step + 1, moves+"d", showPossibleTargets); //CHECK FOURTH CHILD
                 }
             }
             //-----
             // Return Shortest Path
-            int min=Math.Min(Math.Min(firstChild.Length, secondChild.Length), Math.Min(thirdChild.Length, fourthChild.Length));
+            int min =Math.Min(Math.Min(firstChild.Length, secondChild.Length), Math.Min(thirdChild.Length, fourthChild.Length));
             if (min == firstChild.Length) return firstChild;
             if (min == secondChild.Length) return secondChild;
             if (min == thirdChild.Length) return thirdChild;
@@ -155,10 +163,7 @@ namespace OOP_Lab_II.Game
                 else right = false;
             }
             if (VerticalCounter >= sideCount || HorizantalCounter >= sideCount)
-            {
                 wait(700);
-                updateScore(scoreCoef);
-            }
             if(VerticalCounter>=sideCount)
                 for (int i = -sideCount + 1; i <= sideCount - 1; i++)
                     if (grid[row, col + i] == CenterID)
@@ -180,20 +185,7 @@ namespace OOP_Lab_II.Game
         {
             deactivateBox();
             //Activate New Targets
-            int r = grid.locationToIndex(((System.Windows.Forms.PictureBox)sender).Location)[0];
-            int c = grid.locationToIndex(((System.Windows.Forms.PictureBox)sender).Location)[1];
-            for (int i = 1; i <= 3; i++)
-            {
-                if (grid.isInside(r - i, c) && grid[r - i, c] == 0) //CHECK UPPER
-                    Change_Cells_ID(objects[(r - i) * Columns + (c)].box, 1);
-                if (grid.isInside(r + i, c) && grid[r + i, c] == 0) //CHECK LOWER
-                    Change_Cells_ID(objects[(r + i) * Columns + (c)].box, 1);
-                if (grid.isInside(r, c - i) && grid[r, c - i] == 0) //CHECK LEFT
-                    Change_Cells_ID(objects[(r) * Columns + (c - i)].box, 1);
-                if (grid.isInside(r, c + i) && grid[r, c + i] == 0) //CHECK RIGHT
-                    Change_Cells_ID(objects[(r) * Columns + (c + i)].box, 1);
-            }
-
+            PathFindng(new Point(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1]), new Point(1, 1), 0, "", true);
             //Activate New Active Box
             activeBox = ((PictureBox)sender); activeBox.BackColor = Color.Cyan; activeBox.Padding = new Padding(3);
         }
@@ -206,42 +198,44 @@ namespace OOP_Lab_II.Game
             int TargetCol = grid.locationToIndex(((PictureBox)sender).Location)[1];
 
             string Path = PathFindng(new Point(CurrentRow, CurrentCol), new Point(TargetRow, TargetCol), 0,"");
+            deactivateBox();
             //-------
             // Show Steps 
             //
             int counter = 3;
-            if (Path != "...error...")
-                foreach (char direction in Path)
+            foreach (char direction in Path)
+            {
+                wait(700);
+                Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
+                switch (direction)
                 {
-                    wait(700);
-                    Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
-                    switch (direction)
-                    {
-                        case 'l': CurrentCol--; break;
-                        case 'r': CurrentCol++; break;
-                        case 'u': CurrentRow--; break;
-                        case 'd': CurrentRow++; break;
-                    }
-                    objects[CurrentRow * Columns + CurrentCol].id = oldCell.id; // Set New One's Id
-                    Change_Cells_ID(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
-                    oldCell.id = 0;
-                    Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
-                    if(counter--<=0)
-                        updateScore(-1);
+                    case 'l': CurrentCol--; break;
+                    case 'r': CurrentCol++; break;
+                    case 'u': CurrentRow--; break;
+                    case 'd': CurrentRow++; break;
                 }
+                objects[CurrentRow * Columns + CurrentCol].id = oldCell.id; // Set New One's Id
+                Change_Cells_ID(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
+                oldCell.id = 0;
+                Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
+                if(counter--<=0)
+                    updateScore(-1);
+            }
+      
+            if (checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
+                updateScore(scoreCoef);
             else
-                updateScore(-scoreCoef/3);
-            checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id);
-            createRandomCells(NumberOfRandomCell, CellsPossibleIds);
+                createRandomCells(NumberOfRandomCell);
         }
         private void wait(int milliseconds)
         {
-            var timer1 = new Timer();
-            if (milliseconds == 0 || milliseconds < 0) return;
+            var timer1 = new Timer();   // Create a timer
+            if (milliseconds == 0 || milliseconds < 0) return;  // If its not Valid , finish function
+            //
             // Star Timer
-            timer1.Interval = milliseconds;
+            timer1.Interval = milliseconds; // Set count
             timer1.Enabled = true;
-            timer1.Start();
+            timer1.Start(); // Start
 
             timer1.Tick += (s, e) =>{ timer1.Enabled = false; timer1.Stop(); }; // After Waiting; Stop Timer
 
@@ -250,8 +244,17 @@ namespace OOP_Lab_II.Game
         }
         private void updateScore(int point)
         {
-            score += point;
-            ScoreBoard.Text = "Score: " + score.ToString();
+            score += point; // Update Integer Score
+            ScoreBoard.Text = "Score: " + score.ToString(); // Update Text Box
+        }
+        private bool gameOver()
+        {
+            if (!grid.isFull())
+                return false;
+            // OPEN GAME OVER PANEL
+            GameOverPanel.Visible = true;
+            GameOverPanel.Controls[0].Text = ScoreBoard.Text;
+            return true;
         }
     }
     

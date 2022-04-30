@@ -22,6 +22,13 @@ namespace OOP_Lab_II.Game
             textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Orange.png")));
             textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Green.png")));
             textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Rectangle-Blue.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Triangle-Orange.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Triangle-Green.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Triangle-Blue.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Round-Orange.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Round-Green.png")));
+            textures.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream(resPath + "Round-Blue.png")));
+
         }
         private static Texture instance;
         public static Texture texture
