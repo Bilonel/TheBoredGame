@@ -11,8 +11,8 @@ namespace OOP_Lab_II.Game
     {
         const int NumberOfSameCellsToWin = 5;
         const int NumberOfRandomCell = 3;
-        const int scoreCoef=10;
-        int[] CellsPossibleIds = new int[]{2,3,4};
+        const int NumberOfMovesWithoutPenalty = 5;
+        int scoreCoef=10;
         
         private gameGrid grid;
         private List<Cell> objects;
@@ -30,11 +30,12 @@ namespace OOP_Lab_II.Game
         public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,Panel gameOVer=null) {
             this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel = gameOVer;
             grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new Label();
-            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-80,40);
-            ScoreBoard.Size = new Size(160,ScoreBoard.Size.Height);
-            ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 25,FontStyle.Bold);
+            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-100,40);
+            ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 24,FontStyle.Bold);
+            ScoreBoard.Size = new Size(200,30);
             ScoreBoard.TextAlign = ContentAlignment.MiddleCenter;
-            updateScore(0);
+            score = 0;
+            this.scoreCoef = 180 / (Rows + Columns);
             createObjects();
         }
 
@@ -111,12 +112,13 @@ namespace OOP_Lab_II.Game
             // Set Current Box as a SELECTABLE Cell.
             // In first click to a cell, Selectable Cells will be shown,
             // In second click it will be just for marking to which is passed boxes and it wont be shown.
-            if (grid.isEmpty(start.X, start.Y)) Change_Cells_ID(objects[start.X * Columns + start.Y].box, 1);
+            if (grid.isEmpty(start.X, start.Y)&&showPossibleTargets) 
+                Change_Cells_ID(objects[start.X * Columns + start.Y].box, 1);
 
             if (start == end)   // IF START POSITION AND END POSITION IS EQUAL, WELL DONE YOU ARRIVED
                 return moves;   // Return Parents Movement Hıstory
             
-            else if (step < 11)   // IF STEP COUNT LESS THAN ROW DONT GO ON
+            else if (step < 10)   // IF STEP COUNT LESS THAN ROW DONT GO ON
             {
                 start.Offset(-1, 0);    // Move UP by 1 Step
                 if (grid.isEmpty(start.X, start.Y))
@@ -147,6 +149,25 @@ namespace OOP_Lab_II.Game
             if (min == thirdChild.Length) return thirdChild;
             else return fourthChild;
         }
+        private void showTarget(int row,int col,int distance)
+        {
+            int i, k;
+            if (row - distance < 0) i = 0;
+            else i = row - distance;
+
+            for (; i <= row+distance; i++)
+                for (k= col-(distance- Math.Abs(row-i)); k <= col + distance - Math.Abs(row - i); k++) 
+                    if(grid.isEmpty(i,k))
+                        Change_Cells_ID(objects[i * Columns + k].box, 1);   // CHANGE THE CELL TO SELECTABLE CELL
+            //if (distance > 20)
+            //    return;
+            //if (distance > 0)  // NOT TO PAINT START POINT
+            //    Change_Cells_ID(objects[row * Columns + col].box, 1);   // CHANGE THE CELL TO SELECTABLE CELL
+            //if (grid.isEmpty(row + 1, col)) showTarget(row + 1, col, distance + 1); // move to down
+            //if (grid.isEmpty(row - 1, col)) showTarget(row - 1, col, distance + 1); // move to up
+            //if (grid.isEmpty(row, col + 1)) showTarget(row, col + 1, distance + 1); // move to right
+            //if (grid.isEmpty(row, col - 1)) showTarget(row, col - 1, distance + 1); // move to left
+        }
         private bool checkBingo(int sideCount,int row,int col,int CenterID)
         {
             int VerticalCounter = 1, HorizantalCounter = 1;
@@ -163,7 +184,7 @@ namespace OOP_Lab_II.Game
                 else right = false;
             }
             if (VerticalCounter >= sideCount || HorizantalCounter >= sideCount)
-                wait(700);
+                wait(400);
             if(VerticalCounter>=sideCount)
                 for (int i = -sideCount + 1; i <= sideCount - 1; i++)
                     if (grid[row, col + i] == CenterID)
@@ -185,7 +206,8 @@ namespace OOP_Lab_II.Game
         {
             deactivateBox();
             //Activate New Targets
-            PathFindng(new Point(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1]), new Point(1, 1), 0, "", true);
+            //PathFindng(new Point(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1]), new Point(1, 1), 0, "", true);
+            showTarget(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1],15);
             //Activate New Active Box
             activeBox = ((PictureBox)sender); activeBox.BackColor = Color.Cyan; activeBox.Padding = new Padding(3);
         }
@@ -202,26 +224,26 @@ namespace OOP_Lab_II.Game
             //-------
             // Show Steps 
             //
-            int counter = 3;
-            foreach (char direction in Path)
-            {
-                wait(700);
-                Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
-                switch (direction)
+            int counter = NumberOfMovesWithoutPenalty;
+            if(Path!= "...error...")
+                foreach (char direction in Path)
                 {
-                    case 'l': CurrentCol--; break;
-                    case 'r': CurrentCol++; break;
-                    case 'u': CurrentRow--; break;
-                    case 'd': CurrentRow++; break;
+                    wait(400);
+                    Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
+                    switch (direction)
+                    {
+                        case 'l': CurrentCol--; break;
+                        case 'r': CurrentCol++; break;
+                        case 'u': CurrentRow--; break;
+                        case 'd': CurrentRow++; break;
+                    }
+                    objects[CurrentRow * Columns + CurrentCol].id = oldCell.id; // Set New One's Id
+                    Change_Cells_ID(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
+                    oldCell.id = 0;
+                    Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
+                    if(counter--<=0)
+                        updateScore(-1);
                 }
-                objects[CurrentRow * Columns + CurrentCol].id = oldCell.id; // Set New One's Id
-                Change_Cells_ID(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
-                oldCell.id = 0;
-                Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
-                if(counter--<=0)
-                    updateScore(-1);
-            }
-      
             if (checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
                 updateScore(scoreCoef);
             else
