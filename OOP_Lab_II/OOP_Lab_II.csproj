@@ -125,6 +125,7 @@
     <EmbeddedResource Include="Game\GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Game\res\Triangle-Orange.png" />
     <EmbeddedResource Include="Menu\Admin_Panel.resx">
       <DependentUpon>Admin_Panel.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +187,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\globalSave.xml" />
+    <EmbeddedResource Include="Game\res\Round-Blue.png" />
+    <EmbeddedResource Include="Game\res\Round-Green.png" />
+    <EmbeddedResource Include="Game\res\Round-Orange.png" />
+    <EmbeddedResource Include="Game\res\Triangle-Blue.png" />
+    <EmbeddedResource Include="Game\res\Triangle-Green.png" />
+    <None Include="Game\res\refresh.png" />
     <Content Include="Menu\res\BORED_GAME_BACKGROUND.jpg" />
     <None Include="Menu\res\profilePanel.png" />
     <None Include="Menu\res\credits.png" />
