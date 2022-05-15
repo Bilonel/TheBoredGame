@@ -61,6 +61,9 @@ namespace OOP_Lab_II.Game
         private void Screen_Shown(object sender, EventArgs e)
         {
             StartCounting();
+            System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
+            sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
+            sound.PlayLooping();
         }
 
         private void refresh_Click(object sender, EventArgs e)

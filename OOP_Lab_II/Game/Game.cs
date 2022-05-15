@@ -21,6 +21,10 @@ namespace OOP_Lab_II.Game
         private int score;
         private List<int> difficulty_shapes_color =null;
         private Panel GameOverPanel;
+
+        System.Media.SoundPlayer MoveSound = new System.Media.SoundPlayer();
+        System.Media.SoundPlayer BingoSound = new System.Media.SoundPlayer();
+
         // Get Set
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -37,6 +41,8 @@ namespace OOP_Lab_II.Game
             score = 0;
             this.scoreCoef = 180 / (Rows + Columns);
             createObjects();
+            MoveSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Move.wav");
+            BingoSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Bingo.wav");
         }
 
         //Methods
@@ -243,9 +249,16 @@ namespace OOP_Lab_II.Game
                     Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
                     if(counter--<=0)
                         updateScore(-1);
+                    System.Threading.Thread.Sleep(500);
+                    MoveSound.Play();
                 }
             if (checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
+            {
+                System.Threading.Thread.Sleep(500);
+
+                BingoSound.PlaySync();
                 updateScore(scoreCoef);
+            }
             else
                 createRandomCells(NumberOfRandomCell);
         }

@@ -11,6 +11,7 @@ namespace OOP_Lab_II.Menu
         private XmlDocument xmlDoc;
         private Button currentActiveButton;
         private Form currentForm;
+        public static System.Media.SoundPlayer sound;
         //
         //Constructor
         //
@@ -104,6 +105,9 @@ namespace OOP_Lab_II.Menu
             xmlDoc = new XmlDocument();
             xmlDoc.Load("Data/localSave.xml");
             save_password_panel_timer();
+            sound = new System.Media.SoundPlayer();
+            sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.GuitarSound.wav");
+            sound.PlayLooping();
         }
         private void save_password_panel_timer()
         {

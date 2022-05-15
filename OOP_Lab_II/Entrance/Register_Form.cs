@@ -28,13 +28,13 @@ namespace OOP_Lab_II.Entrance
         {
             try
             {
-                dataTransfer.Instance.register(new string[] { "user", usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text },"register");
+                dataTransfer.Instance.register(new string[] { "0","user", usernameTextbox.Text, passwordTextbox.Text, nameSurnameTextbox.Text, emailTextbox.Text, phoneNumberTextbox.Text, countryTextbox.Text, cityTextbox.Text, addressTextbox.Text },"register");
                 WarnBox.ForeColor = Color.DarkOliveGreen;
                 WarnBox.Text = "Succesfully Registered..";
                 clear_all_text();
 
             }
-            catch (System.Data.OleDb.OleDbException excep)
+            catch (Exception excep)
             {
                 WarnBox.ForeColor = Color.OrangeRed;
                 WarnBox.Text = excep.Message.ToString();

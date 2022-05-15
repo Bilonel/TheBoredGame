@@ -42,8 +42,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.popup = new System.Windows.Forms.Panel();
-            this.exitPopup = new System.Windows.Forms.Button();
             this.windowPanel = new System.Windows.Forms.Panel();
+            this.exitPopup = new System.Windows.Forms.Button();
             this.profile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             this.save_password_panel.SuspendLayout();
@@ -296,6 +296,13 @@
             this.popup.TabIndex = 11;
             this.popup.Visible = false;
             // 
+            // windowPanel
+            // 
+            this.windowPanel.Location = new System.Drawing.Point(152, 90);
+            this.windowPanel.Name = "windowPanel";
+            this.windowPanel.Size = new System.Drawing.Size(500, 350);
+            this.windowPanel.TabIndex = 0;
+            // 
             // exitPopup
             // 
             this.exitPopup.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -309,13 +316,6 @@
             this.exitPopup.TabIndex = 1;
             this.exitPopup.UseVisualStyleBackColor = true;
             this.exitPopup.Click += new System.EventHandler(this.exitPopup_Click);
-            // 
-            // windowPanel
-            // 
-            this.windowPanel.Location = new System.Drawing.Point(152, 90);
-            this.windowPanel.Name = "windowPanel";
-            this.windowPanel.Size = new System.Drawing.Size(500, 350);
-            this.windowPanel.TabIndex = 0;
             // 
             // Menu_Form
             // 
