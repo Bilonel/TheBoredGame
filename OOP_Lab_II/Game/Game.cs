@@ -33,11 +33,14 @@ namespace OOP_Lab_II.Game
         // Constructors
         public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,Panel gameOVer=null) {
             this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel = gameOVer;
-            grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new Label();
-            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-100,40);
-            ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 24,FontStyle.Bold);
-            ScoreBoard.Size = new Size(200,30);
-            ScoreBoard.TextAlign = ContentAlignment.MiddleCenter;
+            grid = new gameGrid(row, col); objects = new List<Cell>();
+            // 
+            // ScoreBoard
+            this.ScoreBoard = new Label();
+            this.ScoreBoard.AutoSize = true;
+            this.ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 28, FontStyle.Bold); 
+            this.ScoreBoard.Text = "Score: 0";
+            //
             score = 0;
             this.scoreCoef = 180 / (Rows + Columns);
             createObjects();
@@ -287,8 +290,12 @@ namespace OOP_Lab_II.Game
             if (!grid.isFull())
                 return false;
             // OPEN GAME OVER PANEL
+            if(dataTransfer.Instance.isHighestScore(score))
+                GameOverPanel.Controls[0].Text = "Well Done"+Environment.NewLine+ "New Highest "+ScoreBoard.Text;
+            else
+                GameOverPanel.Controls[0].Text = ScoreBoard.Text;
+
             GameOverPanel.Visible = true;
-            GameOverPanel.Controls[0].Text = ScoreBoard.Text;
             return true;
         }
     }

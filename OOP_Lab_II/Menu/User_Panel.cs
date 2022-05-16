@@ -37,13 +37,13 @@ namespace OOP_Lab_II.Menu
             {
                 if (dataTransfer.Instance.check_password(confirm_text.Text))
                 {
-                    this.row[2] = password.Text;
-                    this.row[3] = name.Text;
-                    this.row[4] = mail.Text;
-                    this.row[5] = phone.Text;
-                    this.row[6] = country.Text;
-                    this.row[7] = city.Text;
-                    this.row[8] = address.Text;
+                    this.row[3] = password.Text;
+                    this.row[4] = name.Text;
+                    this.row[5] = mail.Text;
+                    this.row[6] = phone.Text;
+                    this.row[7] = country.Text;
+                    this.row[8] = city.Text;
+                    this.row[9] = address.Text;
                     dataTransfer.Instance.updateUser(row);
                     dataTransfer.Instance.get_account().info = dataTransfer.Instance.readUser(username_label.Text);
                     WarnBox.ForeColor = Color.DarkGreen;
@@ -67,14 +67,15 @@ namespace OOP_Lab_II.Menu
         {
             panel9.Size = new System.Drawing.Size(581, (this.Size.Height - 500) / 2 + 100);
             row = dataTransfer.Instance.get_account().info;
-            username_label.Text = row[1];
-            password.Text = row[2];
-            name.Text = row[3];
-            mail.Text = row[4];
-            phone.Text = row[5];
-            country.Text = row[6];
-            city.Text = row[7];
-            address.Text = row[8];
+            scoreLabel.Text = "High Score:" + row[0];
+            username_label.Text = row[2].ToUpper();
+            password.Text = row[3];
+            name.Text = row[4];
+            mail.Text = row[5];
+            phone.Text = row[6];
+            country.Text = row[7];
+            city.Text = row[8];
+            address.Text = row[9];
             //ToolTips
             ToolTip tt = new ToolTip();
             tt.ShowAlways = true;

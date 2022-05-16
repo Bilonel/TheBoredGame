@@ -52,7 +52,6 @@ namespace OOP_Lab_II
         {
             try
             {
-                this.Open();
                 SqlCommand cmd = new SqlCommand(command, connection);
                 return cmd;
             }
@@ -94,6 +93,7 @@ namespace OOP_Lab_II
         }
         public void pushAccount(string command,string[] row)
         {
+            this.Open();
             SqlCommand cmd = Cmd(command);
             cmd.Parameters.AddWithValue("@HighestScore", int.Parse(row[0]));
             cmd.Parameters.AddWithValue("@AccountType", row[1]);
@@ -129,8 +129,10 @@ namespace OOP_Lab_II
 
             if (access != "admin")   // For Admin accesss dont encode to password because admin panel is already encoding passwords
                 row[3] = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row[2]))).Replace("-", "");
+            for (int i = 0; i < row.Length; i++)
+                if (row[i] == null)
+                    row[i] = "";
 
-            row[1] = "admin";
             string command = "INSERT INTO " + TableName + " VALUES(" +
                 "@HighestScore,@AccountType,@Username,@Password,@NameSurname," +
                 "@Email,@Phone,@Country,@City,@Address)";
@@ -174,14 +176,14 @@ namespace OOP_Lab_II
             string command = "update " + TableName + " set " +
                 "HighestScore=@HighestScore," +
                 "AccountType=@AccountType," +
-                "Username=@Username," +
                 "Password=@Password," +
                 "NameSurname=@NameSurname," +
                 "Email=@Email," +
                 "Phone=@Phone," +
                 "Country=@Country," +
                 "City=@City," +
-                "Address=@Address,";
+                "Address=@Address " +
+                "where Username=@Username";
             this.pushAccount(command,row);
             //XmlDocument doc = new XmlDocument();
             //doc.Load(xmlpath);
@@ -200,10 +202,10 @@ namespace OOP_Lab_II
             //        return; // SUCCESS
             //    }
             //throw new Exception("Invalid Argument");
-
         }
         public string[] readUser(string username)
         {
+            this.Open();
             try
             {
                 string[] items = new string[10];
@@ -252,6 +254,7 @@ namespace OOP_Lab_II
         //}
         public void setAll(DataGridView dt)
         {
+            this.Open();
             SqlCommand cmd = this.Cmd("delete "+TableName);
             cmd.ExecuteNonQuery();
             this.Close();
@@ -278,21 +281,9 @@ namespace OOP_Lab_II
         public void getAll(DataGridView dataGrid)
         {
             this.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM "+TableName, connection);
-            DataTable datatable = new DataTable();
-            try
-            {
-                this.Open();
-                adapter.Fill(datatable);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                this.Close();
-            }
+            DataTable datatable = GetDataSet("SELECT * FROM " + TableName).Tables[0];
+            this.Close();
+
             dataGrid.Rows.Clear();
             foreach (DataRow row in datatable.Rows)
                 dataGrid.Rows.Add(row.ItemArray);
@@ -341,6 +332,16 @@ namespace OOP_Lab_II
             string encodePassword = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed())
                 .ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "");
             return encodePassword== account.info[3];
+        }
+        public bool isHighestScore(int newScore)
+        {
+            if(newScore>int.Parse(account.info[0])) // is new score bigger than recorded score 
+            {
+                account.info[0] = newScore.ToString();
+                updateUser(account.info);
+                return true;
+            }
+            return false;
         }
     }
 }

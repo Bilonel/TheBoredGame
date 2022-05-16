@@ -30,6 +30,7 @@ namespace OOP_Lab_II.Menu
         private void InitializeComponent()
         {
             this.panel_top = new System.Windows.Forms.Panel();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.username_label = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
@@ -89,6 +90,7 @@ namespace OOP_Lab_II.Menu
             // 
             this.panel_top.BackColor = System.Drawing.Color.SteelBlue;
             this.panel_top.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_top.Controls.Add(this.scoreLabel);
             this.panel_top.Controls.Add(this.pictureBox1);
             this.panel_top.Controls.Add(this.username_label);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
@@ -96,6 +98,21 @@ namespace OOP_Lab_II.Menu
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(705, 47);
             this.panel_top.TabIndex = 0;
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.BackColor = System.Drawing.Color.DarkOrange;
+            this.scoreLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scoreLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.scoreLabel.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.White;
+            this.scoreLabel.Location = new System.Drawing.Point(517, 4);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(171, 37);
+            this.scoreLabel.TabIndex = 10;
+            this.scoreLabel.Text = "High Score:0";
             // 
             // pictureBox1
             // 
@@ -755,5 +772,6 @@ namespace OOP_Lab_II.Menu
         private System.Windows.Forms.Button confirm_button;
         private System.Windows.Forms.TextBox confirm_text;
         private System.Windows.Forms.Label confirm_label;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }

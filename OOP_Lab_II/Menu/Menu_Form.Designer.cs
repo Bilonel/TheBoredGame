@@ -194,9 +194,9 @@
             this.profile.Controls.Add(this.usernameLabel);
             this.profile.Controls.Add(this.avatarBox);
             this.profile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profile.Location = new System.Drawing.Point(51, 17);
+            this.profile.Location = new System.Drawing.Point(40, 17);
             this.profile.Name = "profile";
-            this.profile.Size = new System.Drawing.Size(219, 112);
+            this.profile.Size = new System.Drawing.Size(233, 112);
             this.profile.TabIndex = 8;
             this.profile.Click += new System.EventHandler(this.profile_Click);
             this.profile.MouseEnter += new System.EventHandler(this.panel_enter);
@@ -208,7 +208,7 @@
             this.usernameLabel.BackColor = System.Drawing.Color.Transparent;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.usernameLabel.ForeColor = System.Drawing.Color.Orange;
-            this.usernameLabel.Location = new System.Drawing.Point(95, 36);
+            this.usernameLabel.Location = new System.Drawing.Point(91, 36);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(65, 29);
             this.usernameLabel.TabIndex = 1;
@@ -220,7 +220,7 @@
             this.avatarBox.BackColor = System.Drawing.Color.Transparent;
             this.avatarBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.avatarBox.Image = global::OOP_Lab_II.Properties.Resources.default_avatar;
-            this.avatarBox.Location = new System.Drawing.Point(19, 26);
+            this.avatarBox.Location = new System.Drawing.Point(16, 26);
             this.avatarBox.Name = "avatarBox";
             this.avatarBox.Size = new System.Drawing.Size(70, 58);
             this.avatarBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
