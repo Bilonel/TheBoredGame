@@ -21,6 +21,10 @@ namespace OOP_Lab_II.Game
         private int score;
         private List<int> difficulty_shapes_color =null;
         private Panel GameOverPanel;
+
+        System.Media.SoundPlayer MoveSound = new System.Media.SoundPlayer();
+        System.Media.SoundPlayer BingoSound = new System.Media.SoundPlayer();
+
         // Get Set
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -29,14 +33,19 @@ namespace OOP_Lab_II.Game
         // Constructors
         public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,Panel gameOVer=null) {
             this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel = gameOVer;
-            grid = new gameGrid(row, col); objects = new List<Cell>(); ScoreBoard = new Label();
-            ScoreBoard.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2-100,40);
-            ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 24,FontStyle.Bold);
-            ScoreBoard.Size = new Size(200,30);
-            ScoreBoard.TextAlign = ContentAlignment.MiddleCenter;
+            grid = new gameGrid(row, col); objects = new List<Cell>();
+            // 
+            // ScoreBoard
+            this.ScoreBoard = new Label();
+            this.ScoreBoard.AutoSize = false;this.ScoreBoard.TextAlign = ContentAlignment.TopCenter;
+            this.ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 25, FontStyle.Bold); 
+            this.ScoreBoard.Text = "Score: 0";
+            //
             score = 0;
             this.scoreCoef = 180 / (Rows + Columns);
             createObjects();
+            MoveSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Move.wav");
+            BingoSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Bingo.wav");
         }
 
         //Methods
@@ -170,38 +179,70 @@ namespace OOP_Lab_II.Game
         }
         private bool checkBingo(int sideCount,int row,int col,int CenterID)
         {
-            int VerticalCounter = 1, HorizantalCounter = 1;
-            bool up = true, down = true, left = true, right = true;
-            for(int i=1;i<sideCount;i++)
+            int PositiveVerticalCounter = 1, NegativeVerticalCounter=0, PositiveHorizantalCounter = 1,NegativeHorizantalCounter=0; // Four Counter for Four direction
+            bool up = true, down = true, left = true, right = true,isBingo=false;   // Four Boolean Value for Four direction and also one bool for Bingo
+            for(int i=1;i<sideCount;i++)    // For sideCount=5 
             {
-                if (up && grid[row - i, col] == CenterID) HorizantalCounter++;
+                if (up && grid[row - i, col] == CenterID) NegativeHorizantalCounter++;    // 4 step to up until arrive the cell which does not match with centerID
                 else up = false;
-                if (down && grid[row + i, col] == CenterID) HorizantalCounter++;
+                if (down && grid[row + i, col] == CenterID) PositiveHorizantalCounter++;// 4 step to down until arrive the cell which does not match with centerID
                 else down = false;
-                if (left && grid[row, col - i] == CenterID) VerticalCounter++;
+                if (left && grid[row, col - i] == CenterID) NegativeVerticalCounter++;// 4 step to left until arrive the cell which does not match with centerID
                 else left = false;
-                if (right && grid[row, col + i] == CenterID) VerticalCounter++;
+                if (right && grid[row, col + i] == CenterID) PositiveVerticalCounter++;// 4 step to right until arrive the cell which does not match with centerID
                 else right = false;
             }
-            if (VerticalCounter >= sideCount || HorizantalCounter >= sideCount)
-                wait(400);
-            if(VerticalCounter>=sideCount)
-                for (int i = -sideCount + 1; i <= sideCount - 1; i++)
+            if(PositiveVerticalCounter + NegativeVerticalCounter >= sideCount|| PositiveHorizantalCounter + NegativeHorizantalCounter >= sideCount)
+            {
+                wait(300);  // wait 400 ms
+                System.Threading.Thread.Sleep(500);
+                BingoSound.Play();
+                updateScore(scoreCoef);
+                isBingo = true;
+            }
+            if(PositiveVerticalCounter + NegativeVerticalCounter >= sideCount) // Is there a bingo vertical
+                for (int i = -NegativeVerticalCounter; i < PositiveVerticalCounter; i++)   // Make Valid Cells which has same id with center cell are Empty
                     if (grid[row, col + i] == CenterID)
-                    {
-                        grid[row, col + i] = 0;
                         this.Change_Cells_ID(objects[row * Columns + col + i].box, 0);
-                    }
-            if (HorizantalCounter >= sideCount)
-                for (int i = -sideCount + 1; i <= sideCount - 1; i++)
+            if (PositiveHorizantalCounter+ NegativeHorizantalCounter >= sideCount) // Is there a bingo horizantal
+                for (int i = -1*NegativeHorizantalCounter; i < PositiveHorizantalCounter; i++)   // Make Valid Cells which has same id with center cell are Empty
                     if (grid[row+i, col] == CenterID)
-                    {
-                        grid[row+i, col] = 0;
                         this.Change_Cells_ID(objects[(row+i) * Columns + col].box, 0);
-                    }
-            return VerticalCounter >= sideCount || HorizantalCounter >= sideCount;
+            return isBingo;
         }
 
+        private void wait(int milliseconds)
+        {
+            var timer1 = new Timer();   // Create a timer
+            if (milliseconds == 0 || milliseconds < 0) return;  // If its not Valid , finish function
+            //
+            // Star Timer
+            timer1.Interval = milliseconds; // Set count
+            timer1.Enabled = true;
+            timer1.Start(); // Start
+
+            timer1.Tick += (s, e) =>{ timer1.Enabled = false; timer1.Stop(); }; // After Waiting; Stop Timer
+
+            while (timer1.Enabled)  // While Timer Waiting; Waited Everything
+                Application.DoEvents();
+        }
+        private void updateScore(int point)
+        {
+            score += point; // Update Integer Score
+            ScoreBoard.Text = "Score: " + score.ToString(); // Update Text Box
+        }
+        private bool gameOver()
+        {
+            if (!grid.isFull())
+                return false;
+            // OPEN GAME OVER PANEL
+            if(dataTransfer.Instance.isHighestScore(score))
+                GameOverPanel.Controls[0].Text = "Well Done"+Environment.NewLine+ "New Highest "+ScoreBoard.Text;
+            else
+                GameOverPanel.Controls[0].Text = "SORRY" + Environment.NewLine + ScoreBoard.Text+Environment.NewLine + "Best Score: "+dataTransfer.Instance.get_account().info[0].ToString();
+            GameOverPanel.Visible = true;
+            return true;
+        }
         public void ClickCell(object sender, EventArgs e)
         {
             deactivateBox();
@@ -243,40 +284,11 @@ namespace OOP_Lab_II.Game
                     Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
                     if(counter--<=0)
                         updateScore(-1);
+                    System.Threading.Thread.Sleep(500);
+                    MoveSound.Play();
                 }
-            if (checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
-                updateScore(scoreCoef);
-            else
+            if (!checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
                 createRandomCells(NumberOfRandomCell);
-        }
-        private void wait(int milliseconds)
-        {
-            var timer1 = new Timer();   // Create a timer
-            if (milliseconds == 0 || milliseconds < 0) return;  // If its not Valid , finish function
-            //
-            // Star Timer
-            timer1.Interval = milliseconds; // Set count
-            timer1.Enabled = true;
-            timer1.Start(); // Start
-
-            timer1.Tick += (s, e) =>{ timer1.Enabled = false; timer1.Stop(); }; // After Waiting; Stop Timer
-
-            while (timer1.Enabled)  // While Timer Waiting; Waited Everything
-                Application.DoEvents();
-        }
-        private void updateScore(int point)
-        {
-            score += point; // Update Integer Score
-            ScoreBoard.Text = "Score: " + score.ToString(); // Update Text Box
-        }
-        private bool gameOver()
-        {
-            if (!grid.isFull())
-                return false;
-            // OPEN GAME OVER PANEL
-            GameOverPanel.Visible = true;
-            GameOverPanel.Controls[0].Text = ScoreBoard.Text;
-            return true;
         }
     }
     

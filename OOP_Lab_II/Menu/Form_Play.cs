@@ -26,11 +26,15 @@ namespace OOP_Lab_II.Menu
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(OptionsForm != null)  OptionsForm.save_Click(sender, e);
-            ((Panel)(this.ParentForm.Controls.Find("popup", true).GetValue(0))).Visible=false;
+            if (!(OptionsForm != null && OptionsForm.OptionsValidation()))
+                return;
+            OptionsForm.save_Click(sender, e);
+            ((Panel)this.ParentForm.Controls.Find("popup", true).GetValue(0)).Visible=false;
+            Menu_Form.sound.Stop();
             (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
             while ( Game.GameScreen.refreshed)
                 (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
+            Menu_Form.sound.PlayLooping();
         }
 
         private void Form_Play_Load(object sender, EventArgs e)

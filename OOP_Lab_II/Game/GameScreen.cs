@@ -53,14 +53,20 @@ namespace OOP_Lab_II.Game
                 await Task.Delay(100 * i + 300);
             }
             label1.Visible = false;
-            for (int i = 0; i < game.Objects.Count; i++)
-                this.Controls.Add(game.Objects[i].box);
-            this.Controls.Add(game.ScoreBoard);
         }
 
         private void Screen_Shown(object sender, EventArgs e)
         {
             StartCounting();
+            for (int i = 0; i < game.Objects.Count; i++)
+                this.Controls.Add(game.Objects[i].box);
+            this.panel1.Controls.Add(game.ScoreBoard);
+            game.ScoreBoard.Size = panel1.Size;
+            BestScoreLabel.BringToFront();
+            BestScoreLabel.Text=BestScoreLabel.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
+            System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
+            sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
+            sound.PlayLooping();
         }
 
         private void refresh_Click(object sender, EventArgs e)

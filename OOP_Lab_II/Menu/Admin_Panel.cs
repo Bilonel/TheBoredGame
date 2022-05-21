@@ -54,15 +54,17 @@ namespace OOP_Lab_II.Menu
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex==2)
-                dataGridView1.Rows[e.RowIndex].Cells[2].Value = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString()))).Replace("-", "");
+            if(e.ColumnIndex==3)
+                dataGridView1.Rows[e.RowIndex].Cells[3].Value = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()))).Replace("-", "");
+            else if(e.ColumnIndex==2)
+                dataGridView1.Rows[e.RowIndex].Cells[2].ReadOnly = true;
         }
 
         private void Admin_Panel_Load(object sender, EventArgs e)
         {
             dataTransfer.Instance.getAll(dataGridView1);
-            dataGridView1.Columns[1].ReadOnly = true;
-            username_label.Text = dataTransfer.Instance.get_account().info[1];
+            dataGridView1.Columns[2].ReadOnly = true;
+            username_label.Text = dataTransfer.Instance.get_account().info[2].ToUpper();
             this.dataGridView1.ForeColor = Color.Black;
 
             ToolTip tt = new ToolTip();
@@ -79,7 +81,16 @@ namespace OOP_Lab_II.Menu
 
         private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            dataGridView1.Rows[e.Row.Index-1].Cells[1].ReadOnly = false;
+            dataGridView1.Rows[e.Row.Index-1].Cells[2].ReadOnly = false;
+        }
+
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("You are Deleting an Account, Are You Sure?", "Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

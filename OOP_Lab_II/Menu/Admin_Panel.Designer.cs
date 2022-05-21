@@ -44,6 +44,7 @@ namespace OOP_Lab_II.Menu
             this.confirm_label = new System.Windows.Forms.Label();
             this.help = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BestScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -277,6 +278,7 @@ namespace OOP_Lab_II.Menu
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BestScore,
             this.AccountType,
             this.Username,
             this.Password,
@@ -293,6 +295,13 @@ namespace OOP_Lab_II.Menu
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserAddedRow);
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
+            // 
+            // BestScore
+            // 
+            this.BestScore.HeaderText = "BestScore";
+            this.BestScore.Name = "BestScore";
+            this.BestScore.Width = 81;
             // 
             // AccountType
             // 
@@ -394,6 +403,7 @@ namespace OOP_Lab_II.Menu
         private System.Windows.Forms.Label confirm_label;
         private System.Windows.Forms.TextBox WarnBox;
         private System.Windows.Forms.Label help;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BestScore;
         private System.Windows.Forms.DataGridViewTextBoxColumn AccountType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
