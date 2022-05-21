@@ -12,14 +12,13 @@ namespace OOP_Lab_II
         //Private Field
         SqlConnection connection;
         string DatabasePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.StartupPath, @"..\..\"))+ @"Data\";
-        string DatabaseName = "Database.mdf";
-        string TableName = "Accounts";
+        string TableName = "AccountTable";
         string ConnectionString;
         private Account account;
         private static dataTransfer instance;    // Instance
         //Private Constructor
         private dataTransfer() {
-            ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + DatabasePath + DatabaseName + ";Integrated Security=True";
+            ConnectionString = @"data source=192.168.43.153; initial catalog=Database;user id=Bilonel;password=bilal123";
         }
         //Public Methods
         public static dataTransfer Instance
@@ -95,7 +94,7 @@ namespace OOP_Lab_II
         {
             this.Open();
             SqlCommand cmd = Cmd(command);
-            cmd.Parameters.AddWithValue("@HighestScore", int.Parse(row[0]));
+            cmd.Parameters.AddWithValue("@BestScore", int.Parse(row[0]));
             cmd.Parameters.AddWithValue("@AccountType", row[1]);
             cmd.Parameters.AddWithValue("@Username", row[2]);
             cmd.Parameters.AddWithValue("@Password", row[3]);
@@ -132,9 +131,10 @@ namespace OOP_Lab_II
             for (int i = 0; i < row.Length; i++)
                 if (row[i] == null)
                     row[i] = "";
+            row[1] = "admin";
 
             string command = "INSERT INTO " + TableName + " VALUES(" +
-                "@HighestScore,@AccountType,@Username,@Password,@NameSurname," +
+                "@BestScore,@AccountType,@Username,@Password,@NameSurname," +
                 "@Email,@Phone,@Country,@City,@Address)";
             this.pushAccount(command,row);
         }
@@ -174,7 +174,7 @@ namespace OOP_Lab_II
                 row[3] = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row[2]))).Replace("-", "");
 
             string command = "update " + TableName + " set " +
-                "HighestScore=@HighestScore," +
+                "BestScore=@BestScore," +
                 "AccountType=@AccountType," +
                 "Password=@Password," +
                 "NameSurname=@NameSurname," +

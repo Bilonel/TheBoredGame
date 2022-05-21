@@ -61,9 +61,21 @@ namespace OOP_Lab_II.Menu
         {
             this.Close();
         }
-
+        public bool OptionsValidation()
+        {
+            if (shapeList.CheckedItems.Count * colorList.CheckedItems.Count < 2) // USER HAS TO SELECT AT LEAST 3 ITEMS (1X2 OR 2X1)
+            {
+                MessageBox.Show("Invalid Options !"+Environment.NewLine+" Please select more shapes or colors");
+                return false;
+            }
+            return true;
+        }
         public void save_Click(object sender, EventArgs e)
         {
+            if (!OptionsValidation())
+                return;
+            if (custom_panel.Visible == false)  // If Custom Settings is not selected 
+                setDefault();       // Then Set Default Options For Shapes and Colors
             difficulty_index = diffBox.SelectedIndex;
             shapes_index = Convert.ToInt32(shapeList.GetItemChecked(0)) + 10 * Convert.ToInt32(shapeList.GetItemChecked(1)) + 100*Convert.ToInt32(shapeList.GetItemChecked(2));
             color_index= Convert.ToInt32(colorList.GetItemChecked(0)) + 10 * Convert.ToInt32(colorList.GetItemChecked(1)) + 100 * Convert.ToInt32(colorList.GetItemChecked(2));
@@ -84,7 +96,14 @@ namespace OOP_Lab_II.Menu
         {
             save_button.Size = new System.Drawing.Size(bottom_panel.Size.Width / 2-60, 46);
         }
-
+        private void setDefault()
+        {
+            for(int i=0;i<3;i++)
+            {
+                shapeList.SetItemChecked(i,true);
+                colorList.SetItemChecked(i,true);
+            }
+        }
         private void Form_Options_Load(object sender, EventArgs e)
         {
             ToolTip toolTip1 = new ToolTip();
@@ -97,7 +116,7 @@ namespace OOP_Lab_II.Menu
 
         private void diffBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            custom_panel.Visible = diffBox.SelectedIndex == 3;
+            shape_panel.Visible = color_panel.Visible= custom_panel.Visible = (diffBox.SelectedIndex == 3); // IF CUSTOM SETTINGS SELECTED THEN THESE PANELS VISIBLE WILL BE TRUE
         }
     }
 }

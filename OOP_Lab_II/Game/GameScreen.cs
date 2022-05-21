@@ -61,6 +61,9 @@ namespace OOP_Lab_II.Game
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
             this.panel1.Controls.Add(game.ScoreBoard);
+            game.ScoreBoard.Size = panel1.Size;
+            BestScoreLabel.BringToFront();
+            BestScoreLabel.Text=BestScoreLabel.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
             System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
             sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
             sound.PlayLooping();

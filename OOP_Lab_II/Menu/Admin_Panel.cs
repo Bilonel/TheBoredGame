@@ -83,5 +83,14 @@ namespace OOP_Lab_II.Menu
         {
             dataGridView1.Rows[e.Row.Index-1].Cells[2].ReadOnly = false;
         }
+
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("You are Deleting an Account, Are You Sure?", "Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
