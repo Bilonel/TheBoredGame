@@ -15,11 +15,12 @@ namespace OOP_Lab_II.Game
         Game game;
         int row, col;
         List<int> GameInitialIds;
-        public static bool refreshed,multiplayer;
-        public GameScreen(int[] diffficulty,bool multi=false)
+        public static bool refreshed;
+        public string secondPlayerInitalInfos;
+        public GameScreen(int[] diffficulty,string secondPlayerInitalInfos=null)
         {
             InitializeComponent();
-            refreshed = false;multiplayer = multi;
+            refreshed = false; this.secondPlayerInitalInfos = secondPlayerInitalInfos;
             GameInitialIds = new List<int>();
             this.row = diffficulty[0]; this.col = diffficulty[1];
             for (int i = 0; i < 3; i++)
@@ -38,10 +39,11 @@ namespace OOP_Lab_II.Game
 
         private void Screen_Load(object sender, EventArgs e)
         {
+            p2_panel.Visible = !String.IsNullOrEmpty(secondPlayerInitalInfos);
             this.Bounds = Screen.PrimaryScreen.Bounds;
             gameOverPanel.Size = new Size(this.Bounds.Width/3, this.Bounds.Height);
             gameOverPanel.Location = new Point(this.Bounds.Width / 3);
-            game = new Game(row, col, GameInitialIds,this.gameOverPanel,multiplayer);
+            game = new Game(row, col, GameInitialIds,this.gameOverPanel, !String.IsNullOrEmpty(secondPlayerInitalInfos));
         }
 
         private async void StartCounting()
@@ -60,13 +62,24 @@ namespace OOP_Lab_II.Game
             StartCounting();
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
-            this.panel1.Controls.Add(game.ScoreBoard);
-            game.ScoreBoard.Size = panel1.Size;
-            BestScoreLabel.BringToFront();
-            BestScoreLabel.Text=BestScoreLabel.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
+            this.p1_scorePanel.Controls.Add(game.ScoreBoard);
+            game.ScoreBoard.Size = p1_scorePanel.Size;
+            p1_name.Text = dataTransfer.Instance.get_account().info[2];
+            p1_bestScore.BringToFront();
+            p1_bestScore.Text=p1_bestScore.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
+            if(!String.IsNullOrEmpty(secondPlayerInitalInfos))
+            {
+                p2_name.Text = secondPlayerInitalInfos.Split(':').First();
+                this.p2_scorePanel.Controls.Add(game.ScoreBoard_for_SecondPlayer);
+                game.ScoreBoard_for_SecondPlayer.Size = p2_scorePanel.Size;
+                p2_bestScore.BringToFront();
+                p2_bestScore.Text = p2_bestScore.Text.Substring(0, 12).ToString() + secondPlayerInitalInfos.Split(':').Last();
+            }
+            //
+            // Sound
             System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
             sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
-            sound.PlayLooping();
+            //sound.PlayLooping();
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -78,6 +91,11 @@ namespace OOP_Lab_II.Game
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public void gameOver()
+        {
+            label3.Text = "YOU WIN !" + Environment.NewLine + ":OPPONENT LEFT:";
+            gameOverPanel.Visible = true;
         }
     }
 

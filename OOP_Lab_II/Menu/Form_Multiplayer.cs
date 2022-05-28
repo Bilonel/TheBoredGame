@@ -9,7 +9,7 @@ namespace OOP_Lab_II.Menu
     public partial class Form_Multiplayer : Form
     {
         // Field
-
+        Game.GameScreen gameScreen;
         public Form_Multiplayer()
         {
             InitializeComponent();
@@ -42,11 +42,12 @@ namespace OOP_Lab_II.Menu
             stopBtn.Enabled = false;
             stopBtn.Text = "Starting...";
             wait(500);
-            (new Game.GameScreen(new int[] { 8, 8, 010, 011 }, true)).ShowDialog();
+            gameScreen = (new Game.GameScreen(new int[] { 8, 8, 010, 011 }, SecondPlayerName + ":" + dataTransfer.Instance.readUser(SecondPlayerName)[0]));
+            gameScreen.ShowDialog();
         }
         public void MatchOver()
         {
-            stopBtn.Visible = false;
+            gameScreen.gameOver();
         }
         private void Form_Multiplayer_FormClosing(object sender, FormClosingEventArgs e)
         {

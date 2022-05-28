@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_II.Game
 {
-    class Multiplayer
+    static class Multiplayer
     {
-
+        
     }
 }

@@ -18,6 +18,8 @@ namespace OOP_Lab_II.Game
         private List<Cell> objects;
         private PictureBox activeBox;
         public Label ScoreBoard { get; }
+        public Label ScoreBoard_for_SecondPlayer { get; }
+
         private int score;
         private List<int> difficulty_shapes_color =null;
         private Panel GameOverPanel;
@@ -36,10 +38,12 @@ namespace OOP_Lab_II.Game
             grid = new gameGrid(row, col); objects = new List<Cell>();
             // 
             // ScoreBoard
-            this.ScoreBoard = new Label();
-            this.ScoreBoard.AutoSize = false;this.ScoreBoard.TextAlign = ContentAlignment.TopCenter;
-            this.ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 25, FontStyle.Bold); 
+            this.ScoreBoard = new Label(); this.ScoreBoard.AutoSize  = false;
+            this.ScoreBoard.TextAlign  = ContentAlignment.TopCenter; this.ScoreBoard.Location = new Point(0, 25);
+            this.ScoreBoard.BackColor = Color.Transparent; this.ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 20, FontStyle.Bold); 
             this.ScoreBoard.Text = "Score: 0";
+            if (multiplayerMode)
+                ScoreBoard_for_SecondPlayer = ScoreBoard;
             //
             score = 0;
             this.scoreCoef = 180 / (Rows + Columns);
@@ -231,7 +235,7 @@ namespace OOP_Lab_II.Game
             score += point; // Update Integer Score
             ScoreBoard.Text = "Score: " + score.ToString(); // Update Text Box
         }
-        private bool gameOver()
+        public bool gameOver()
         {
             if (!grid.isFull())
                 return false;

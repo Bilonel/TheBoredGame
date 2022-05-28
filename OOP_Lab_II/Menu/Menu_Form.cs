@@ -107,7 +107,7 @@ namespace OOP_Lab_II.Menu
             save_password_panel_timer();
             sound = new System.Media.SoundPlayer();
             sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.GuitarSound.wav");
-            sound.PlayLooping();
+          //  sound.PlayLooping();
         }
         private void save_password_panel_timer()
         {
