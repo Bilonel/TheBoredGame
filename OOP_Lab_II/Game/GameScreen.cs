@@ -12,15 +12,16 @@ namespace OOP_Lab_II.Game
 {
     public partial class GameScreen : Form
     {
+        Multiplayer multiplayer;
         Game game;
         int row, col;
         List<int> GameInitialIds;
         public static bool refreshed;
         public string secondPlayerInitalInfos;
-        public GameScreen(int[] diffficulty,string secondPlayerInitalInfos=null)
+        public GameScreen(bool isHost,int[] diffficulty)
         {
             InitializeComponent();
-            refreshed = false; this.secondPlayerInitalInfos = secondPlayerInitalInfos;
+            refreshed = false;
             GameInitialIds = new List<int>();
             this.row = diffficulty[0]; this.col = diffficulty[1];
             for (int i = 0; i < 3; i++)
@@ -35,15 +36,17 @@ namespace OOP_Lab_II.Game
                     }
                 diffficulty[2] /= 10;
             }
+            multiplayer = Multiplayer.instance(isHost, gameOverPanel);
+            game = multiplayer.game;
+            game.createRandomCells(3);
         }
 
         private void Screen_Load(object sender, EventArgs e)
         {
             p2_panel.Visible = !String.IsNullOrEmpty(secondPlayerInitalInfos);
-            this.Bounds = Screen.PrimaryScreen.Bounds;
+            this.Bounds = new Rectangle(400, 300, 800, 600);
             gameOverPanel.Size = new Size(this.Bounds.Width/3, this.Bounds.Height);
             gameOverPanel.Location = new Point(this.Bounds.Width / 3);
-            game = new Game(row, col, GameInitialIds,this.gameOverPanel, !String.IsNullOrEmpty(secondPlayerInitalInfos));
         }
 
         private async void StartCounting()
@@ -59,7 +62,6 @@ namespace OOP_Lab_II.Game
 
         private void Screen_Shown(object sender, EventArgs e)
         {
-            StartCounting();
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
             this.p1_scorePanel.Controls.Add(game.ScoreBoard);

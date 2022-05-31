@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading.Tasks;
-
+using System.Text;
 
 namespace OOP_Lab_II.Game
 {
-    class Game
+    public class Game
     {
         const int NumberOfSameCellsToWin = 5;
         const int NumberOfRandomCell = 3;
@@ -33,8 +33,8 @@ namespace OOP_Lab_II.Game
         
         public List<Cell> Objects { get => objects; }
         // Constructors
-        public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,Panel gameOVer=null,bool multi=false) {
-            this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel = gameOVer;this.multiplayerMode = multi;
+        public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,bool multi=false,Panel gameOverPanel=null) {
+            this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.GameOverPanel=gameOverPanel;this.multiplayerMode = multi;
             grid = new gameGrid(row, col); objects = new List<Cell>();
             // 
             // ScoreBoard
@@ -53,8 +53,9 @@ namespace OOP_Lab_II.Game
         }
 
         //Methods
-        private void createRandomCells(int count)
+        public void createRandomCells(int count)
         {
+            string CreatedCellsString="";
             Random random = new Random();
             while (!gameOver()&&(count--)>0)
             {
@@ -65,9 +66,18 @@ namespace OOP_Lab_II.Game
                     continue;
                 }
                 int id = difficulty_shapes_color[random.Next(difficulty_shapes_color.Count)];   // SELECT AN ID
+                CreatedCellsString += r.ToString() + "," + c.ToString() + "," + id.ToString()+":";
                 Change_Cells_ID(objects[r * Columns + c].box,id);                             // SET ID
                 checkBingo(NumberOfSameCellsToWin, r, c, id);                            // CHECK IS THERE ANY BINGO (side by side, 5 same box)
             }
+            Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("random:" + CreatedCellsString));
+        }
+        public void createRandomCell(int row,int col,int id)
+        {
+            if(gameOver() || grid[row, col] != 0) // IF BOX IS NOT EMPTY
+                return;
+            Change_Cells_ID(objects[row * Columns + col].box, id);           // SET ID
+            checkBingo(NumberOfSameCellsToWin, row, col, id);          // CHECK IS THERE ANY BINGO (side by side, 5 same box)
         }
         private void createObjects()
         {
@@ -82,9 +92,8 @@ namespace OOP_Lab_II.Game
                     Change_Cells_ID(cell.box, grid[i, j]);  // Set all of them ids
                 }
             }
-            createRandomCells(NumberOfRandomCell);
         }
-        private void Change_Cells_ID(PictureBox box, int value)
+        public void Change_Cells_ID(PictureBox box, int value)
         {
             //
             // Set Cell IDs
@@ -181,8 +190,10 @@ namespace OOP_Lab_II.Game
             //if (grid.isEmpty(row, col + 1)) showTarget(row, col + 1, distance + 1); // move to right
             //if (grid.isEmpty(row, col - 1)) showTarget(row, col - 1, distance + 1); // move to left
         }
-        private bool checkBingo(int sideCount,int row,int col,int CenterID)
+        public bool checkBingo(int sideCount,int row,int col,int CenterID=-1)
         {
+            if (CenterID == -1)
+                CenterID = grid[row, col];
             int PositiveVerticalCounter = 1, NegativeVerticalCounter=0, PositiveHorizantalCounter = 1,NegativeHorizantalCounter=0; // Four Counter for Four direction
             bool up = true, down = true, left = true, right = true,isBingo=false;   // Four Boolean Value for Four direction and also one bool for Bingo
             for(int i=1;i<sideCount;i++)    // For sideCount=5 
@@ -249,12 +260,16 @@ namespace OOP_Lab_II.Game
         }
         public void ClickCell(object sender, EventArgs e)
         {
+            int[] clickedLocation = grid.locationToIndex(((PictureBox)sender).Location);
+            string clickedText = clickedLocation[0].ToString() + "," + clickedLocation[1].ToString();
             deactivateBox();
             //Activate New Targets
             //PathFindng(new Point(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1]), new Point(1, 1), 0, "", true);
-            showTarget(grid.locationToIndex(((PictureBox)sender).Location)[0], grid.locationToIndex(((PictureBox)sender).Location)[1],15);
+            showTarget(clickedLocation[0],clickedLocation[1],15);
             //Activate New Active Box
             activeBox = ((PictureBox)sender); activeBox.BackColor = Color.Cyan; activeBox.Padding = new Padding(3);
+            if (((PictureBox)sender).Enabled)
+                Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("click:" + clickedText));
         }
         public void ClickMove(object sender,EventArgs e)
         {
@@ -263,6 +278,10 @@ namespace OOP_Lab_II.Game
             deactivateBox();
             int TargetRow = grid.locationToIndex(((PictureBox)sender).Location)[0];
             int TargetCol = grid.locationToIndex(((PictureBox)sender).Location)[1];
+
+            string targetText = TargetRow.ToString() + "," + TargetCol.ToString();
+            if (((PictureBox)sender).Enabled)
+                Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("move:"+targetText));
 
             string Path = PathFindng(new Point(CurrentRow, CurrentCol), new Point(TargetRow, TargetCol), 0,"");
             deactivateBox();
@@ -291,8 +310,9 @@ namespace OOP_Lab_II.Game
                     System.Threading.Thread.Sleep(500);
                     MoveSound.Play();
                 }
-            if (!checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
-                createRandomCells(NumberOfRandomCell);
+            checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id);
+            if(((PictureBox)sender).Enabled)
+                Multiplayer.instance().Receiver.RunWorkerAsync();
         }
     }
     

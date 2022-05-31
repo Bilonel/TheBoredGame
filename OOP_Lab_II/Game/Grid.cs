@@ -8,6 +8,7 @@ namespace OOP_Lab_II.Game
 {
     class gameGrid
     {
+        private const int height = 550,width=800;
         private int[,] matrix;
         private int cellSize;
         private Point startPoint;   // Start Location of Grid
@@ -21,8 +22,8 @@ namespace OOP_Lab_II.Game
         public gameGrid(int x,int y) { 
             matrix = new int[x, y]; 
             Row = x; Column = y;
-            cellSize = Screen.PrimaryScreen.Bounds.Height * 4 / 5 / Row;
-            startPoint = new Point((Screen.PrimaryScreen.Bounds.Width - Column * cellSize) / 2, (Screen.PrimaryScreen.Bounds.Height - Row * cellSize) * 3 / 4);
+            cellSize = height * 4 / 5 / Row;
+            startPoint = new Point((width - Column * cellSize) / 2, (height - Row * cellSize) * 3 / 4);
             createEmptyGrid();
         }
 

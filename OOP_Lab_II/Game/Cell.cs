@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab_II.Game
 {
-    class Cell
+    public class Cell
     {
         //Field
         public System.Windows.Forms.PictureBox box { get; set; }

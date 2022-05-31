@@ -56,6 +56,20 @@ namespace OOP_Lab_II.Game
             this.gameOverPanel.SuspendLayout();
             this.SuspendLayout();
             // 
+            // button1
+            // 
+            button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(60)))));
+            button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Location = new System.Drawing.Point(317, 5);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(100, 25);
+            button1.TabIndex = 1;
+            button1.Text = "MENU";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -67,6 +81,7 @@ namespace OOP_Lab_II.Game
             this.label1.Size = new System.Drawing.Size(140, 153);
             this.label1.TabIndex = 0;
             this.label1.Text = "3";
+            this.label1.Visible = false;
             // 
             // p1_scorePanel
             // 
@@ -185,20 +200,6 @@ namespace OOP_Lab_II.Game
             this.p2_bestScore.Text = "Best Score: 0";
             this.p2_bestScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(60)))));
-            button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Location = new System.Drawing.Point(317, 5);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(100, 25);
-            button1.TabIndex = 1;
-            button1.Text = "MENU";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // refresh
             // 
             this.refresh.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -265,7 +266,7 @@ namespace OOP_Lab_II.Game
             this.Controls.Add(this.p1_panel);
             this.Controls.Add(button1);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "GameScreen";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Screen_Load);

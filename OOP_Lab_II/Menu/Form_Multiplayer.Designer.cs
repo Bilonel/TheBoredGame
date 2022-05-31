@@ -35,7 +35,7 @@ namespace OOP_Lab_II.Menu
             this.player2Name = new System.Windows.Forms.Label();
             this.avatar2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.stopBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.avatar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar2)).BeginInit();
             this.SuspendLayout();
@@ -48,13 +48,13 @@ namespace OOP_Lab_II.Menu
             this.findButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.findButton.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.findButton.Location = new System.Drawing.Point(154, 433);
+            this.findButton.Location = new System.Drawing.Point(123, 456);
             this.findButton.Name = "findButton";
-            this.findButton.Size = new System.Drawing.Size(284, 73);
+            this.findButton.Size = new System.Drawing.Size(349, 62);
             this.findButton.TabIndex = 6;
-            this.findButton.Text = "READY!";
+            this.findButton.Text = "HOST";
             this.findButton.UseVisualStyleBackColor = false;
-            this.findButton.Click += new System.EventHandler(this.findButton_Click);
+            this.findButton.Click += new System.EventHandler(this.HostButton_Click);
             // 
             // avatar1
             // 
@@ -121,22 +121,21 @@ namespace OOP_Lab_II.Menu
             this.label3.TabIndex = 11;
             this.label3.Text = "VS";
             // 
-            // stopBtn
+            // button1
             // 
-            this.stopBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.stopBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
-            this.stopBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopBtn.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.stopBtn.Location = new System.Drawing.Point(154, 433);
-            this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(284, 73);
-            this.stopBtn.TabIndex = 12;
-            this.stopBtn.Text = "NOT READY!";
-            this.stopBtn.UseVisualStyleBackColor = false;
-            this.stopBtn.Visible = false;
-            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(90)))), ((int)(((byte)(110)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(123, 384);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(349, 61);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "CONNECT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // Form_Multiplayer
             // 
@@ -144,17 +143,16 @@ namespace OOP_Lab_II.Menu
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(601, 543);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.player2Name);
             this.Controls.Add(this.avatar2);
             this.Controls.Add(this.player1Name);
             this.Controls.Add(this.avatar1);
-            this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.findButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Multiplayer";
             this.Text = "Form_Multiplayer";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Multiplayer_FormClosing);
             this.Load += new System.EventHandler(this.Form_Multiplayer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.avatar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar2)).EndInit();
@@ -170,6 +168,6 @@ namespace OOP_Lab_II.Menu
         private System.Windows.Forms.Label player2Name;
         private System.Windows.Forms.PictureBox avatar2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button stopBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
