@@ -23,7 +23,12 @@ namespace OOP_Lab_II
                 Application.Run(loginForm);
                 if(loginForm.UserSuccessfullyAuthenticated)
                 {
+<<<<<<< HEAD
                     Application.Run(new Menu.Menu_Form());
+=======
+                    Menu.Menu_Form menu =new Menu.Menu_Form();
+                    Application.Run(menu);
+>>>>>>> Test2_Coop
                 }
             }
             catch (Exception e)

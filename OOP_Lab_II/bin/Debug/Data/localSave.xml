@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Difficulty>
+    <value>3</value>
+  </Difficulty>
+  <Difficulty_x>
+    <value>6</value>
+  </Difficulty_x>
+  <Difficulty_y>
+    <value>2</value>
+  </Difficulty_y>
+  <Shapes>
+    <value>10</value>
+  </Shapes>
+  <Color>
+    <value>11</value>
+  </Color>
+  <LastUsername>
+    <value>b</value>
+  </LastUsername>
+  <Password>
+    <apply>0</apply>
+    <value>b</value>
+  </Password>
+</Settings>

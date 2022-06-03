@@ -66,6 +66,10 @@
   <ItemGroup>
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\dataTranfer.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Data\HostConnectServer.cs" />
+>>>>>>> Test2_Coop
     <Compile Include="Entrance\Register_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +230,11 @@
     <EmbeddedResource Include="Game\audio\Bingo.wav" />
     <EmbeddedResource Include="Game\audio\GuitarSound.wav" />
     <EmbeddedResource Include="Game\audio\Move.wav" />
+<<<<<<< HEAD
+=======
+    <EmbeddedResource Include="Game\res\Mute.png" />
+    <EmbeddedResource Include="Game\res\MuteCross.png" />
+>>>>>>> Test2_Coop
     <Content Include="Menu\res\BORED_GAME_BACKGROUND.jpg" />
     <None Include="Menu\res\profilePanel.png" />
     <None Include="Menu\res\credits.png" />

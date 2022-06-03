@@ -95,7 +95,10 @@ namespace OOP_Lab_II.Menu
         {
             activateForm(dataTransfer.Instance.get_account().Form);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> Test2_Coop
         private void Menu_Form_Load(object sender, EventArgs e)
         {
             ToolTip tt = new ToolTip();
@@ -107,7 +110,11 @@ namespace OOP_Lab_II.Menu
             save_password_panel_timer();
             sound = new System.Media.SoundPlayer();
             sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.GuitarSound.wav");
+<<<<<<< HEAD
           //  sound.PlayLooping();
+=======
+            sound.PlayLooping();
+>>>>>>> Test2_Coop
         }
         private void save_password_panel_timer()
         {
@@ -148,6 +155,7 @@ namespace OOP_Lab_II.Menu
             }
             else
             {
+<<<<<<< HEAD
                 this.Size = new System.Drawing.Size(800, 500);
                 ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
             }
@@ -158,6 +166,18 @@ namespace OOP_Lab_II.Menu
             exitPopup.Size = new Size((int)(this.Size.Width * 40/ 800), (int)(this.Size.Height * 40/ 500));
         }
         private void exitPopup_Click(object sender, EventArgs e)
+=======
+                this.Size = new System.Drawing.Size(816, 539);
+                ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
+            }
+            this.CenterToScreen();
+            windowPanel.Size = new Size((int)(this.Size.Width * 500/ 816), (int)(this.Size.Height * 350/ 539));
+            windowPanel.Location = new Point((int)(this.Size.Width * 150/ 816), (int)(this.Size.Height * 90/ 539));
+            exitPopup.Location= new Point((int)(this.Size.Width * 650/ 816), (int)(this.Size.Height * 50/ 539));
+            exitPopup.Size = new Size((int)(this.Size.Width * 40/ 816), (int)(this.Size.Height * 40/ 539));
+        }
+        public void exitPopup_Click(object sender, EventArgs e)
+>>>>>>> Test2_Coop
         {
             this.windowPanel.Controls.Clear();
             if (currentForm != null)
@@ -165,5 +185,19 @@ namespace OOP_Lab_II.Menu
             popup.Visible = false;
         }
 
+<<<<<<< HEAD
+=======
+        private void muteButton_Click(object sender, EventArgs e)
+        {
+            if (muteButton.Image == null)
+            {
+                this.muteButton.Image = global::OOP_Lab_II.Properties.Resources.MuteCross;
+                sound.Stop();
+                return;
+            }
+            this.muteButton.Image = null;
+            sound.PlayLooping();
+        }
+>>>>>>> Test2_Coop
     }
 }
