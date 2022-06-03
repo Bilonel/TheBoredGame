@@ -13,28 +13,36 @@ namespace OOP_Lab_II.Game
 {
     public class Multiplayer
     {
+        bool isHost;
         private const int bufferSize = 2048;
+        public int NumberOfRandomCells = 3;
         public Game game;
         public Label InfoLabel;
 
         public BackgroundWorker Receiver = new BackgroundWorker();
         public Socket sock;
-        private TcpListener server = null;
+        public TcpListener server = null;
         private TcpClient client;
-        private Multiplayer(bool isHost,Panel gameOverPanel=null)
+        private Multiplayer(System.Net.IPAddress IP,int Port, bool isHost, GameScreen gameScreen = null,bool isMute=false)
         {
-            game = new Game(9, 9, new List<int>() { 5, 6, 7, 8, 9, 10 }, true,gameOverPanel);
+            game = new Game(9, 9, new List<int>() { 5, 6, 7, 8, 9, 10 }, true, gameScreen, isMute);
             InfoLabel = new Label();
-            InfoLabel.Location = new Point(40, 500);
-            
+            InfoLabel.TextAlign = ContentAlignment.MiddleCenter;
+            InfoLabel.Dock = DockStyle.Top;
+            InfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.0F);
+            InfoLabel.AutoSize = false;
+            InfoLabel.Size = new Size(InfoLabel.Size.Width,48);
+            InfoLabel.BackColor = Color.FromArgb(60, 100, 40, 50);
+            this.isHost = isHost;
             Receiver.DoWork += Receiver_DoWork;
             Control.CheckForIllegalCrossThreadCalls = false;
 
             if (isHost)
             {
-                server = new TcpListener(System.Net.IPAddress.Any, 5732);
+                server = new TcpListener(IP, Port);
                 server.Start();
                 sock = server.AcceptSocket();
+                InfoLabel.Text = "Your Turn";
             }
             else
             {
@@ -51,24 +59,30 @@ namespace OOP_Lab_II.Game
             }
         }
         private static Multiplayer Ins=null;
-        public static Multiplayer instance(bool isHost=false, Panel gameOverPanel = null)
+        public static Multiplayer instance(System.Net.IPAddress IP=null, int Port=0, bool isHost=false, GameScreen gameScreen = null,bool isMute=false)
         {
             if (Ins == null)
-                Ins = new Multiplayer(isHost, gameOverPanel);
+                Ins = new Multiplayer(IP,Port,isHost, gameScreen, isMute);
+            else if (Port == -1923)
+                Ins = null;
             return Ins;
         }
 
         private void Receiver_DoWork(object sender, DoWorkEventArgs e)
         {
             Freeze_UnfreezeBoard();//////////////
-            ReceiveRandomCells();
-            //if (game.gameOver())
-            //    return;
             //Opponent's Turn!
+            InfoLabel.Text = "Opponents Turn";
+            ReceiveRandomCells();
+            if (game.gameOver())   // IS GAME OVER ?
+                return;
             ReceiveClickedCell();
             ReceiveMove();
             //Your Turn!
-            game.createRandomCells(3);
+            InfoLabel.Text = "Your Turn";
+            game.createRandomCells(NumberOfRandomCells);
+            if (game.gameOver())   // IS GAME OVER ?
+                return;
             Freeze_UnfreezeBoard();
         }
 
@@ -77,7 +91,6 @@ namespace OOP_Lab_II.Game
             foreach (var item in game.Objects)
                 item.box.Enabled = !item.box.Enabled;
         }
-
         private void ReceiveClickedCell()
         {
             byte[] clickedCell = new byte[bufferSize];
@@ -93,7 +106,7 @@ namespace OOP_Lab_II.Game
         private void ReceiveMove()
         {
             byte[] targetCell = new byte[bufferSize];
-            while (!Encoding.ASCII.GetString(targetCell).Contains("move")) sock.Receive(targetCell);
+            sock.Receive(targetCell);
             string text = Encoding.ASCII.GetString(targetCell).Split(':').Last();
             int TargetRow = int.Parse(text.Split(',').First());
             int TargetCol = int.Parse(text.Split(',').Last());
@@ -104,27 +117,34 @@ namespace OOP_Lab_II.Game
         }
         private void ReceiveRandomCells()
         {
-            int i = 0;
             byte[] buffer = new byte[bufferSize];
-            while (!Encoding.ASCII.GetString(buffer).ToLower().Contains("random")) sock.Receive(buffer);
-            
-            string text = Encoding.ASCII.GetString(buffer).Split('m').Last().Split('\0').First().Substring(1);
-            foreach (var CellData in text.Split(':'))
+            sock.Receive(buffer);
+
+            string text = Encoding.ASCII.GetString(buffer).Split(':').Last().Split('\0').First();
+            text =text.Substring(0, text.Length - 1);
+            foreach (var item in text.Split(';'))
             {
-                if ((++i)>3 || CellData.Length<3)
+                if (text.Length < 5)
                     return;
-                int Cell_Row = int.Parse(CellData.Split(',')[0]);
-                int Cell_Col = int.Parse(CellData.Split(',')[1]);
-                int Cell_Id = int.Parse(CellData.Split(',')[2]);
+                int Cell_Row = int.Parse(item.Split(',')[0]);
+                int Cell_Col = int.Parse(item.Split(',')[1]);
+                int Cell_Id = int.Parse(item.Split(',')[2]);
                 game.createRandomCell(Cell_Row, Cell_Col, Cell_Id);
             }
-        }
-        private void Game_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Receiver.WorkerSupportsCancellation = true;
-            Receiver.CancelAsync();
-            if (server != null)
-                server.Stop();
+
+            //for(int i=0;i< NumberOfRandomCells;i++)
+            //{
+            //    byte[] buffer = new byte[bufferSize];
+            //    sock.Receive(buffer);
+
+            //    string text = Encoding.ASCII.GetString(buffer).Split(':').Last().Split('\0').First();
+            //    if (text.Length<5)
+            //        return;
+            //    int Cell_Row = int.Parse(text.Split(',')[0]);
+            //    int Cell_Col = int.Parse(text.Split(',')[1]);
+            //    int Cell_Id = int.Parse(text.Split(',')[2]);
+            //    game.createRandomCell(Cell_Row, Cell_Col, Cell_Id);
+            //}
         }
 
     }

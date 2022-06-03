@@ -17,8 +17,9 @@ namespace OOP_Lab_II.Game
         int row, col;
         List<int> GameInitialIds;
         public static bool refreshed;
-        public string secondPlayerInitalInfos;
-        public GameScreen(bool isHost,int[] diffficulty)
+        public string OpponentInfos=null;
+        private bool isHost;
+        public GameScreen(int[] diffficulty, bool isMute = false)
         {
             InitializeComponent();
             refreshed = false;
@@ -36,52 +37,72 @@ namespace OOP_Lab_II.Game
                     }
                 diffficulty[2] /= 10;
             }
-            multiplayer = Multiplayer.instance(isHost, gameOverPanel);
-            game = multiplayer.game;
-            game.createRandomCells(3);
+            game = new Game(row, col, GameInitialIds, false, this, isMute);
         }
-
+        public GameScreen(bool isHost,int[] diffficulty,bool isMute=false,string Opponent=":",System.Net.IPAddress IP=null,int port=0)
+        {
+            InitializeComponent();
+            refreshed = false;this.isHost = isHost;
+            OpponentInfos = Opponent;
+            GameInitialIds = new List<int>();
+            this.row = diffficulty[0]; this.col = diffficulty[1];
+            for (int i = 0; i < 3; i++)
+            {
+                int colors = diffficulty[3];
+                if (diffficulty[2] % 10 == 1)
+                    for (int k = 2; k < 5; k++)
+                    {
+                        if (colors % 10 == 1)
+                            GameInitialIds.Add(i * 3 + k);
+                        colors /= 10;
+                    }
+                diffficulty[2] /= 10;
+            }
+            multiplayer = Multiplayer.instance(IP,port,isHost, this,isMute);   // Initialize Multiplayer
+            //
+            //Delete User from Host List
+            //
+            (new Data.HostConnectServer()).deleteHost(dataTransfer.Instance.get_account().info[2]);
+            //
+            // Start the game with 3 random cells
+            //
+            game = multiplayer.game;
+            
+        }
         private void Screen_Load(object sender, EventArgs e)
         {
-            p2_panel.Visible = !String.IsNullOrEmpty(secondPlayerInitalInfos);
+            p2_panel.Visible = !String.IsNullOrEmpty(OpponentInfos);
             this.Bounds = new Rectangle(400, 300, 800, 600);
-            gameOverPanel.Size = new Size(this.Bounds.Width/3, this.Bounds.Height);
-            gameOverPanel.Location = new Point(this.Bounds.Width / 3);
+            gameOverPanel.Size = new Size(this.Bounds.Width/2, this.Bounds.Height);
+            gameOverPanel.Location = new Point(this.Bounds.Width / 4);
         }
-
-        private async void StartCounting()
-        {
-            label1.Location = new Point(this.Bounds.Width / 2 - 70, this.Bounds.Height / 2 - 100);
-            for (int i = 3; i >= 0; i--)
-            {
-                label1.Text = i.ToString();
-                await Task.Delay(100 * i + 300);
-            }
-            label1.Visible = false;
-        }
-
         private void Screen_Shown(object sender, EventArgs e)
         {
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
             this.p1_scorePanel.Controls.Add(game.ScoreBoard);
             game.ScoreBoard.Size = p1_scorePanel.Size;
+            game.ScoreBoard.BringToFront();
             p1_name.Text = dataTransfer.Instance.get_account().info[2];
             p1_bestScore.BringToFront();
             p1_bestScore.Text=p1_bestScore.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
-            if(!String.IsNullOrEmpty(secondPlayerInitalInfos))
+            if (!String.IsNullOrEmpty(OpponentInfos))
             {
-                p2_name.Text = secondPlayerInitalInfos.Split(':').First();
+                this.p1_panel.Controls.Add(multiplayer.InfoLabel);
+                multiplayer.InfoLabel.BringToFront();
+                p2_name.Text = OpponentInfos.Split(':').First();
                 this.p2_scorePanel.Controls.Add(game.ScoreBoard_for_SecondPlayer);
                 game.ScoreBoard_for_SecondPlayer.Size = p2_scorePanel.Size;
                 p2_bestScore.BringToFront();
-                p2_bestScore.Text = p2_bestScore.Text.Substring(0, 12).ToString() + secondPlayerInitalInfos.Split(':').Last();
+                p2_bestScore.Text = p2_bestScore.Text.Substring(0, 12).ToString() + OpponentInfos.Split(':').Last();
             }
             //
             // Sound
-            System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
-            sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
+            //System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
+            //sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
             //sound.PlayLooping();
+            if (isHost)
+                game.createRandomCells(multiplayer.NumberOfRandomCells);
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -94,9 +115,53 @@ namespace OOP_Lab_II.Game
         {
             this.Close();
         }
+        private void GameScreen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(OpponentInfos))
+                return;
+            multiplayer.Receiver.WorkerSupportsCancellation = true;
+            multiplayer.Receiver.CancelAsync();
+            if (multiplayer.server != null)
+                multiplayer.server.Stop();
+        }
         public void gameOver()
         {
-            label3.Text = "YOU WIN !" + Environment.NewLine + ":OPPONENT LEFT:";
+            Action worker = delegate () { System.Threading.Thread.Sleep(1); };
+            Action dg;
+            if (String.IsNullOrEmpty(OpponentInfos)) 
+                dg = delegate () { showGameOverPanelSinglePlayer(); };
+            else 
+                dg = delegate () { showGameOverPanel(); };
+            AsyncCallback cb = delegate (IAsyncResult ar) { gameOverPanel.Invoke(dg); worker.EndInvoke(ar); };
+            worker.BeginInvoke(cb, null);
+        }
+        private void showGameOverPanel()
+        {
+            int score1 = int.Parse(game.ScoreBoard.Text.Split(':')[1]);
+            int score2 = int.Parse(game.ScoreBoard_for_SecondPlayer.Text.Split(':')[1]);
+
+            if (score1 > score2)
+            { 
+                score.Text = "WELL DONE"+ Environment.NewLine + " YOU WIN ";
+                gameOverPanel.BackColor = Color.SeaGreen;
+            }
+            else if (score1 < score2) 
+            {
+                score.Text = "PfffHHHH" + Environment.NewLine + " LOSER ";
+                gameOverPanel.BackColor = Color.Firebrick;
+            }
+            else score.Text = "BORING" + Environment.NewLine + " DRAW ";
+            if (dataTransfer.Instance.isHighestScore(score1))
+                score.Text += Environment.NewLine+ Environment.NewLine + "New Best Score = " + score1.ToString();
+
+            gameOverPanel.Visible = true;
+        }
+        private void showGameOverPanelSinglePlayer()
+        {
+            int score1 = int.Parse(game.ScoreBoard.Text.Split(':')[1]);
+            if (dataTransfer.Instance.isHighestScore(score1))
+                score.Text = Environment.NewLine + Environment.NewLine + "New Best Score = " + score1.ToString();
+            else score.Text = Environment.NewLine + " Score : " + score1.ToString();
             gameOverPanel.Visible = true;
         }
     }

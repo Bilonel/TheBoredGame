@@ -44,6 +44,7 @@
             this.popup = new System.Windows.Forms.Panel();
             this.windowPanel = new System.Windows.Forms.Panel();
             this.exitPopup = new System.Windows.Forms.Button();
+            this.muteButton = new System.Windows.Forms.Button();
             this.profile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             this.save_password_panel.SuspendLayout();
@@ -176,7 +177,7 @@
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Location = new System.Drawing.Point(565, 35);
+            this.exitButton.Location = new System.Drawing.Point(680, 35);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(90, 75);
             this.exitButton.TabIndex = 7;
@@ -317,6 +318,28 @@
             this.exitPopup.UseVisualStyleBackColor = true;
             this.exitPopup.Click += new System.EventHandler(this.exitPopup_Click);
             // 
+            // muteButton
+            // 
+            this.muteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.muteButton.BackColor = System.Drawing.Color.Transparent;
+            this.muteButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.Mute;
+            this.muteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.muteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.muteButton.FlatAppearance.BorderSize = 0;
+            this.muteButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.muteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.muteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.muteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.muteButton.Location = new System.Drawing.Point(564, 35);
+            this.muteButton.Name = "muteButton";
+            this.muteButton.Size = new System.Drawing.Size(90, 75);
+            this.muteButton.TabIndex = 12;
+            this.muteButton.UseVisualStyleBackColor = false;
+            this.muteButton.Click += new System.EventHandler(this.muteButton_Click);
+            this.muteButton.Enter += new System.EventHandler(this.button_Enter);
+            this.muteButton.MouseEnter += new System.EventHandler(this.button_Enter);
+            this.muteButton.MouseLeave += new System.EventHandler(this.button_Leave);
+            // 
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +350,7 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.ControlBox = false;
             this.Controls.Add(this.popup);
+            this.Controls.Add(this.muteButton);
             this.Controls.Add(this.save_password_panel);
             this.Controls.Add(this.profile);
             this.Controls.Add(this.exitButton);
@@ -373,5 +397,6 @@
         private System.Windows.Forms.Panel popup;
         private System.Windows.Forms.Button exitPopup;
         private System.Windows.Forms.Panel windowPanel;
+        private System.Windows.Forms.Button muteButton;
     }
 }

@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <Difficulty>
-    <value>0</value>
+    <value>3</value>
   </Difficulty>
   <Difficulty_x>
-    <value>5</value>
+    <value>6</value>
   </Difficulty_x>
   <Difficulty_y>
-    <value>5</value>
+    <value>2</value>
   </Difficulty_y>
   <Shapes>
-    <value>101</value>
+    <value>10</value>
   </Shapes>
   <Color>
-    <value>110</value>
+    <value>11</value>
   </Color>
   <LastUsername>
-    <value>admin</value>
+    <value>b</value>
   </LastUsername>
   <Password>
-    <apply>1</apply>
-    <value>admin</value>
+    <apply>0</apply>
+    <value>b</value>
   </Password>
 </Settings>
