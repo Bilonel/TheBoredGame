@@ -44,10 +44,7 @@
             this.popup = new System.Windows.Forms.Panel();
             this.windowPanel = new System.Windows.Forms.Panel();
             this.exitPopup = new System.Windows.Forms.Button();
-<<<<<<< HEAD
-=======
             this.muteButton = new System.Windows.Forms.Button();
->>>>>>> Test2_Coop
             this.profile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             this.save_password_panel.SuspendLayout();
@@ -67,10 +64,10 @@
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Location = new System.Drawing.Point(115, 175);
+            this.playButton.Location = new System.Drawing.Point(57, 196);
             this.playButton.Margin = new System.Windows.Forms.Padding(0);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(285, 125);
+            this.playButton.Size = new System.Drawing.Size(270, 120);
             this.playButton.TabIndex = 0;
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.play_click);
@@ -91,9 +88,9 @@
             this.multiButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.multiButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.multiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.multiButton.Location = new System.Drawing.Point(403, 175);
+            this.multiButton.Location = new System.Drawing.Point(353, 196);
             this.multiButton.Name = "multiButton";
-            this.multiButton.Size = new System.Drawing.Size(285, 125);
+            this.multiButton.Size = new System.Drawing.Size(270, 120);
             this.multiButton.TabIndex = 2;
             this.multiButton.UseVisualStyleBackColor = false;
             this.multiButton.Click += new System.EventHandler(this.multiButton_Click);
@@ -103,7 +100,7 @@
             // 
             // fullscreenButton
             // 
-            this.fullscreenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.fullscreenButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.fullscreenButton.BackColor = System.Drawing.Color.Transparent;
             this.fullscreenButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
             this.fullscreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -113,9 +110,9 @@
             this.fullscreenButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.fullscreenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.fullscreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fullscreenButton.Location = new System.Drawing.Point(319, 35);
+            this.fullscreenButton.Location = new System.Drawing.Point(279, 35);
             this.fullscreenButton.Name = "fullscreenButton";
-            this.fullscreenButton.Size = new System.Drawing.Size(90, 75);
+            this.fullscreenButton.Size = new System.Drawing.Size(80, 70);
             this.fullscreenButton.TabIndex = 5;
             this.fullscreenButton.UseVisualStyleBackColor = false;
             this.fullscreenButton.Click += new System.EventHandler(this.fullscreenButton_Click);
@@ -136,9 +133,9 @@
             this.optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.optionsButton.Location = new System.Drawing.Point(257, 304);
+            this.optionsButton.Location = new System.Drawing.Point(204, 328);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(285, 125);
+            this.optionsButton.Size = new System.Drawing.Size(270, 120);
             this.optionsButton.TabIndex = 1;
             this.optionsButton.UseVisualStyleBackColor = false;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
@@ -148,7 +145,7 @@
             // 
             // creditsButton
             // 
-            this.creditsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.creditsButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.creditsButton.BackColor = System.Drawing.Color.Transparent;
             this.creditsButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.credits;
             this.creditsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -158,9 +155,9 @@
             this.creditsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.creditsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.creditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.creditsButton.Location = new System.Drawing.Point(442, 35);
+            this.creditsButton.Location = new System.Drawing.Point(381, 35);
             this.creditsButton.Name = "creditsButton";
-            this.creditsButton.Size = new System.Drawing.Size(90, 75);
+            this.creditsButton.Size = new System.Drawing.Size(80, 70);
             this.creditsButton.TabIndex = 6;
             this.creditsButton.UseVisualStyleBackColor = false;
             this.creditsButton.Click += new System.EventHandler(this.creditsButton_Click);
@@ -170,7 +167,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.exitButton.BackColor = System.Drawing.Color.Transparent;
             this.exitButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.exitButton;
             this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -180,13 +177,9 @@
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
-            this.exitButton.Location = new System.Drawing.Point(565, 35);
-=======
-            this.exitButton.Location = new System.Drawing.Point(680, 35);
->>>>>>> Test2_Coop
+            this.exitButton.Location = new System.Drawing.Point(586, 35);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(90, 75);
+            this.exitButton.Size = new System.Drawing.Size(80, 70);
             this.exitButton.TabIndex = 7;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -202,7 +195,7 @@
             this.profile.Controls.Add(this.usernameLabel);
             this.profile.Controls.Add(this.avatarBox);
             this.profile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profile.Location = new System.Drawing.Point(40, 17);
+            this.profile.Location = new System.Drawing.Point(30, 17);
             this.profile.Name = "profile";
             this.profile.Size = new System.Drawing.Size(233, 112);
             this.profile.TabIndex = 8;
@@ -244,7 +237,7 @@
             this.save_password_panel.Controls.Add(this.button2);
             this.save_password_panel.Controls.Add(this.button1);
             this.save_password_panel.Controls.Add(this.textBox1);
-            this.save_password_panel.Location = new System.Drawing.Point(29, 385);
+            this.save_password_panel.Location = new System.Drawing.Point(29, 371);
             this.save_password_panel.Name = "save_password_panel";
             this.save_password_panel.Size = new System.Drawing.Size(258, 103);
             this.save_password_panel.TabIndex = 9;
@@ -300,15 +293,15 @@
             this.popup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.popup.Location = new System.Drawing.Point(0, 0);
             this.popup.Name = "popup";
-            this.popup.Size = new System.Drawing.Size(800, 500);
+            this.popup.Size = new System.Drawing.Size(684, 486);
             this.popup.TabIndex = 11;
             this.popup.Visible = false;
             // 
             // windowPanel
             // 
-            this.windowPanel.Location = new System.Drawing.Point(152, 90);
+            this.windowPanel.Location = new System.Drawing.Point(118, 85);
             this.windowPanel.Name = "windowPanel";
-            this.windowPanel.Size = new System.Drawing.Size(500, 350);
+            this.windowPanel.Size = new System.Drawing.Size(449, 341);
             this.windowPanel.TabIndex = 0;
             // 
             // exitPopup
@@ -318,18 +311,16 @@
             this.exitPopup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitPopup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitPopup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitPopup.Location = new System.Drawing.Point(650, 50);
+            this.exitPopup.Location = new System.Drawing.Point(552, 48);
             this.exitPopup.Name = "exitPopup";
             this.exitPopup.Size = new System.Drawing.Size(40, 40);
             this.exitPopup.TabIndex = 1;
             this.exitPopup.UseVisualStyleBackColor = true;
             this.exitPopup.Click += new System.EventHandler(this.exitPopup_Click);
             // 
-<<<<<<< HEAD
-=======
             // muteButton
             // 
-            this.muteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.muteButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.muteButton.BackColor = System.Drawing.Color.Transparent;
             this.muteButton.BackgroundImage = global::OOP_Lab_II.Properties.Resources.Mute;
             this.muteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -339,9 +330,9 @@
             this.muteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.muteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.muteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.muteButton.Location = new System.Drawing.Point(564, 35);
+            this.muteButton.Location = new System.Drawing.Point(484, 35);
             this.muteButton.Name = "muteButton";
-            this.muteButton.Size = new System.Drawing.Size(90, 75);
+            this.muteButton.Size = new System.Drawing.Size(80, 70);
             this.muteButton.TabIndex = 12;
             this.muteButton.UseVisualStyleBackColor = false;
             this.muteButton.Click += new System.EventHandler(this.muteButton_Click);
@@ -349,7 +340,6 @@
             this.muteButton.MouseEnter += new System.EventHandler(this.button_Enter);
             this.muteButton.MouseLeave += new System.EventHandler(this.button_Leave);
             // 
->>>>>>> Test2_Coop
             // Menu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,13 +347,10 @@
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.BackgroundImage = global::OOP_Lab_II.Properties.Resources.Menu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.ClientSize = new System.Drawing.Size(684, 486);
             this.ControlBox = false;
             this.Controls.Add(this.popup);
-<<<<<<< HEAD
-=======
             this.Controls.Add(this.muteButton);
->>>>>>> Test2_Coop
             this.Controls.Add(this.save_password_panel);
             this.Controls.Add(this.profile);
             this.Controls.Add(this.exitButton);
@@ -409,10 +396,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel popup;
         private System.Windows.Forms.Button exitPopup;
-        private System.Windows.Forms.Panel windowPanel;
-<<<<<<< HEAD
-=======
         private System.Windows.Forms.Button muteButton;
->>>>>>> Test2_Coop
+        private System.Windows.Forms.Panel windowPanel;
     }
 }

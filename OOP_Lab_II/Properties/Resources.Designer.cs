@@ -173,8 +173,6 @@ namespace OOP_Lab_II.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-<<<<<<< HEAD
-=======
         internal static System.Drawing.Bitmap Mute {
             get {
                 object obj = ResourceManager.GetObject("Mute", resourceCulture);
@@ -195,7 +193,6 @@ namespace OOP_Lab_II.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
->>>>>>> Test2_Coop
         internal static System.Drawing.Bitmap optionsButton {
             get {
                 object obj = ResourceManager.GetObject("optionsButton", resourceCulture);

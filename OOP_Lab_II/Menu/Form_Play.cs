@@ -30,17 +30,13 @@ namespace OOP_Lab_II.Menu
                 return;
             OptionsForm.save_Click(sender, e);
             ((Panel)this.ParentForm.Controls.Find("popup", true).GetValue(0)).Visible=false;
+            this.ParentForm.Visible = false;
             Menu_Form.sound.Stop();
-<<<<<<< HEAD
-            //(new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
-            //while ( Game.GameScreen.refreshed)
-            //    (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
-=======
             (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
             while ( Game.GameScreen.refreshed)
                 (new Game.GameScreen(OptionsForm.Difficulty)).ShowDialog();
->>>>>>> Test2_Coop
-            //Menu_Form.sound.PlayLooping();
+            this.ParentForm.Visible = true;
+            Menu_Form.sound.PlayLooping();
         }
 
         private void Form_Play_Load(object sender, EventArgs e)

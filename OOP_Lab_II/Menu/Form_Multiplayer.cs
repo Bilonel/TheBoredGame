@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-<<<<<<< HEAD
-=======
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
->>>>>>> Test2_Coop
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,15 +11,10 @@ namespace OOP_Lab_II.Menu
 {
     public partial class Form_Multiplayer : Form
     {
-<<<<<<< HEAD
-        // Field
-        Game.GameScreen gameScreen;
-=======
         int Port;
         // Field
         Game.GameScreen gameScreen;
         Data.Host host;
->>>>>>> Test2_Coop
         public Form_Multiplayer()
         {
             InitializeComponent();
@@ -31,19 +23,6 @@ namespace OOP_Lab_II.Menu
 
         private void Form_Multiplayer_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            player1Name.Text = dataTransfer.Instance.get_account().info[2];
-            Control.CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void ConnectButton_Click(object sender, EventArgs e)
-        {
-            gameScreen =new Game.GameScreen(false,new int[] { 8, 8, 010, 011 });
-            this.ParentForm.Visible = false;
-            if (!gameScreen.IsDisposed)
-                gameScreen.ShowDialog();
-            this.ParentForm.Visible = true;
-=======
             int count = 0;
             foreach (Data.Host item in (new Data.HostConnectServer()).getList())
             {
@@ -85,19 +64,10 @@ namespace OOP_Lab_II.Menu
             }
             catch (Exception) { }
             parent.Visible = true;
->>>>>>> Test2_Coop
         }
 
         private void HostButton_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            gameScreen = new Game.GameScreen(true, new int[] { 8, 8, 010, 011 });
-            this.ParentForm.Visible = false;
-            if (!gameScreen.IsDisposed)
-                gameScreen.ShowDialog();
-            this.ParentForm.Visible = true;
-        }
-=======
             Port = 5732;
             sendHostInfoToServer();
             MessageLabel.Text ="Waiting For An Opponent";
@@ -189,6 +159,5 @@ namespace OOP_Lab_II.Menu
                 Application.DoEvents();
         }
 
->>>>>>> Test2_Coop
     }
 }
