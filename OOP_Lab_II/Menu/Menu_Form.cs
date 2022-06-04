@@ -12,6 +12,8 @@ namespace OOP_Lab_II.Menu
         private Button currentActiveButton;
         private Form currentForm;
         public static System.Media.SoundPlayer sound;
+        private const int formInitWidth = 700;
+        private const int formInitHeight = 525;
         //
         //Constructor
         //
@@ -68,7 +70,7 @@ namespace OOP_Lab_II.Menu
         // CLICK METHODS
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
         private void optionsButton_Click(object sender, EventArgs e)
         {
@@ -95,10 +97,6 @@ namespace OOP_Lab_II.Menu
         {
             activateForm(dataTransfer.Instance.get_account().Form);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> Test2_Coop
         private void Menu_Form_Load(object sender, EventArgs e)
         {
             ToolTip tt = new ToolTip();
@@ -110,11 +108,7 @@ namespace OOP_Lab_II.Menu
             save_password_panel_timer();
             sound = new System.Media.SoundPlayer();
             sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.GuitarSound.wav");
-<<<<<<< HEAD
-          //  sound.PlayLooping();
-=======
             sound.PlayLooping();
->>>>>>> Test2_Coop
         }
         private void save_password_panel_timer()
         {
@@ -155,29 +149,16 @@ namespace OOP_Lab_II.Menu
             }
             else
             {
-<<<<<<< HEAD
-                this.Size = new System.Drawing.Size(800, 500);
+                this.Size = new System.Drawing.Size(formInitWidth, formInitHeight);
                 ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
             }
             this.CenterToScreen();
-            windowPanel.Size = new Size((int)(this.Size.Width * 500/800), (int)(this.Size.Height * 350/500));
-            windowPanel.Location = new Point((int)(this.Size.Width * 150/800), (int)(this.Size.Height * 90/500));
-            exitPopup.Location= new Point((int)(this.Size.Width * 650/ 800), (int)(this.Size.Height * 50/ 500));
-            exitPopup.Size = new Size((int)(this.Size.Width * 40/ 800), (int)(this.Size.Height * 40/ 500));
-        }
-        private void exitPopup_Click(object sender, EventArgs e)
-=======
-                this.Size = new System.Drawing.Size(816, 539);
-                ((Button)sender).BackgroundImage = global::OOP_Lab_II.Properties.Resources.fullscreen;
-            }
-            this.CenterToScreen();
-            windowPanel.Size = new Size((int)(this.Size.Width * 500/ 816), (int)(this.Size.Height * 350/ 539));
-            windowPanel.Location = new Point((int)(this.Size.Width * 150/ 816), (int)(this.Size.Height * 90/ 539));
-            exitPopup.Location= new Point((int)(this.Size.Width * 650/ 816), (int)(this.Size.Height * 50/ 539));
-            exitPopup.Size = new Size((int)(this.Size.Width * 40/ 816), (int)(this.Size.Height * 40/ 539));
+            windowPanel.Size = new Size((int)(this.Size.Width * 449/ formInitWidth), (int)(this.Size.Height * 341/ formInitHeight));
+            windowPanel.Location = new Point((int)(this.Size.Width * 118/ formInitWidth), (int)(this.Size.Height * 85/ formInitHeight));
+            exitPopup.Location= new Point((int)(this.Size.Width * 552/ formInitWidth), (int)(this.Size.Height * 48/ formInitHeight));
+            exitPopup.Size = new Size((int)(this.Size.Width * 40/ formInitWidth), (int)(this.Size.Height * 40/ formInitHeight));
         }
         public void exitPopup_Click(object sender, EventArgs e)
->>>>>>> Test2_Coop
         {
             this.windowPanel.Controls.Clear();
             if (currentForm != null)
@@ -185,8 +166,6 @@ namespace OOP_Lab_II.Menu
             popup.Visible = false;
         }
 
-<<<<<<< HEAD
-=======
         private void muteButton_Click(object sender, EventArgs e)
         {
             if (muteButton.Image == null)
@@ -198,6 +177,5 @@ namespace OOP_Lab_II.Menu
             this.muteButton.Image = null;
             sound.PlayLooping();
         }
->>>>>>> Test2_Coop
     }
 }

@@ -17,14 +17,9 @@ namespace OOP_Lab_II.Game
         int row, col;
         List<int> GameInitialIds;
         public static bool refreshed;
-<<<<<<< HEAD
-        public string secondPlayerInitalInfos;
-        public GameScreen(bool isHost,int[] diffficulty)
-=======
         public string OpponentInfos=null;
         private bool isHost;
         public GameScreen(int[] diffficulty, bool isMute = false)
->>>>>>> Test2_Coop
         {
             InitializeComponent();
             refreshed = false;
@@ -42,32 +37,6 @@ namespace OOP_Lab_II.Game
                     }
                 diffficulty[2] /= 10;
             }
-<<<<<<< HEAD
-            multiplayer = Multiplayer.instance(isHost, gameOverPanel);
-            game = multiplayer.game;
-            game.createRandomCells(3);
-        }
-
-        private void Screen_Load(object sender, EventArgs e)
-        {
-            p2_panel.Visible = !String.IsNullOrEmpty(secondPlayerInitalInfos);
-            this.Bounds = new Rectangle(400, 300, 800, 600);
-            gameOverPanel.Size = new Size(this.Bounds.Width/3, this.Bounds.Height);
-            gameOverPanel.Location = new Point(this.Bounds.Width / 3);
-        }
-
-        private async void StartCounting()
-        {
-            label1.Location = new Point(this.Bounds.Width / 2 - 70, this.Bounds.Height / 2 - 100);
-            for (int i = 3; i >= 0; i--)
-            {
-                label1.Text = i.ToString();
-                await Task.Delay(100 * i + 300);
-            }
-            label1.Visible = false;
-        }
-
-=======
             game = new Game(row, col, GameInitialIds, false, this, isMute);
         }
         public GameScreen(bool isHost,int[] diffficulty,bool isMute=false,string Opponent=":",System.Net.IPAddress IP=null,int port=0)
@@ -103,35 +72,15 @@ namespace OOP_Lab_II.Game
         private void Screen_Load(object sender, EventArgs e)
         {
             p2_panel.Visible = !String.IsNullOrEmpty(OpponentInfos);
-            this.Bounds = new Rectangle(400, 300, 800, 600);
             gameOverPanel.Size = new Size(this.Bounds.Width/2, this.Bounds.Height);
             gameOverPanel.Location = new Point(this.Bounds.Width / 4);
         }
->>>>>>> Test2_Coop
         private void Screen_Shown(object sender, EventArgs e)
         {
             for (int i = 0; i < game.Objects.Count; i++)
                 this.Controls.Add(game.Objects[i].box);
             this.p1_scorePanel.Controls.Add(game.ScoreBoard);
             game.ScoreBoard.Size = p1_scorePanel.Size;
-<<<<<<< HEAD
-            p1_name.Text = dataTransfer.Instance.get_account().info[2];
-            p1_bestScore.BringToFront();
-            p1_bestScore.Text=p1_bestScore.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
-            if(!String.IsNullOrEmpty(secondPlayerInitalInfos))
-            {
-                p2_name.Text = secondPlayerInitalInfos.Split(':').First();
-                this.p2_scorePanel.Controls.Add(game.ScoreBoard_for_SecondPlayer);
-                game.ScoreBoard_for_SecondPlayer.Size = p2_scorePanel.Size;
-                p2_bestScore.BringToFront();
-                p2_bestScore.Text = p2_bestScore.Text.Substring(0, 12).ToString() + secondPlayerInitalInfos.Split(':').Last();
-            }
-            //
-            // Sound
-            System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
-            sound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.BeatSound.wav");
-            //sound.PlayLooping();
-=======
             game.ScoreBoard.BringToFront();
             p1_name.Text = dataTransfer.Instance.get_account().info[2];
             p1_bestScore.BringToFront();
@@ -153,7 +102,6 @@ namespace OOP_Lab_II.Game
             //sound.PlayLooping();
             if (isHost)
                 game.createRandomCells(multiplayer.NumberOfRandomCells);
->>>>>>> Test2_Coop
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -166,11 +114,6 @@ namespace OOP_Lab_II.Game
         {
             this.Close();
         }
-<<<<<<< HEAD
-        public void gameOver()
-        {
-            label3.Text = "YOU WIN !" + Environment.NewLine + ":OPPONENT LEFT:";
-=======
         private void GameScreen_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (String.IsNullOrEmpty(OpponentInfos))
@@ -218,7 +161,6 @@ namespace OOP_Lab_II.Game
             if (dataTransfer.Instance.isHighestScore(score1))
                 score.Text = Environment.NewLine + Environment.NewLine + "New Best Score = " + score1.ToString();
             else score.Text = Environment.NewLine + " Score : " + score1.ToString();
->>>>>>> Test2_Coop
             gameOverPanel.Visible = true;
         }
     }

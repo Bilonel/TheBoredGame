@@ -8,7 +8,6 @@ namespace OOP_Lab_II.Game
 {
     class gameGrid
     {
-        private const int height = 550,width=800;
         private int[,] matrix;
         private int cellSize;
         private Point startPoint;   // Start Location of Grid
@@ -19,11 +18,11 @@ namespace OOP_Lab_II.Game
         public int this[int row,int col] { get { if (isInside(row, col)) return matrix[row, col]; else return -1; } set { matrix[row, col] = value; } }
 
         // Costructor
-        public gameGrid(int x,int y) { 
+        public gameGrid(int x,int y,int width=700 , int height=500) { 
             matrix = new int[x, y]; 
             Row = x; Column = y;
-            cellSize = height * 4 / 5 / Row;
-            startPoint = new Point((width - Column * cellSize) / 2, (height - Row * cellSize) * 3 / 4);
+            cellSize = Convert.ToInt32(Row > Column) * height * 4 / 5 / Row + Convert.ToInt32(Row <= Column) * width * 3 / 5 / Column;
+            startPoint = new Point((width - Column * cellSize) / 2, (height - Row * cellSize)* 2/3);
             createEmptyGrid();
         }
 
