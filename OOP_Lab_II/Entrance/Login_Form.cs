@@ -109,5 +109,34 @@ namespace OOP_Lab_II.Entrance
             if (xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText !="0")
                 txtUserName.AutoCompleteCustomSource.Add(xmlDoc.SelectSingleNode("Settings/LastUsername/value").InnerText);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] row2 = new string[10];
+            row2[0] = "112";
+            row2[1] = "admin";
+            row2[2] = "admin";
+            row2[3] = "admin";
+            row2[4] = "Adminlerden Admin";
+            row2[5] = "";
+            row2[6] = "";
+            row2[7] = "";
+            row2[8] = "";
+            row2[9] = "";
+            string[] row = new string[10];
+            row[0] = "58";
+            row[1] = "admin";
+            row[2] = "Bilonel";
+            row[3] = "bilal123";
+            row[4] = "Bilal Demir";
+            row[5] = "";
+            row[6] = "";
+            row[7] = "";
+            row[8] = "";
+            row[9] = "";
+
+            dataTransfer.Instance.updateUser(row);
+            dataTransfer.Instance.updateUser(row2);
+        }
     }
 }

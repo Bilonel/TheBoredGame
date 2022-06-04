@@ -11,14 +11,14 @@ namespace OOP_Lab_II
     {
         //Private Field
         SqlConnection connection;
-        string DatabasePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.StartupPath, @"..\..\"))+ @"Data\";
         string TableName = "AccountTable";
         string ConnectionString;
         private Account account;
         private static dataTransfer instance;    // Instance
         //Private Constructor
         private dataTransfer() {
-            ConnectionString = @"data source=192.168.43.153; initial catalog=Database;user id=Bilonel;password=bilal123";
+            ConnectionString = @"workstation id=BoredDataBase.mssql.somee.com;packet size=4096;user id=Bilonel_SQLLogin_1;pwd=cpiakmox9q;
+        data source=BoredDataBase.mssql.somee.com;persist security info=False;initial catalog=BoredDataBase";
         }
         //Public Methods
         public static dataTransfer Instance
@@ -131,8 +131,7 @@ namespace OOP_Lab_II
             for (int i = 0; i < row.Length; i++)
                 if (row[i] == null)
                     row[i] = "";
-            row[1] = "admin";
-
+            
             string command = "INSERT INTO " + TableName + " VALUES(" +
                 "@BestScore,@AccountType,@Username,@Password,@NameSurname," +
                 "@Email,@Phone,@Country,@City,@Address)";
@@ -171,7 +170,7 @@ namespace OOP_Lab_II
         public void updateUser(string[] row)    // Update data of User
         {
             if (row[3] != readUser(row[2])[3])   // If new password and old password are diffrent then encode it.
-                row[3] = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row[2]))).Replace("-", "");
+                row[3] = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row[3]))).Replace("-", "");
 
             string command = "update " + TableName + " set " +
                 "BestScore=@BestScore," +
@@ -226,12 +225,12 @@ namespace OOP_Lab_II
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return null;
             }
             finally
             {
                 this.Close();
             }
-            return null;
         }
         //public string[] readUser(string username)
         //{

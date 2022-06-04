@@ -35,7 +35,6 @@
             this.WarnBox = new System.Windows.Forms.TextBox();
             this.exitButton = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -157,15 +156,6 @@
             this.registerButton.UseVisualStyleBackColor = false;
             this.registerButton.Click += new System.EventHandler(this.register_button);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(213, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Login_Form
             // 
             this.AcceptButton = this.LoginButton;
@@ -177,7 +167,6 @@
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(805, 574);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.WarnBox);
@@ -185,7 +174,7 @@
             this.Controls.Add(this.ShowPassword);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.txtPassword);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -203,7 +192,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.Button button1;
     }
 }
 

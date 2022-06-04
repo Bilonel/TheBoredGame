@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\dataTranfer.cs" />
+    <Compile Include="Data\HostConnectServer.cs" />
     <Compile Include="Entrance\Register_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +80,7 @@
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Game\Cell.cs" />
+    <Compile Include="Game\Client.cs" />
     <Compile Include="Game\Events.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameScreen.cs">
@@ -88,6 +90,7 @@
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Game\Grid.cs" />
+    <Compile Include="Game\Multiplayer.cs" />
     <Compile Include="Game\Texture.cs" />
     <Compile Include="Menu\Admin_Panel.cs">
       <SubType>Form</SubType>
@@ -224,6 +227,8 @@
     <EmbeddedResource Include="Game\audio\Bingo.wav" />
     <EmbeddedResource Include="Game\audio\GuitarSound.wav" />
     <EmbeddedResource Include="Game\audio\Move.wav" />
+    <EmbeddedResource Include="Game\res\Mute.png" />
+    <EmbeddedResource Include="Game\res\MuteCross.png" />
     <Content Include="Menu\res\BORED_GAME_BACKGROUND.jpg" />
     <None Include="Menu\res\profilePanel.png" />
     <None Include="Menu\res\credits.png" />
