@@ -24,38 +24,43 @@ namespace OOP_Lab_II.Game
         private List<int> difficulty_shapes_color =null;
         private GameScreen gameScreen;
 
-        System.Media.SoundPlayer MoveSound = new System.Media.SoundPlayer();
-        System.Media.SoundPlayer BingoSound = new System.Media.SoundPlayer();
-
         // Get Set
         public int Rows { get; set; }
         public int Columns { get; set; }
         
         public List<Cell> Objects { get => objects; }
         // Constructors
-        public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,bool multi=false, GameScreen gameScreen = null,bool isMute=false) {
-            this.Rows = row; this.Columns = col;this.difficulty_shapes_color = GameInitialIds;this.gameScreen = gameScreen; this.isMute = isMute;this.MultiplayerMode = multi;
-            grid = new gameGrid(row, col,gameScreen.Bounds.Width,gameScreen.Bounds.Height-30); objects = new List<Cell>();
+        public Game(int row = 9, int col = 9, List<int> GameInitialIds =null,bool multi=false, GameScreen gameScreen = null,bool isMute=false) 
+        {
+            this.Rows = row; this.Columns = col;        
+            this.difficulty_shapes_color = GameInitialIds;      // WHICH SHAPES AND COLORS GONNA RENDER ?
+            this.gameScreen = gameScreen;       // REFERENCE OF GAME SCREEN BECAUSE OF RENDERING OBJECTS TO SCREEN
+            this.isMute = isMute; this.MultiplayerMode = multi;
+            grid = new gameGrid(row, col,gameScreen.Bounds.Width,gameScreen.Bounds.Height-30); 
+            objects = new List<Cell>();
             // 
             // ScoreBoard
-            this.ScoreBoard = new Label(); this.ScoreBoard.AutoSize  = false;
-            this.ScoreBoard.TextAlign  = ContentAlignment.TopCenter; this.ScoreBoard.Location = new Point(0, 25);
-            this.ScoreBoard.BackColor = Color.Transparent; this.ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 16, FontStyle.Bold); 
-            this.ScoreBoard.Text = "Score:0"; this.ScoreBoard.ForeColor = Color.FromArgb(255, 160, 0);
-            if (MultiplayerMode)
-            {
-                this.ScoreBoard_for_SecondPlayer = new Label(); this.ScoreBoard_for_SecondPlayer.AutoSize = false;
-                this.ScoreBoard_for_SecondPlayer.TextAlign = ContentAlignment.TopCenter; this.ScoreBoard_for_SecondPlayer.Location = new Point(0, 25);
-                this.ScoreBoard_for_SecondPlayer.BackColor = Color.Transparent; this.ScoreBoard_for_SecondPlayer.Font = new Font(FontFamily.GenericSansSerif, 16, FontStyle.Bold);
-                this.ScoreBoard_for_SecondPlayer.Text = "Score:0"; this.ScoreBoard_for_SecondPlayer.ForeColor = Color.FromArgb(255, 160, 0);
-            }
+            ScoreBoard = new Label();
+            ScoreBoard_for_SecondPlayer = new Label();
+            createScoreBoard(ScoreBoard);   // CREATE FIRST SCOREBOARD LABEL
+            if (MultiplayerMode) createScoreBoard(ScoreBoard_for_SecondPlayer); // IF ITS MULTIPLAYER, CREATE SECOND SCOREBOARD LABEL
             //
-            this.scoreCoef = 180 / (Rows + Columns);
-            createObjects();
-            MoveSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Move.wav");
-            BingoSound.Stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("OOP_Lab_II.Game.audio.Bingo.wav");
-        }
+            this.scoreCoef = 180 / (Rows + Columns);    // DYNAMIC SCORE COEFFICENT
 
+            Builder.Build(objects,grid);    // CALL BUILD FUNTION OF BUILDER TO BUILD TEXTURES, SOUNDS AND EMPTY CELLS.
+            if (!MultiplayerMode)
+                createRandomCells(NumberOfRandomCell);
+        }
+        private void createScoreBoard(Label ScoreBoard)
+        {
+            ScoreBoard.AutoSize = false;
+            ScoreBoard.TextAlign = ContentAlignment.TopCenter; 
+            ScoreBoard.Location = new Point(0, 25);
+            ScoreBoard.BackColor = Color.Transparent; 
+            ScoreBoard.ForeColor = Color.FromArgb(255, 160, 0);
+            ScoreBoard.Font = new Font(FontFamily.GenericSansSerif, 16, FontStyle.Bold);
+            ScoreBoard.Text = "Score:0"; 
+        }
         //Methods
         public void createRandomCells(int count)
         {
@@ -75,7 +80,7 @@ namespace OOP_Lab_II.Game
                 checkBingo(NumberOfSameCellsToWin, r, c, id, !MultiplayerMode);                            // CHECK IS THERE ANY BINGO (side by side, 5 same box)
             }
             if (MultiplayerMode)
-                Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("random:" + CreatedCellsString));
+                Multiplayer.instance()._socket.Send(Encoding.ASCII.GetBytes("random:" + CreatedCellsString));
             gameOver();
         }
         public void createRandomCell(int row,int col,int id)
@@ -85,29 +90,13 @@ namespace OOP_Lab_II.Game
             Change_Cells_ID(objects[row * Columns + col].box, id);           // SET ID
             checkBingo(NumberOfSameCellsToWin, row, col, id,false);          // CHECK IS THERE ANY BINGO (side by side, 5 same box)
         }
-        private void createObjects()
-        {
-            // CREATE INITIAL CELLS AS AN OBJECT
-            // 
-            for (int i = 0; i < Rows; i++)  
-            {
-                for (int j = 0; j < Columns; j++)   
-                {
-                    Cell cell = new Cell(grid[i,j],grid.indexTolocation(i, j), grid.CellSize);  
-                    objects.Add(cell);  // Add Created Objects to list<object> objects
-                    Change_Cells_ID(cell.box, grid[i, j]);  // Set all of them ids
-                }
-            }
-            if (!MultiplayerMode)
-                createRandomCells(NumberOfRandomCell);
-        }
         public void Change_Cells_ID(PictureBox box, int value)
         {
             //
             // Set Cell IDs
             grid[grid.locationToIndex(box.Location)[0], grid.locationToIndex(box.Location)[1]] = value; // Firstly set in grid
             objects[grid.locationToIndex(box.Location)[0] * Columns + grid.locationToIndex(box.Location)[1]].id = value;    // Then set in Cell (class)
-            box.Image = Texture.texture[value]; // Set picture box's image
+            box.Image = Texture.textures[value]; // Set picture box's image
             box.Click -= ClickCell;         
             box.Click -= ClickMove;         // Clean Cell's click events
             //
@@ -241,7 +230,7 @@ namespace OOP_Lab_II.Game
                 if (!isMute)
                 {
                     System.Threading.Thread.Sleep(500);
-                    BingoSound.Play();
+                    Sounds.BingoSound.Play();
                 }
             }
             if(PositiveVerticalCounter + NegativeVerticalCounter >= sideCount) // Is there a bingo vertical
@@ -304,21 +293,27 @@ namespace OOP_Lab_II.Game
             activeBox = ((PictureBox)sender); activeBox.BackColor = Color.Cyan; activeBox.Padding = new Padding(3);
             if (MultiplayerMode)
                 if (((PictureBox)sender).Enabled)
-                    Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("click:" + clickedText));
+                    Multiplayer.instance()._socket.Send(Encoding.ASCII.GetBytes("click:" + clickedText));
         }
         public void ClickMove(object sender,EventArgs e)
         {
-            ClickCellEventProivder(true); // OPEN
+            // In Multiplayer Mode When user click Multiple Cells Some Communucation Problems happening between Machines
+            ClickCellEventProivder(true); // So in Multiplayer Mode, When User Click A Cell , Push him/her to Making Move
+            //
+            // Take Clicked Cells Location Info then Deactivate Box
             int CurrentRow = grid.locationToIndex(activeBox.Location)[0];
             int CurrentCol = grid.locationToIndex(activeBox.Location)[1];
             deactivateBox();
+            //
+            // Take Target Cells Location Info 
             int TargetRow = grid.locationToIndex(((PictureBox)sender).Location)[0];
             int TargetCol = grid.locationToIndex(((PictureBox)sender).Location)[1];
-
+            //
+            // Send Target Cell Informatıon To Other Socket If ITS MULTIPLAYER MODE
             string targetText = TargetRow.ToString() + "," + TargetCol.ToString();
             if (MultiplayerMode)
                 if (((PictureBox)sender).Enabled)
-                    Multiplayer.instance().sock.Send(Encoding.ASCII.GetBytes("move:"+targetText));
+                    Multiplayer.instance()._socket.Send(Encoding.ASCII.GetBytes("move:"+targetText));
 
             string Path = PathFindng(new Point(CurrentRow, CurrentCol), new Point(TargetRow, TargetCol), 0,"");
             deactivateBox();
@@ -326,36 +321,40 @@ namespace OOP_Lab_II.Game
             // Show Steps 
             //
             int counter = NumberOfMovesWithoutPenalty;
-            if(Path!= "...error...")
+            if(Path!= "...error...")    // IF ALGORITHM COULD FIND A PATH
                 foreach (char direction in Path)
                 {
-                    wait(400);
-                    Cell oldCell = objects[CurrentRow * Columns + CurrentCol];
+                    wait(400);  // Waıt 400 ms in every Step
+                    Cell oldCell = objects[CurrentRow * Columns + CurrentCol]; // TAKE A REFERENCE OF CURRENT CELL
                     switch (direction)
                     {
-                        case 'l': CurrentCol--; break;
+                        case 'l': CurrentCol--; break;  // CHANGE ROW OR COL INDEXES ACCORDING TO MOVEMENT ORDER
                         case 'r': CurrentCol++; break;
                         case 'u': CurrentRow--; break;
                         case 'd': CurrentRow++; break;
                     }
+                    //
+                    //  MOVE CELL TO ONE STEP FORWARD
                     objects[CurrentRow * Columns + CurrentCol].id = oldCell.id; // Set New One's Id
                     Change_Cells_ID(objects[CurrentRow * Columns + CurrentCol].box, oldCell.id); // Old One to New Position
                     oldCell.id = 0;
                     Change_Cells_ID(oldCell.box, 0); // Old Position is Empty
+                    //
+                    // IF COUNT OF STEPS GREATER THAN NUMBER OF WITHOUT PENALTY THEN UPDATE SCORE AS -1
                     if(counter--<=0)
                         updateScore(-1);
-                    if (!isMute)
+                    if (!isMute)    // IF IS MUTE SHUT IT
                     {
-                        System.Threading.Thread.Sleep(500);
-                        MoveSound.Play();
+                        System.Threading.Thread.Sleep(300);
+                        Sounds.MoveSound.Play();
                     }
                 }
-            if (MultiplayerMode)
+            if (MultiplayerMode)    // IN MULTIPLAYER MODE, CHECK IS THERE A BINGO THEN RUN BACKGROUND WORKER OF MULTIPLAYER TO TURN OFF
             {
                 checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id);
                 if (((PictureBox)sender).Enabled)
                     Multiplayer.instance().Receiver.RunWorkerAsync();
-            }
+            } // OTHERWISE CHECK BINGO THEN CREATE RANDOM CELLS AND CONTINUE THE GAME Because There Are No Turns
             else if (!checkBingo(NumberOfSameCellsToWin, TargetRow, TargetCol, Objects[CurrentRow * Columns + CurrentCol].id))
                 createRandomCells(NumberOfRandomCell);
 

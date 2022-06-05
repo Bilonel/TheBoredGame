@@ -90,20 +90,20 @@ namespace OOP_Lab_II
             }
             return null;
         }
-        public void pushAccount(string command,string[] row)
+        public void pushAccount(string command,Account user)
         {
             this.Open();
             SqlCommand cmd = Cmd(command);
-            cmd.Parameters.AddWithValue("@BestScore", int.Parse(row[0]));
-            cmd.Parameters.AddWithValue("@AccountType", row[1]);
-            cmd.Parameters.AddWithValue("@Username", row[2]);
-            cmd.Parameters.AddWithValue("@Password", row[3]);
-            cmd.Parameters.AddWithValue("@NameSurname", row[4]);
-            cmd.Parameters.AddWithValue("@Email", row[5]);
-            cmd.Parameters.AddWithValue("@Phone", row[6]);
-            cmd.Parameters.AddWithValue("@Country", row[7]);
-            cmd.Parameters.AddWithValue("@City", row[8]);
-            cmd.Parameters.AddWithValue("@Address", row[9]);
+            cmd.Parameters.AddWithValue("@BestScore", user.BestScore);
+            cmd.Parameters.AddWithValue("@AccountType", user.AccountType);
+            cmd.Parameters.AddWithValue("@Username", user.Username);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@NameSurname", user.NameSurname);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
+            cmd.Parameters.AddWithValue("@Country", user.Country);
+            cmd.Parameters.AddWithValue("@City", user.City);
+            cmd.Parameters.AddWithValue("@Address", user.Address);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -135,7 +135,12 @@ namespace OOP_Lab_II
             string command = "INSERT INTO " + TableName + " VALUES(" +
                 "@BestScore,@AccountType,@Username,@Password,@NameSurname," +
                 "@Email,@Phone,@Country,@City,@Address)";
-            this.pushAccount(command,row);
+            Account new_account;
+            if(row[1]=="admin")
+                new_account = new Admin();
+            else new_account = new User();
+            new_account.setUserData(row);
+            this.pushAccount(command, new_account);
         }
         //public void register(string[] row,string access)
         //{
@@ -167,10 +172,10 @@ namespace OOP_Lab_II
         //    ));
         //    doc.Save(xmlpath);
         //}
-        public void updateUser(string[] row)    // Update data of User
+        public void updateUser(Account user)    // Update data of User
         {
-            if (row[3] != readUser(row[2])[3])   // If new password and old password are diffrent then encode it.
-                row[3] = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(row[3]))).Replace("-", "");
+            if (user.Password != readUser(user.Username)[3])   // If new password and old password are diffrent then encode it.
+                user.Password = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed()).ComputeHash(System.Text.Encoding.UTF8.GetBytes(user.Password))).Replace("-", "");
 
             string command = "update " + TableName + " set " +
                 "BestScore=@BestScore," +
@@ -183,7 +188,8 @@ namespace OOP_Lab_II
                 "City=@City," +
                 "Address=@Address " +
                 "where Username=@Username";
-            this.pushAccount(command,row);
+            this.pushAccount(command,user);
+            update_account();
             //XmlDocument doc = new XmlDocument();
             //doc.Load(xmlpath);
             //XmlNodeList nodes = doc.SelectNodes("Accounts/Account");
@@ -232,6 +238,19 @@ namespace OOP_Lab_II
                 this.Close();
             }
         }
+        public Account get_Account_From_Database(string username)
+        {
+            string[] row = readUser(username);  // First of all read the user from database
+            for (int i = 1; i < 3; i++)
+                if (row[i] == null)     // If Username or AccountType is null , return NULL
+                    return null;
+            Account new_account;        // OTHERWISE
+            if (row[1]=="admin")
+                new_account = new Admin();      // CREATE OBJECT FOR THE USER
+            else new_account = new User();
+            new_account.setUserData(row);       // SET DATA
+            return new_account;     // RETURN OBJECT
+        }
         //public string[] readUser(string username)
         //{
         //    string[] items = new string[10];
@@ -265,6 +284,7 @@ namespace OOP_Lab_II
                         items[i] = dt.Rows[k].Cells[i].Value.ToString();
                 register(items, "admin");
             }
+            update_account();
             //XElement doc = XElement.Load(xmlpath);
             //doc.RemoveAll();
             //doc.Save(xmlpath);
@@ -306,38 +326,40 @@ namespace OOP_Lab_II
                 if (row[1] == "admin")
                 {
                     account = new Admin();
-                    account.info = row;
+                    account.setUserData(row);
                 }
                 else if (row[1] == "user")
                 {
                     account = new User();
-                    account.info = row;
+                    account.setUserData(row);
                 }
         }
         public Account get_account(string id=null)
         {
-            if (this.account == null && id != null)
+            if (id != null)
                 initAccount(id);
             else if (this.account == null)
                 throw new InvalidOperationException();
+            update_account();
             return account;
         }
         private void update_account()
         {
-            account.info = readUser(account.info[2]);
+            try { account.setUserData(readUser(account.Username)); }
+            catch (Exception) { }
         }
         public bool check_password(string password)
         {
             string encodePassword = System.BitConverter.ToString((new System.Security.Cryptography.SHA256Managed())
                 .ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "");
-            return encodePassword== account.info[3];
+            return encodePassword== account.Password;
         }
         public bool isHighestScore(int newScore)
         {
-            if(newScore>int.Parse(account.info[0])) // is new score bigger than recorded score 
+            if(newScore>account.BestScore) // is new score bigger than recorded score 
             {
-                account.info[0] = newScore.ToString();
-                updateUser(account.info);
+                account.BestScore = newScore;
+                updateUser(account);
                 return true;
             }
             return false;

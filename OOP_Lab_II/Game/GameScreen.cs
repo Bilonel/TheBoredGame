@@ -39,35 +39,20 @@ namespace OOP_Lab_II.Game
             }
             game = new Game(row, col, GameInitialIds, false, this, isMute);
         }
-        public GameScreen(bool isHost,int[] diffficulty,bool isMute=false,string Opponent=":",System.Net.IPAddress IP=null,int port=0)
+        public GameScreen(bool isHost,bool isMute=false,string Opponent=":",System.Net.IPAddress IP=null,int port=0)
         {
             InitializeComponent();
             refreshed = false;this.isHost = isHost;
             OpponentInfos = Opponent;
-            GameInitialIds = new List<int>();
-            this.row = diffficulty[0]; this.col = diffficulty[1];
-            for (int i = 0; i < 3; i++)
-            {
-                int colors = diffficulty[3];
-                if (diffficulty[2] % 10 == 1)
-                    for (int k = 2; k < 5; k++)
-                    {
-                        if (colors % 10 == 1)
-                            GameInitialIds.Add(i * 3 + k);
-                        colors /= 10;
-                    }
-                diffficulty[2] /= 10;
-            }
             multiplayer = Multiplayer.instance(IP,port,isHost, this,isMute);   // Initialize Multiplayer
             //
             //Delete User from Host List
             //
-            (new Data.HostConnectServer()).deleteHost(dataTransfer.Instance.get_account().info[2]);
+            (new Data.HostConnectServer()).deleteHost(dataTransfer.Instance.get_account().Username);
             //
             // Start the game with 3 random cells
             //
             game = multiplayer.game;
-            
         }
         private void Screen_Load(object sender, EventArgs e)
         {
@@ -82,9 +67,9 @@ namespace OOP_Lab_II.Game
             this.p1_scorePanel.Controls.Add(game.ScoreBoard);
             game.ScoreBoard.Size = p1_scorePanel.Size;
             game.ScoreBoard.BringToFront();
-            p1_name.Text = dataTransfer.Instance.get_account().info[2];
+            p1_name.Text = dataTransfer.Instance.get_account().Username;
             p1_bestScore.BringToFront();
-            p1_bestScore.Text=p1_bestScore.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().info[0].ToString();
+            p1_bestScore.Text=p1_bestScore.Text.Substring(0, 12).ToString() + dataTransfer.Instance.get_account().BestScore.ToString();
             if (!String.IsNullOrEmpty(OpponentInfos))
             {
                 this.p1_panel.Controls.Add(multiplayer.InfoLabel);
@@ -151,7 +136,7 @@ namespace OOP_Lab_II.Game
             }
             else score.Text = "BORING" + Environment.NewLine + " DRAW ";
             if (dataTransfer.Instance.isHighestScore(score1))
-                score.Text += Environment.NewLine+ Environment.NewLine + "New Best Score = " + score1.ToString();
+                score.Text += Environment.NewLine+ Environment.NewLine + "New BestScore: " + score1.ToString();
 
             gameOverPanel.Visible = true;
         }
