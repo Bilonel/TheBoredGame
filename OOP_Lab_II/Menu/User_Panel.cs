@@ -12,7 +12,6 @@ namespace OOP_Lab_II.Menu
 {
     public partial class User_Panel : Form
     {
-        string[] row;
         public User_Panel()
         {
             InitializeComponent();
@@ -37,15 +36,15 @@ namespace OOP_Lab_II.Menu
             {
                 if (dataTransfer.Instance.check_password(confirm_text.Text))
                 {
-                    this.row[3] = password.Text;
-                    this.row[4] = name.Text;
-                    this.row[5] = mail.Text;
-                    this.row[6] = phone.Text;
-                    this.row[7] = country.Text;
-                    this.row[8] = city.Text;
-                    this.row[9] = address.Text;
-                    dataTransfer.Instance.updateUser(row);
-                    dataTransfer.Instance.get_account().info = dataTransfer.Instance.readUser(username_label.Text);
+                    Account user = new User();
+                    user.Password = password.Text;
+                    user.NameSurname = name.Text;
+                    user.Email = mail.Text;
+                    user.Phone = phone.Text;
+                    user.Country = country.Text;
+                    user.City = city.Text;
+                    user.Address = address.Text;
+                    dataTransfer.Instance.updateUser(user);
                     WarnBox.ForeColor = Color.DarkGreen;
                     WarnBox.Text = "Saved";
                     confirm_panel.Visible = false;
@@ -66,17 +65,21 @@ namespace OOP_Lab_II.Menu
         private void User_Panel_Load(object sender, EventArgs e)
         {
             panel9.Size = new System.Drawing.Size(581, (this.Size.Height - 500) / 2 + 100);
-            row = dataTransfer.Instance.get_account().info;
-            scoreLabel.Text = "High Score:" + row[0];
-            username_label.Text = row[2].ToUpper();
-            password.Text = row[3];
-            name.Text = row[4];
-            mail.Text = row[5];
-            phone.Text = row[6];
-            country.Text = row[7];
-            city.Text = row[8];
-            address.Text = row[9];
-            //ToolTips
+            //
+            // SET TEXT BOX AS USERS INFOS
+            Account user = dataTransfer.Instance.get_account();
+            scoreLabel.Text = "High Score:" + user.BestScore.ToString();
+            username_label.Text = user.Username.ToUpper();
+            password.Text = user.Password;
+            name.Text = user.NameSurname;
+            mail.Text = user.Email;
+            phone.Text = user.Phone;
+            country.Text = user.Country;
+            city.Text = user.City;
+            address.Text = user.Address;
+            //
+            //  CREATE TOOL TIPS
+            //
             ToolTip tt = new ToolTip();
             tt.ShowAlways = true;
             tt.SetToolTip(btnName, "Edit Name");

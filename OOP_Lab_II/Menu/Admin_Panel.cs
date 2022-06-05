@@ -64,7 +64,7 @@ namespace OOP_Lab_II.Menu
         {
             dataTransfer.Instance.getAll(dataGridView1);
             dataGridView1.Columns[2].ReadOnly = true;
-            username_label.Text = dataTransfer.Instance.get_account().info[2].ToUpper();
+            username_label.Text = dataTransfer.Instance.get_account().Username.ToUpper();
             this.dataGridView1.ForeColor = Color.Black;
 
             ToolTip tt = new ToolTip();

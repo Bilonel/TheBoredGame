@@ -15,17 +15,17 @@ namespace OOP_Lab_II.Game
     {
         bool isHost;
         private const int bufferSize = 2048;
-        public int NumberOfRandomCells = 3;
+        public int NumberOfRandomCells = 20;
         public Game game;
         public Label InfoLabel;
 
         public BackgroundWorker Receiver = new BackgroundWorker();
-        public Socket sock;
+        public Socket _socket;
         public TcpListener server = null;
         private TcpClient client;
         private Multiplayer(System.Net.IPAddress IP,int Port, bool isHost, GameScreen gameScreen = null,bool isMute=false)
         {
-            game = new Game(9, 9, new List<int>() { 5, 6, 7, 8, 9, 10 }, true, gameScreen, isMute);
+            game = new Game(9, 9, new List<int>() { 2,3,4,5, 6, 7, 8, 9, 10 }, true, gameScreen, isMute);
             InfoLabel = new Label();
             InfoLabel.TextAlign = ContentAlignment.MiddleCenter;
             InfoLabel.Dock = DockStyle.Top;
@@ -41,7 +41,7 @@ namespace OOP_Lab_II.Game
             {
                 server = new TcpListener(IP, Port);
                 server.Start();
-                sock = server.AcceptSocket();
+                _socket = server.AcceptSocket();
                 InfoLabel.Text = "Your Turn";
             }
             else
@@ -49,7 +49,7 @@ namespace OOP_Lab_II.Game
                 try
                 {
                     client = new TcpClient("", 5732);
-                    sock = client.Client;
+                    _socket = client.Client;
                     Receiver.RunWorkerAsync();
                 }
                 catch (Exception ex)
@@ -94,7 +94,7 @@ namespace OOP_Lab_II.Game
         private void ReceiveClickedCell()
         {
             byte[] clickedCell = new byte[bufferSize];
-            while(!Encoding.ASCII.GetString(clickedCell).Contains("click")) sock.Receive(clickedCell);
+            while(!Encoding.ASCII.GetString(clickedCell).Contains("click")) _socket.Receive(clickedCell);
             string text = Encoding.ASCII.GetString(clickedCell).Split(':').Last();
             int ClickedRow = int.Parse(text.Split(',').First());
             int ClickedCol = int.Parse(text.Split(',').Last());
@@ -106,7 +106,7 @@ namespace OOP_Lab_II.Game
         private void ReceiveMove()
         {
             byte[] targetCell = new byte[bufferSize];
-            sock.Receive(targetCell);
+            _socket.Receive(targetCell);
             string text = Encoding.ASCII.GetString(targetCell).Split(':').Last();
             int TargetRow = int.Parse(text.Split(',').First());
             int TargetCol = int.Parse(text.Split(',').Last());
@@ -118,7 +118,7 @@ namespace OOP_Lab_II.Game
         private void ReceiveRandomCells()
         {
             byte[] buffer = new byte[bufferSize];
-            sock.Receive(buffer);
+            _socket.Receive(buffer);
 
             string text = Encoding.ASCII.GetString(buffer).Split(':').Last().Split('\0').First();
             text =text.Substring(0, text.Length - 1);

@@ -39,7 +39,7 @@ namespace OOP_Lab_II.Menu
             currentButton.BackColor = Color.FromArgb(140, 90, 110);
             string OpponentsUsername = currentButton.Parent.Controls[2].Text;
             host = (new Data.HostConnectServer()).getHost(OpponentsUsername);
-            (new Data.HostConnectServer()).SendRequest(OpponentsUsername, dataTransfer.Instance.get_account().info[2]);
+            (new Data.HostConnectServer()).SendRequest(OpponentsUsername, dataTransfer.Instance.get_account().Username);
             MessageLabel.Text = "Waiting For " + OpponentsUsername.ToUpper() +"'s Response";
             acceptChallengeButton.Visible = false;
             InitedPanel.Visible = true;
@@ -50,7 +50,7 @@ namespace OOP_Lab_II.Menu
             string Host_IP = host.IP;
             string Host_Port = host.Port;
             string HostInfo = host.Username + ":" + host.BestScore;
-            gameScreen =new Game.GameScreen(false,new int[] { 8, 8, 010, 011 },((Button)ParentForm.Controls[1]).Image!=null, HostInfo, IPAddress.Parse(Host_IP),int.Parse(Host_Port));
+            gameScreen =new Game.GameScreen(false,((Button)ParentForm.Controls[1]).Image!=null, HostInfo, IPAddress.Parse(Host_IP),int.Parse(Host_Port));
 
             this.ParentForm.Visible = false;
             Menu_Form parent = (Menu_Form)this.ParentForm;
@@ -58,7 +58,7 @@ namespace OOP_Lab_II.Menu
                 gameScreen.ShowDialog();
             try
             {
-                Game.Multiplayer.instance().sock.Shutdown(SocketShutdown.Both);
+                Game.Multiplayer.instance()._socket.Shutdown(SocketShutdown.Both);
                 Game.Multiplayer.instance(null, -1923);
                 parent.exitPopup_Click(null, null);
             }
@@ -73,18 +73,18 @@ namespace OOP_Lab_II.Menu
             MessageLabel.Text ="Waiting For An Opponent";
             acceptChallengeButton.Visible = false;
             InitedPanel.Visible = true;
-            string challenger = WaitResponseOfChallenger(dataTransfer.Instance.get_account().info[2]);
+            string challenger = WaitResponseOfChallenger(dataTransfer.Instance.get_account().Username);
             MessageLabel.Text = challenger + " Challenged To You";
             acceptChallengeButton.Visible = true;
             datLabel.Visible = false;
         }
         private void acceptChallengeButton_Click(object sender, EventArgs e)
         {
-            string challengerName =(new Data.HostConnectServer()).getChallengerName(dataTransfer.Instance.get_account().info[2]);
+            string challengerName =(new Data.HostConnectServer()).getChallengerName(dataTransfer.Instance.get_account().Username);
             string challengerBestScore = dataTransfer.Instance.readUser(challengerName)[0];
             string challengerInfo = challengerName + ":" + challengerBestScore;
-            (new Data.HostConnectServer()).SendRequest(dataTransfer.Instance.get_account().info[2],"accepted");
-            gameScreen = new Game.GameScreen(true, new int[] { 8, 8, 010, 011 }, ((Button)ParentForm.Controls[1]).Image != null, challengerInfo, GetLocalIP(), Port);
+            (new Data.HostConnectServer()).SendRequest(dataTransfer.Instance.get_account().Username,"accepted");
+            gameScreen = new Game.GameScreen(true, ((Button)ParentForm.Controls[1]).Image != null, challengerInfo, GetLocalIP(), Port);
             Form parent = this.ParentForm;
             parent.Visible = false;
             if (!gameScreen.IsDisposed)
@@ -99,8 +99,8 @@ namespace OOP_Lab_II.Menu
         }
         private void sendHostInfoToServer()
         {
-            string Host_Username = dataTransfer.Instance.get_account().info[2];
-            string Host_BestScore = dataTransfer.Instance.get_account().info[0];
+            string Host_Username = dataTransfer.Instance.get_account().Username;
+            string Host_BestScore = dataTransfer.Instance.get_account().BestScore.ToString();
             string Host_IP = GetLocalIP().ToString();
             string Host_Port = Port.ToString();
             Data.HostConnectServer hostConnect = new Data.HostConnectServer();

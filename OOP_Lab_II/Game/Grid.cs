@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace OOP_Lab_II.Game
 {
-    class gameGrid
+    public class gameGrid
     {
         private int[,] matrix;
         private int cellSize;
@@ -21,7 +21,7 @@ namespace OOP_Lab_II.Game
         public gameGrid(int x,int y,int width=700 , int height=500) { 
             matrix = new int[x, y]; 
             Row = x; Column = y;
-            cellSize = Convert.ToInt32(Row > Column) * height * 4 / 5 / Row + Convert.ToInt32(Row <= Column) * width * 3 / 5 / Column;
+            cellSize = Convert.ToInt32(Row > Column) * height * 3 / 4 / Row + Convert.ToInt32(Row <= Column) * width * 4 / 7 / Column;
             startPoint = new Point((width - Column * cellSize) / 2, (height - Row * cellSize)* 2/3);
             createEmptyGrid();
         }
