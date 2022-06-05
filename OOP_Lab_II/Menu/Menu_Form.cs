@@ -20,7 +20,7 @@ namespace OOP_Lab_II.Menu
         public Menu_Form()
         {
             InitializeComponent();
-            usernameLabel.Text = dataTransfer.Instance.get_account().info[2].ToUpper();
+            usernameLabel.Text = dataTransfer.Instance.get_account().Username.ToUpper();
         }
         //
         // Methods

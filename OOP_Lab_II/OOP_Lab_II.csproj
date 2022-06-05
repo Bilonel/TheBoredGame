@@ -79,6 +79,7 @@
     <Compile Include="Entrance\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Builder.cs" />
     <Compile Include="Game\Cell.cs" />
     <Compile Include="Game\Client.cs" />
     <Compile Include="Game\Events.cs" />
@@ -91,6 +92,7 @@
     </Compile>
     <Compile Include="Game\Grid.cs" />
     <Compile Include="Game\Multiplayer.cs" />
+    <Compile Include="Game\Sound.cs" />
     <Compile Include="Game\Texture.cs" />
     <Compile Include="Menu\Admin_Panel.cs">
       <SubType>Form</SubType>
